@@ -1,4 +1,4 @@
-package huawei.real.score100.滑动窗口;
+package huawei.real.score100;
 
 
 /**

@@ -1,3 +1,5 @@
+package Method;
+
 import java.util.Arrays;
 
 /**
@@ -66,7 +68,7 @@ public class BinatySearch {
     }
 
      public static void main(String[] args) {
-         //BinatySearch binatySearch = new BinatySearch();
+         //Method.BinatySearch binatySearch = new Method.BinatySearch();
          //目标数组
          int[] nums={2,4,5,7,9,11,12,15,16,17};
          //目标值

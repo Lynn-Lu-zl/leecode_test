@@ -1,4 +1,6 @@
-package huawei.real.score100.数组;
+package huawei.real.score100;
+
+import java.util.Scanner;
 
 /**
  * 【玩牌高手】
@@ -36,6 +38,32 @@ package huawei.real.score100.数组;
  */
 public class 玩牌高手 {
      public static void main(String[] args) {
-             
+         Scanner in = new Scanner(System.in);
+         String[] str = in.nextLine().split(",");
+         in.close();
+         int[] nums = new int[str.length];
+         for (int i = 0; i < str.length; i++) {
+             nums[i] = Integer.parseInt(str[i]);
+         }
+         int[] score = new int[str.length];
+         int sum = 0;
+         for (int i = 0; i < nums.length; i++) {
+             if (i < 3) {
+                 if (nums[i] <= 0) {
+                     score[i] = 0;
+                 } else {
+                     score[i] = sum + nums[i];
+                 }
+             } else {
+                 if (nums[i] > 0) {
+                     score[i] = sum + nums[i];
+                 } else {
+                     score[i] = Math.max(sum + nums[i], score[i - 3]);
+                 }
+             }
+             sum = score[i];
+         }
+         System.out.println(score[str.length - 1]);
+
          }
 }

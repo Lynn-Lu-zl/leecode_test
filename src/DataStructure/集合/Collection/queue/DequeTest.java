@@ -1,4 +1,4 @@
-package DataStructure.栈和队列;
+package DataStructure.集合.Collection.queue;
 
 import java.util.Deque;
 import java.util.LinkedList;

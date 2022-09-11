@@ -1,4 +1,4 @@
-package huawei.real.score100.动态规划DP;
+package huawei.real.score100;
 
 import java.util.Arrays;
 import java.util.Scanner;

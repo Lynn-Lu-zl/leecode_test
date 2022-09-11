@@ -1,7 +1,6 @@
-package Array;
+package DataStructure.Array;
 
 import java.util.Arrays;
-import java.util.List;
 
 /**
  * 1、数组的声明方式

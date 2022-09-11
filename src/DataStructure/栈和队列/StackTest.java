@@ -1,4 +1,4 @@
-package DataStructure;
+package DataStructure.栈和队列;
 
 import java.util.Stack;
 
@@ -19,6 +19,8 @@ import java.util.Stack;
  *
  * 5、search(Object o)  查找指定栈元素的位置，从上往下数，栈顶为1，栈底最大，被压的只能当小弟排名靠后
  * 返回一个对象在此堆栈上的基于1的位置
+ *
+ * Java堆栈Stack类已经过时，Java官方推荐使用Deque替代Stack使用。Deque堆栈操作方法：push()、pop()、peek()。
  *
  */
 public class StackTest {

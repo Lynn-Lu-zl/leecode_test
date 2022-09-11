@@ -1,4 +1,7 @@
-package huawei.real.score200.动态规划;
+package huawei.real.score200;
+
+import java.util.Arrays;
+import java.util.Scanner;
 
 /**
  *   高效的任务规划 优先级队列，动态规划DP
@@ -39,22 +42,15 @@ package huawei.real.score200.动态规划;
  * 示例2  输入输出示例仅供调试，后台判题数据一般不包含示例
  *
  * 输入
- *
- * 2
- *
- * 2
- *
- * 1 1
- *
- * 2 2
- *
- * 3
- *
- * 1 1
- *
- * 2 2
- *
- * 3 3
+ 2
+ 2
+ 1 1
+ 2 2
+ 3
+ 1 1
+ 2 2
+ 3 3
+
  *
  * 输出
  *
@@ -77,4 +73,46 @@ package huawei.real.score200.动态规划;
  * 第6-8行分别表示3个机器的配置与运行时间。
  */
 public class 高效的任务规划 {
+    /**
+     * 解题思路：
+     *
+     * 题中要求总耗时最短，而且注意到题中：每次只能配置一台机器，那么一个简单道理就是让任务工作时间最长的机器先运行；
+     * 最浅显的解释是：如果让任务工作时间最短的在前面运行，那么同段时间的时间利用率就不是最高，因此并行数量越多越好，这样才会获得总体最短时间；
+     *
+     * 动态规划：dp[i]表示当前机器工作完成经过的总时间。
+     *
+     * 转移方程：因为第i台机器开始配置并工作必须是前i-1台机器都完成了配置，当前机器之前所有机器的总配置时间用last来表示，则第i台机器完成工作所用的总时间dp[i] = last + machine[i][0] + machine[i][1];(包含了此前所有机器的配置时间last)；
+     *
+     * 设最短的完成时间res，初始化res=0,last=0，则 res = max(res, dp[i]);
+
+     * @param args
+     */
+     public static void main(String[] args) {
+
+         Scanner in = new Scanner(System.in);
+         int M = in.nextInt();
+         for(int m = 0; m < M; m++) {
+             int N = in.nextInt();
+             // 动态规划，让任务工作时间最长的机器先运行，这样总体时间才最短啊
+             int[] dp = new int[N]; // dp[i]第i台机器工作完的时间
+             int last = 0; // 之前机器配置完成的时间
+             int res = 0; //总时间
+             int[][] machine = new int[N][2];  // 每组任务的N台机器的配置时间和工作时间
+             for (int i = 0; i < N; i++) {
+                 int B = in.nextInt();
+                 int J = in.nextInt();
+                 machine[i][0] = B;
+                 machine[i][1] = J;
+             }
+             // lambda按第二元素降序排序，即按工作时间降序排序
+             Arrays.sort(machine, (e1, e2) -> (e2[1] - e1[1]));
+             for (int i = 0; i < N; i++) {
+                 dp[i] = last + machine[i][0] + machine[i][1];
+                 last += machine[i][0];
+                 res = Math.max(res, dp[i]);
+             }
+             System.out.println(res);
+         }
+
+         }
 }

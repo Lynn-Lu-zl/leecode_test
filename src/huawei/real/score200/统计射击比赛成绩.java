@@ -1,4 +1,6 @@
-package huawei.real;
+package huawei.real.score200;
+
+import java.util.*;
 
 /**
  * 统计射击比赛成绩
@@ -32,4 +34,75 @@ package huawei.real;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124544351
  */
 public class 统计射击比赛成绩 {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        int count = Integer.parseInt(sc.nextLine());
+        String[] turnList = sc.nextLine().split(",");
+        String[] scores = sc.nextLine().split(",");
+        List<Player> plays = new ArrayList<>();
+        Map<Integer,Integer> map= new HashMap<>();
+        int tempCount = 0;
+        //获取成绩
+        for (int i = 0; i < count; i++) {
+            int idx = Integer.parseInt(turnList[i]);
+            List<Integer> li = new ArrayList<>();
+            li.add(Integer.parseInt(scores[i]));
+            Player pls = new Player(idx,li);
+            if (plays.contains(pls)) {
+                plays.get(map.get(idx)).list.add(Integer.parseInt(scores[i]));
+            }else{
+                map.put(idx,tempCount++);
+                plays.add(pls);
+            }
+        }
+        //整理成绩
+        for (int i = 0; i < plays.size(); i++) {
+            Player player = plays.get(i);
+            List<Integer> list = player.list;
+            list.sort((a0,b0) -> b0 -a0);//逆序
+            int total = 0;
+            for (int j = 0; j < 3; j++) {
+                total += list.get(j);
+            }
+            player.setScore(total);
+        }
+        plays.sort(null);
+        for (int i = 0; i < plays.size(); i++) {
+            if (i == plays.size() -1){
+                System.out.print(plays.get(i).idx);
+            }else {
+                System.out.print(plays.get(i).idx + ",");
+            }
+        }
+    }
+    static class Player implements Comparable<Player>{
+        private int idx;
+        private List<Integer> list;
+        private int score;
+
+        public void setScore(int score) {
+            this.score = score;
+        }
+
+        public Player(int idx, List<Integer> list) {
+            this.idx = idx;
+            this.list = list;
+        }
+
+        @Override
+        public boolean equals(Object obj) {
+            Player ply = (Player)obj;
+            return ply.idx == this.idx;
+        }
+
+        @Override
+        public int compareTo(Player ply) {
+            if (ply.score != this.score){
+                return ply.score - this.score;
+            }else {
+                return ply.idx - this.idx;
+            }
+        }
+    }
+
 }

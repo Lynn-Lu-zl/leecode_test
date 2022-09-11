@@ -3,7 +3,7 @@ package huawei.real.score200;
 import java.util.Scanner;
 
 /**
- * 最大差
+ * 判断一组不等式是否满足约束并输出最大差
  * 题目描述：
  * 判断一组不等式是否满足约束并输出最大差
  *
@@ -27,7 +27,7 @@ import java.util.Scanner;
  * 3
  * 4
  * 5
- * 最大差=max
+ * 判断一组不等式是否满足约束并输出最大差=max
  * {  (a11*x1+a12*x2+a13*x3+a14*x4+a15*x5-b1),
  *
  * (a21*x1+a22*x2+a23*x3+a24*x4+a25*x5-b2),
@@ -83,7 +83,7 @@ import java.util.Scanner;
  * 10
  * 11
  * 输出描述
- * true 或者 false, 最大差
+ * true 或者 false, 判断一组不等式是否满足约束并输出最大差
  *
  * 示例 1：
  * 输入
@@ -115,7 +115,7 @@ import java.util.Scanner;
  * 题目臭长，纯模拟问题，这道题充分考察了一个字符串分割，提取，计算，拼接，判断。
 
  */
-public class 最大差 {
+public class 判断一组不等式是否满足约束并输出最大差 {
      public static void main(String[] args) {
          Scanner in = new Scanner(System.in);
          String[] str = in.nextLine().split(";");

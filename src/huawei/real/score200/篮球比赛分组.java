@@ -1,7 +1,7 @@
 package huawei.real.score200;
 
 /**
- * 篮球比赛  DP/回溯
+ * 篮球比赛分组  DP/回溯
  *
  * 题目描述
  *
@@ -28,5 +28,5 @@ package huawei.real.score200;
  *
  * 1
  */
-public class 篮球比赛 {
+public class 篮球比赛分组 {
 }

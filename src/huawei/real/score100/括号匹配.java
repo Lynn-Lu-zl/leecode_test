@@ -1,4 +1,4 @@
-package huawei.real.score100.栈和队列;
+package huawei.real.score100;
 
 /**
  * 给定一个字符串，里边可能包含“()”、“[]”、“{}”三种括号，请编写程序检查该字符串中的括号是否成对出现，且嵌套关系正确。

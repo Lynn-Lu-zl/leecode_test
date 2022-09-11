@@ -1,4 +1,4 @@
-package DataStructure;
+package DataStructure.Math;
 
 /**
  * 质数判断

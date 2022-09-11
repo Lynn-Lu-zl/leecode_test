@@ -1,4 +1,4 @@
-package DataStructure.链表;
+package DataStructure.链表.单链表节点;
 
 /**
  * 单链表节点类
@@ -20,7 +20,9 @@ package DataStructure.链表;
  * 原文链接：https://blog.csdn.net/weixin_44052055/article/details/114690505
  */
 public class Node {
+    //往节点里面储存的信息
     public Object data;
+    //指针
     public Node next;
 
     public Node(Object e){

@@ -28,7 +28,7 @@ package Solutions.easy;
  */
 
 
-import LinkList.ListNode;
+import DataStructure.集合.Collection.List.LinkedList.ListNode;
 
 /**
  * 参数值 头结点head，移除的结点值val

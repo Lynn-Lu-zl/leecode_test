@@ -1,4 +1,9 @@
-package huawei.real.score100.字符串;
+package huawei.real.score100;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+import java.util.Scanner;
 
 /**
  * 题目描述
@@ -67,5 +72,52 @@ package huawei.real.score100.字符串;
 public class VLAN资源池 {
      public static void main(String[] args) {
 
+         Scanner in = new Scanner(System.in);
+         String[] VLANPool = in.nextLine().split(",");
+         int VLANNeed = in.nextInt();
+         // 将字符串中所有包含的数字加入list
+         List<Integer> list = new ArrayList<>();  // 存储数字数组
+         for (String vlan : VLANPool) {
+             String[] tmp = vlan.split("-");
+             if (tmp.length > 1) {
+                 for (int i = Integer.parseInt(tmp[0]); i <= Integer.parseInt(tmp[1]); i++) {
+                     list.add(i);
+                 }
+             } else {
+                 list.add(Integer.parseInt(tmp[0]));
+             }
          }
+         // 如果list包含申请的VLAN，则从list删除
+         for (int i = 0; i < list.size(); i++) {
+             if (list.get(i) == VLANNeed) {  // list是按照索引删除的，先找到对应索引，字符串的话用equals判断相等
+                 list.remove(i);
+             }
+         }
+         // 将数组排完序后输出
+         Collections.sort(list);
+         StringBuilder sb = new StringBuilder();
+         // 对排序后的数组进行重组，一一遍历，如果下个数等于上个数加1，继续遍历，否则直接加入sb
+         int i = 0;
+         while (i < list.size()) {
+             int first = list.get(i);
+             int j = 1;
+             while (j <= list.size() - 1 - i) {
+                 if (list.get(i) + j == list.get(i + j)) {
+                     j++;
+                 } else {
+                     break;
+                 }
+             }
+             if (j == 1) { // 如果下个数不等于上个数加1，直接加入sb,同时i++
+                 sb.append(first);
+                 sb.append(",");
+                 i++;
+             } else {  // 否则第一个数-递增的最后一个数加入sb,同时i=i+j
+                 sb.append(String.valueOf(first) + "-" + String.valueOf(first + j - 1) + ",");
+                 i = i + j;
+             }
+         }
+         System.out.println(sb.toString().substring(0, sb.length() - 1));  // 去除最后一个","
+     }
+
 }

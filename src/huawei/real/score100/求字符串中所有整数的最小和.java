@@ -1,4 +1,4 @@
-package huawei.real.score100.字符串;
+package huawei.real.score100;
 
 /**
  * 题目描述

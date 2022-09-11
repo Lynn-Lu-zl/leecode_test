@@ -32,7 +32,7 @@ import java.util.Scanner;
  * 版权声明：本文为CSDN博主「旧梦昂志」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124558394
  */
-public class 执行时长 {
+public class GPU最多一次执行n个任务 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int bing = Integer.parseInt(sc.nextLine());

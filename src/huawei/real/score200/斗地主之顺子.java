@@ -1,4 +1,4 @@
-package huawei.real.score100;
+package huawei.real.score200;
 
 import java.util.Arrays;
 import java.util.Scanner;

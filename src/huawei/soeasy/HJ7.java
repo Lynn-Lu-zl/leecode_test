@@ -1,8 +1,8 @@
-package huawei.easy;
+package huawei.soeasy;
 
 import java.util.Scanner;
 
-/**
+/**HJ7 取近似值
  * 入门题
  *
  * 描述
@@ -32,7 +32,7 @@ import java.util.Scanner;
  * 2
  * 复制
  * 说明：
- * 0.499<0.5，2.499向下取整为2   
+ * 0.499<0.5，2.499向下取整为2
  */
 public class HJ7 {
 

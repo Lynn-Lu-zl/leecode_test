@@ -1,9 +1,9 @@
-package huawei.real;
+package huawei.real.score100;
 
 import java.util.Scanner;
 
 /**
- * 按索引范围翻转文章片段/按索引范围翻转文章片段
+ * 按索引范围翻转文章片段/按索引范围翻转文章片段  字符串
  *
  *  输入一个英文文章片段
  *  翻转指定区间的单词顺序，标点符号和普通字母一样处理
@@ -70,35 +70,50 @@ public class 按索引范围翻转文章片段 {
      */
      public static void main(String[] args) {
          Scanner scanner = new Scanner(System.in);
+         //输入文章
          String line = scanner.nextLine();
+         //头索引
          int start = scanner.nextInt();
+         //尾索引
          int end = scanner.nextInt();
          // 去掉前后的空格
          line = line.trim();
+         //根据空格分割字符串将单词分开
          String[] split = line.split(" ");
+
          // 如果起始数小于0，取0
          start = Math.max(start, 0);
          // 如果结束数大于数组长度，取数组最后一个
          end = Math.min(end, split.length - 1);
          // 指定反转区间只有一个单词，或无有效单词则统一输出EMPTY
-         if (start >= end || start >= split.length - 1 || end <= 0) {
+         if (start >= end || start >= split.length - 1 ) {
              System.out.println("EMPTY");
              return;
          }
-         // 进行字符串翻转，直至重合
+         /**双指针
+          * 遍历进行字符串翻转，直至重合
+          *
+          * 把调换的头索引值放到temp--》尾和头调换--》再把temp存储的头元素放到尾
+          */
          while (start < end){
+             //要调换的索引值放到temp
              String temp = split[start];
+             //尾和头调换
              split[start] = split[end];
+             // 再把temp存储的头元素放到尾
              split[end] = temp;
+             //索引指针下移一位
              start++;
+             //索引指针上移一位
              end--;
          }
-         //拼接字符串
+
          StringBuilder sb = new StringBuilder();
+         //拼接字符串，根据空格拼接
          for (String s : split) {
              sb.append(s + " ");
          }
-         // 去掉末尾的空格，如abc空格--》abc没有空格
+         // 去掉前后的空格，如abc空格--》abc没有空格
          System.out.println(sb.toString().trim());
 
      }

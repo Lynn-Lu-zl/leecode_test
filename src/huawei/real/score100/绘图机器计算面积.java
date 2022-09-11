@@ -2,7 +2,7 @@ package huawei.real.score100;
 
 import java.util.Scanner;
 
-/**
+/**绘图机器计算面积
  * 题目描述：
  * 绘图机器的绘图笔初始位置在原点(0,0) 机器启动后按照以下规则来进行绘制直线
  *
@@ -62,7 +62,7 @@ import java.util.Scanner;
  * 版权声明：本文为CSDN博主「小朱小朱绝不服输」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。
  * 原文链接：https://blog.csdn.net/weixin_44052055/article/details/123973198
  */
-public class 绘图机器 {
+public class 绘图机器计算面积 {
     /***
      * 思路分析：
      * 简单的模拟题，模拟计算所围矩形的面积。

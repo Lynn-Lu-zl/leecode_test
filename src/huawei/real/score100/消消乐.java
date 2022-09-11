@@ -1,4 +1,4 @@
-package huawei.real.score100.栈和队列;
+package huawei.real.score100;
 
 import java.util.Scanner;
 import java.util.Stack;
