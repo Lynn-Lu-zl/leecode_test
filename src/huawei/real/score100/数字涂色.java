@@ -1,7 +1,9 @@
 package huawei.real.score100;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.TreeSet;
 
 /**
  * 数字涂色       数学
@@ -37,9 +39,7 @@ import java.util.Scanner;
  原文链接：https://blog.csdn.net/csfun1/article/details/124528902
  */
 public class 数字涂色 {
-     public static void main(String[] args) {
-
-
+     // public static void main(String[] args) {
          // Scanner sc = new Scanner(System.in);
          // while (sc.hasNextInt()) {
          //     int n = sc.nextInt();
@@ -106,7 +106,7 @@ public class 数字涂色 {
          //     }
          // }
          // System.out.println(list.size());
-
+     // }
 
          /**
           * 同种颜色的所有数都可以被这种颜色中最小的那个数整除
@@ -124,64 +124,91 @@ public class 数字涂色 {
           * 第一层：
           *
           */
-         Scanner scanner = new Scanner(System.in);
-         String line = scanner.nextLine();
-         //输入一共有多少个数
-         int count = Integer.parseInt(line);
-         //数据
-         String nums = scanner.nextLine();
+          // public static void main(String[] args) {
+          //     Scanner scanner = new Scanner(System.in);
+          //     String line = scanner.nextLine();
+          //     //输入一共有多少个数
+          //     int count = Integer.parseInt(line);
+          //     //数据
+          //     String nums = scanner.nextLine();
+          //
+          //
+          //     //变成字符串数组
+          //     String[] split = nums.split(" ");
+          //     //转成int数组
+          //     int input[] = new int[count];
+          //     for (int i = 0; i < split.length; i++) {
+          //         input[i] = Integer.parseInt(split[i]);
+          //     }
+          //     //先对整形数组进行排序，方便遍历
+          //     Arrays.sort(input);
+          //
+          //     //[2, 16, 20, 27, 67, 67, 78, 88, 98, 99]
+          //     System.out.println(Arrays.toString(input));
+          //
+          //     //输出颜色的总数，赋初始值
+          //
+          //     int num = 0;
+          //     //如果第一层循环判断数组对应的索引值里面有数据--》该数据已经被整除过了--》做个标记颜色是同一种+
+          //     int[] temp = new int[count];
+          //     for (int i = 0; i < input.length; i++) {
+          //         //s[0]=0--》进入else开始二层循环
+          //         //s[0] > 0-->重新进入第一层循环
+          //         if (temp[i] > 0) {
+          //             continue;
+          //         } else {
+          //             /**
+          //              * 2 3 5
+          //              * 2/3-->新一种
+          //              * 2/5-->新一种
+          //              *
+          //              * 3/5-->新一种
+          //              */
+          //             for (int j = i ; j <input.length; j++) {
+          //                 if ((input[i] % input[j]) == 0) {
+          //                     //如果能整除，该索引的数组值从0--》1
+          //                     temp[j]++;
+          //                     // System.out.println(temp[j]++);
+          //                 }
+          //             }
+          //             //跳出if else后+1
+          //             //走if--》不能被整除直接加1种颜色
+          //             num++;
+          //         }
+          //
+          //
+          //     }
+          //     System.out.println(num);
+          //     }
+          //
 
 
-         //变成字符串数组
-         String[] split = nums.split(" ");
-         //转成int数组
-         int input[] = new int[count];
-         for (int i = 0; i < split.length; i++) {
-             input[i] = Integer.parseInt(split[i]);
-         }
-         //先对整形数组进行排序，方便遍历
-         Arrays.sort(input);
 
-         //[2, 16, 20, 27, 67, 67, 78, 88, 98, 99]
-         System.out.println(Arrays.toString(input));
-
-         //输出颜色的总数，赋初始值
-
-         int num = 0;
-         //如果第一层循环判断数组对应的索引值里面有数据--》该数据已经被整除过了--》做个标记颜色是同一种+
-         int[] temp = new int[count];
-         for (int i = 0; i < input.length; i++) {
-             //s[0]=0--》进入else开始二层循环
-             //s[0] > 0-->重新进入第一层循环
-             if (temp[i] > 0) {
-                 continue;
-             } else {
-                 /**
-                  * 2 3 5
-                  * 2/3-->新一种
-                  * 2/5-->新一种
-                  *
-                  * 3/5-->新一种
-                  */
-                 for (int j = i ; j <input.length; j++) {
-                     if ((input[i] % input[j]) == 0) {
-                         //如果能整除，该索引的数组值从0--》1
-                         temp[j]++;
-                        // System.out.println(temp[j]++);
-                     }
-                 }
-                 //跳出if else后+1
-                 //走if--》不能被整除直接加1种颜色，如果
-                 num++;
-             }
+      public static void main(String[] args) {
 
 
-         }
-         System.out.println(num);
-     }
+          //数字涂色,黑板报重新制作
+          Scanner in = new Scanner(System.in);
+          String nStr = in.nextLine();
+          String[] nums = in.nextLine().split(" ");
+          TreeSet<Integer> ints = new TreeSet<>();
+          for (String num : nums){
+              ints.add(Integer.parseInt(num));}
+          if (ints.contains(1)) {
+              System.out.println(1);
+              ints.remove(1);
+              return; }
+          ArrayList<Integer> intList = new ArrayList<>(ints);
+          for (int i = 0; i < intList.size(); i++) {
+              Integer cur = intList.get(i);
+              for (int j = i + 1; j < intList.size(); ){
+                  if (intList.get(j) % cur == 0) {
+                      intList.remove(j);
+                  } else j++; } }
+          System.out.println(intList.size());
 
 
-
+      }
 
 
 

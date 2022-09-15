@@ -34,29 +34,26 @@ import java.util.Scanner;
  */
 public class 用连续自然数之和来表达整数 {
      public static void main(String[] args) {
+
+         //用连续自然数之和来表达整数，Result:2
          Scanner sc = new Scanner(System.in);
          int sum = sc.nextInt();
          int n = 1;
          int count=0;
          while (n< sum/2){
-             if (2* sum % n == 0 && (2* sum/n -n +1) %2 == 0 && (2* sum/n -n +1)/2 > 0){
+             if (2* sum % n == 0
+                 && (2* sum/n -n +1) %2 == 0
+                 && (2* sum/n -n +1)/2 > 0){
                  int x1 = (2* sum/n -n +1)/2;
                  count++;
                  System.out.print(sum + "=");
                  for (int i = 0; i <n ; i++) {
                      if (i == n-1){
                          System.out.print(x1++);
-
                      }else {
-                         System.out.print(x1++ + "+");
-
-                     }
-                 }
-                 System.out.println();
-             }
-             n++;
-         }
-         //一共有多少种算法
+                         System.out.print(x1++ + "+");}}
+                 System.out.println(); }
+             n++; }
          System.out.println("Result:"+count);
 
      }

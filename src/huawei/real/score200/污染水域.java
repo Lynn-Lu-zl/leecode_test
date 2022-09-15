@@ -42,15 +42,15 @@ public class 污染水域 {
      * 注：这里有一个小细节就是，可以直接修改原数组，扩散到了就在原数组上加1，最后统计数组中最大值-1即可。这里我同时把队列输出数组定义到循环外面，这样就可以直接输出最后一次扩散的值减1即可。
      */
      public static void main(String[] args) {
-         Scanner in = new Scanner(System.in);
+
+
+         Scanner in = new Scanner(System.in);  //污染水域，判断多少天后，水域被全部污染
          String[] s = in.nextLine().split(",");
          int N = (int)Math.sqrt(s.length);
          int[][] grid = new int[N][N];  // 将一维数组转化为二维数组
          for (int i = 0; i < N; i++) {
              for (int j = 0; j < N; j++) {
-                 grid[i][j] = Integer.parseInt(s[j + i * N]);
-             }
-         }
+                 grid[i][j] = Integer.parseInt(s[j + i * N]); } }
          // 图的多源BFS
          int[] dx = new int[]{0, 0, 1, -1};
          int[] dy = new int[]{1, -1, 0, 0};
@@ -59,15 +59,11 @@ public class 污染水域 {
          for (int i = 0; i < N; i++) {
              for (int j = 0; j < N; j++) {
                  if (grid[i][j] == 1) {
-                     queue.offer(new int[]{i, j});
-                 }
-             }
-         }
+                     queue.offer(new int[]{i, j}); } } }
          // 全部被无污染或者永远无法被污染
          if (queue.size() == 0 || queue.size() == N * N) {
              System.out.println(-1);
-             return;
-         }
+             return; }
          // 从各个污染源开始，一圈圈遍历
          int[] node = null;  // 定义到循环外面，方便输出结果
          while (!queue.isEmpty()) {
@@ -78,13 +74,10 @@ public class 污染水域 {
                  int newY = y + dy[i];
                  // 越界或者不是净水
                  if (newX < 0 || newX >= N || newY < 0 || newY >= N || grid[newX][newY] != 0) {
-                     continue;
-                 }
+                     continue; }
                  // 直接修改原数组，把净水改为污染源
                  grid[newX][newY] = grid[x][y] + 1;
-                 queue.offer(new int[]{newX, newY});
-             }
-         }
+                 queue.offer(new int[]{newX, newY}); } }
          // 返回最后一次遍历到净水的天数 - 1，或者输出当前数组的最大值-1
          System.out.println(grid[node[0]][node[1]] - 1);
 

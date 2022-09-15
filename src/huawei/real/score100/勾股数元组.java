@@ -37,59 +37,125 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124390802
  */
 public class 勾股数元组 {
-     public static void main(String[] args) {
-         Scanner sc = new Scanner(System.in);
-         int i1 = sc.nextInt();//[1,10000]
-         int i2 = sc.nextInt();//[n,10000]
-         List<List<Integer>> lists = new ArrayList<>();
-         for (int i = i1; i <= i2 ; i++) {
-             for (int j = i+1; j <= i2 ; j++) {
-                 //boolean checkFlag(int a1,int a2,int max)
-                 if (checkFlag(i,j,i2)) {
-                     List<Integer> list = new ArrayList<>();
-                     list.add(i);
-                     list.add(j);
-                     list.add((int)Math.sqrt(i*i + j*j));
-                     Collections.sort(list);
-                     lists.add(list);
-                 }
-             }
-         }
-         //所有的勾股数都在lists里,逐个排除存在公约数的数组
-         int idx = 0;
-         while (idx < lists.size()){
-             List<Integer> list = lists.get(idx);
-             //boolean checkYue(int a1,int a2,int a3)
-             if (checkYue(list.get(0),list.get(1),list.get(2))) {
-                 lists.remove(idx);
-                 idx = 0;
-             }
-             idx++;
-         }
-         for (int i = 0; i < lists.size(); i++) {
-             List<Integer> list = lists.get(i);
-             System.out.println(list.get(0) + " " + list.get(1) + " "+ list.get(2));
-         }
-     }
-    private static boolean checkFlag(int a1,int a2,int max){
-        int mul = a1 *a1 + a2 * a2;
-        double res = Math.sqrt(mul);
-        int sub = (int) res;
-        return res * res  == sub * sub && sub<= max && sub>a2;
-    }
+    //  public static void main(String[] args) {
+    //      Scanner sc = new Scanner(System.in);
+    //      int i1 = sc.nextInt();//[1,10000]
+    //      int i2 = sc.nextInt();//[n,10000]
+    //      List<List<Integer>> lists = new ArrayList<>();
+    //      for (int i = i1; i <= i2 ; i++) {
+    //          for (int j = i+1; j <= i2 ; j++) {
+    //              //boolean checkFlag(int a1,int a2,int max)
+    //              if (checkFlag(i,j,i2)) {
+    //                  List<Integer> list = new ArrayList<>();
+    //                  list.add(i);
+    //                  list.add(j);
+    //                  list.add((int)Math.sqrt(i*i + j*j));
+    //                  Collections.sort(list);
+    //                  lists.add(list);
+    //              }
+    //          }
+    //      }
+    //      //所有的勾股数都在lists里,逐个排除存在公约数的数组
+    //      int idx = 0;
+    //      while (idx < lists.size()){
+    //          List<Integer> list = lists.get(idx);
+    //          //boolean checkYue(int a1,int a2,int a3)
+    //          if (checkYue(list.get(0),list.get(1),list.get(2))) {
+    //              lists.remove(idx);
+    //              idx = 0;
+    //          }
+    //          idx++;
+    //      }
+    //      for (int i = 0; i < lists.size(); i++) {
+    //          List<Integer> list = lists.get(i);
+    //          System.out.println(list.get(0) + " " + list.get(1) + " "+ list.get(2));
+    //      }
+    //  }
+    // private static boolean checkFlag(int a1,int a2,int max){
+    //     int mul = a1 *a1 + a2 * a2;
+    //     double res = Math.sqrt(mul);
+    //     int sub = (int) res;
+    //     return res * res  == sub * sub && sub<= max && sub>a2;
+    // }
+    //
+    // //369 246
+    // private static boolean checkYue(int a1,int a2,int a3){
+    //     for (int i = 2; i < a3; i++) {
+    //         if (a1 % i ==0 && a2 % i == 0){
+    //             return true;
+    //         }else if (a1 % i == 0 && a3 % i == 0){
+    //             return true;
+    //         }else if (a2 % i == 0 && a3 % i == 0){
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    //  }
 
-    //369 246
-    private static boolean checkYue(int a1,int a2,int a3){
-        for (int i = 2; i < a3; i++) {
-            if (a1 % i ==0 && a2 % i == 0){
-                return true;
-            }else if (a1 % i == 0 && a3 % i == 0){
-                return true;
-            }else if (a2 % i == 0 && a3 % i == 0){
-                return true;
-            }
-        }
-        return false;
 
-     }
+    // public static void main(String[] args) {
+    //         Scanner scanner = new Scanner(System.in);
+    //         int n = scanner.nextInt();
+    //         int m = scanner.nextInt();
+    //         int count = 0;
+    //         for (int a = n; a < m - 1; a++) {
+    //             for (int b = a + 1; b < m; b++) {
+    //                 for (int c = b + 1; c < m + 1; c++) {
+    //                     if (relativelyPrime(a, b) &&
+    //                         relativelyPrime(b, c) &&
+    //                         relativelyPrime(a, c) &&
+    //                         a * a + b * b == c * c) {
+    //                         count++;
+    //                         System.out.printf("%d %d %d\n", a, b, c);
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //         if (count == 0) {
+    //             System.out.println("NA");
+    //         }
+    // }
+    //     private static boolean relativelyPrime(int x, int y) {
+    //         if (x == y && y == 1) {
+    //             return false;
+    //         }
+    //         int min = Math.min(x, y);
+    //         for (int i = 2; i <= min; i++) {
+    //             if (x % i == 0 && y % i == 0) {
+    //                 return false;
+    //             }
+    //         }
+    //         return true;
+    //     }
+
+    public static void main(String[] args) {
+        //勾股数元组 如果3个正整数
+        Scanner scanner = new Scanner(System.in);
+        int n = scanner.nextInt();
+        int m = scanner.nextInt();
+        int count = 0;
+        for (int a = n; a < m - 1; a++) {
+            for (int b = a + 1; b < m; b++) {
+                for (int c = b + 1; c < m + 1; c++) {
+                    if (relativelyPrime(a, b) &&
+                        relativelyPrime(b, c) &&
+                        relativelyPrime(a, c) &&
+                        a * a + b * b == c * c) {
+                        count++;
+                        System.out.printf("%d %d %d\n", a, b, c);
+                    } } } }
+        if (count == 0) {
+            System.out.println("NA"); } }
+		private static boolean relativelyPrime(int x, int y) {
+        if (x == y && y == 1) {
+            return false; }
+        int min = Math.min(x, y);
+        for (int i = 2; i <= min; i++) {
+            if (x % i == 0 && y % i == 0) {
+                return false; } }
+        return true; }
+
+        
+
+
 }

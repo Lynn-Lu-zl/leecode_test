@@ -130,6 +130,7 @@ public class 查找舆情热词 {
      * @param args
      */
     public static void main(String[] args) {
+        //查找舆情热词，网上新闻越来越多，希望对新闻进行热词处理并归类
         Scanner in = new Scanner(System.in);
         int M = in.nextInt();
         int N = in.nextInt();
@@ -141,30 +142,23 @@ public class 查找舆情热词 {
             for (int j = 0; j < title.length; j++) {
                 if (!map.containsKey(title[j])) {
                     // 第一个是单词出现频次，第二个是标题中出现频次，第三个是标题中的顺序，第四个是正文中的顺序
-                    map.put(title[j], new int[]{0, 0, titleIdx, -1});
-                }
+                    map.put(title[j], new int[]{0, 0, titleIdx, -1}); }
                 int[] info = map.get(title[j]);
                 if (info[2] == -1) {
-                    info[2] = titleIdx;
-                }
+                    info[2] = titleIdx; }
                 info[0] += 3;
                 info[1]++;
-                titleIdx++;
-            }
+                titleIdx++; }
             String[] text = in.nextLine().split(" ");
             for (int j = 0; j < text.length; j++) {
                 if (!map.containsKey(text[j])) {
                     // 第一个是单词出现频次，第二个是标题中出现频次，第三个是标题中的顺序，第四个是正文中的顺序
-                    map.put(text[j], new int[]{0, 0, -1, textIdx});
-                }
+                    map.put(text[j], new int[]{0, 0, -1, textIdx}); }
                 int[] info = map.get(text[j]);
                 if (info[3] == -1) {
-                    info[3] = textIdx;
-                }
+                    info[3] = textIdx; }
                 info[0]++;
-                textIdx++;
-            }
-        }
+                textIdx++; } }
         // Map按value排序，先将map转为list,再排序list(按value值进行排序)
         List<Map.Entry<String, int[]>> list = new ArrayList<>(map.entrySet());
         // 直接使用lambda表达式排序
@@ -173,16 +167,14 @@ public class 查找舆情热词 {
                 : o1.getValue()[2] - o2.getValue()[2])
             : o2.getValue()[1] - o1.getValue()[1])
             : (o2.getValue()[0] - o1.getValue()[0])));
-
-        // 输出前M个高频词汇
-        for (int i = 0; i < M; i++) {
+        for (int i = 0; i < M; i++) {// 输出前M个高频词汇
             Map.Entry<String, int[]> entry = list.get(i);
             if (i != list.size() - 1) {
                 System.out.print(entry.getKey() + " ");
             } else {
-                System.out.println(entry.getKey());
-            }
-        }
+                System.out.println(entry.getKey()); } }
+
+
     }
 
 }

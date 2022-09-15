@@ -72,8 +72,10 @@ public class 新员工考试 {
     // }
 
     //法二，列出来得分数组，然后进行回溯
+
     public static int res = 0;
     public static void main(String[] args) {
+        //新员工考试，小聪入职新公司
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
         int[] num = new int[25];
@@ -82,26 +84,20 @@ public class 新员工考试 {
             if (i < 20) {
                 num[i] = 4;
             } else {
-                num[i] = 8;
-            }
-        }
+                num[i] = 8; } }
         dfs (num,0, 0, 0, N);
-        System.out.println(res);
-    }
-    private static void dfs(int[] num, int index, int score, int err, int N) {
+        System.out.println(res); }
+    private static void dfs(int[] num, int index,
+                          int score, int err, int N){
         if (score == N) {
             res++; // 答题情况+1
-            return;
-        }
+            return; }
         if (score > N || err >= 3) return;
-
-        for (int i = index; i < num.length; i++) {
+        for (int i = index; i < num.length; i++){
             score += num[i];
             dfs(num,i + 1, score, err, N);
             score -= num[i];
-            err++;
-        }
-    }
+            err++; } }
 
 
 }

@@ -1,5 +1,7 @@
 package huawei.real.score100;
 
+import java.util.Scanner;
+
 /**
  * 3020年，空间通信集团的员工人数突破20亿人，即将遇到现有工号不够用的窘境。
  * 现在，请你负责调研新工号系统。继承历史传统，新的工号系统由小写英文字母（a-z）和数字（0-9）两部分构成。新工号由一段英文字母开头，之后跟随一段数字，比如"aaahw0001",“a12345”,“abcd1”,“a00”。注意新工号不能全为字母或者数字,允许数字部分有前导0或者全为0。
@@ -32,4 +34,14 @@ package huawei.real.score100;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124390802
  */
 public class 工号不够用了怎么办 {
+
+    public static void main(String[] args) {
+        //工号不够用了怎么办
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNext()) {
+            int x = sc.nextInt(), y = sc.nextInt();
+            int result = Math.max(1, (int) Math.log10(x / Math.pow(26, y)));
+            System.out.printf("%d\n", result);
+        }
+    }
 }

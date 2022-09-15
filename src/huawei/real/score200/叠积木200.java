@@ -52,46 +52,35 @@ import java.util.Scanner;
 public class 叠积木200 {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
-        String[] s = in.nextLine().split(" ");
+        String[] s = in.nextLine().split(" ");//叠积木，小橙想把这堆积木叠成一面墙
         int[] nums = new int[s.length];
         for (int i = 0; i < nums.length; i++) {
-            nums[i] = Integer.parseInt(s[i]);
-        }
+            nums[i] = Integer.parseInt(s[i]); }
         int sum = 0;
-        for (int num : nums) {
-            sum += num;
-        }
+        for (int num : nums) {sum += num; }
         Arrays.sort(nums);
-
         int res = -1;
         for (int i = 2; i <= sum / 2; i++) {
             if (sum % i != 0) continue;
             int score = sum / i;
             if(nums[nums.length - 1] > score){
-                continue;
-            }
+                continue; }
             //建立一个长度为k的桶
             int[] arr = new int[i];
             //桶的每一个值都是子集的和
             Arrays.fill(arr, score);
             if (dfs (nums, nums.length - 1, 0, arr, i, score)) {
-                res = Math.max(res, i);
-            }
-        }
-        System.out.println(res);
-    }
+                res = Math.max(res, i); } }
+        System.out.println(res); }
     public static boolean dfs(int[] nums, int cur, int used, int[] arr, int k, int score){
         //已经遍历到了-1说明前面的所有数都正好可以放入桶里，那所有桶的值此时都为0，说明找到了结果，返回true
         if(cur < 0){
-            return true;
-        }
+            return true; }
         if (used < k) {
             arr[used] = nums[cur];
             if (dfs(nums, cur - 1, used + 1, arr, k, score)) {
-                return true;
-            }
-            arr[used] = 0;
-        }
+                return true; }
+            arr[used] = 0; }
         //遍历k个桶
         for(int i = 0; i < used; i++){
             // 如果当前桶和上一个桶内的元素和相等，则跳过
@@ -100,10 +89,7 @@ public class 叠积木200 {
             if (arr[i] + nums[cur] <= score) {
                 arr[i] += nums[cur];
                 if (dfs(nums, cur - 1, used, arr, k, score)) return true;
-                arr[i] -= nums[cur];
-            }
-        }
-        return false;
-    }
+                arr[i] -= nums[cur]; } }
+        return false; }
 
 }

@@ -39,61 +39,81 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124509176
  */
 public class 火星文计算 {
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     String input = sc.nextLine();
+    //     while (input.contains("$") || input.contains("#")){
+    //         if (input.contains("$")) {//字符串左取右不取 7#6$5#12
+    //             int idx = input.lastIndexOf("$");
+    //             int leftStart = changeInput(input, idx, -1);
+    //             int op1 = Integer.parseInt(input.substring(leftStart,idx));
+    //             int rightEnd = changeInput(input, idx, +1);
+    //             int op2 = Integer.parseInt(input.substring(idx +1,rightEnd));
+    //             int res = calcStar('$', op1, op2);
+    //             input = input.substring(0,leftStart) + res + input.substring(rightEnd);
+    //         }else {
+    //             if (input.contains("#")) {
+    //                 int idx = input.indexOf("#",0);
+    //                 int leftStart = changeInput(input, idx, -1);
+    //                 int op1 = Integer.parseInt(input.substring(leftStart,idx));
+    //                 int rightEnd = changeInput(input, idx, +1);
+    //                 int op2 = Integer.parseInt(input.substring(idx +1,rightEnd));
+    //                 int res = calcStar('#', op1, op2);
+    //                 input = input.substring(0,leftStart) + res + input.substring(rightEnd);
+    //             }
+    //         }
+    //     }
+    //     System.out.println(input);
+    // }
+    //
+    // //opt -1表示左边的整数 1表示右边的整数 7#6$5#12 leftStart  rightEnd
+    // private static int changeInput(String input,int idx,int opt){
+    //     char ch = input.charAt(idx + opt);
+    //     while (ch >= '0' && ch<= '9'){
+    //         if (opt>0){
+    //             opt++;
+    //         }else {
+    //             opt--;
+    //         }
+    //         if (idx + opt >=0 && idx + opt < input.length()){
+    //             ch = input.charAt(idx + opt);
+    //         }else {
+    //             break;
+    //         }
+    //     }
+    //     if (opt<0){
+    //         return opt + idx +1;
+    //     }else {
+    //         return opt + idx;
+    //     }
+    // }
+    //
+    // private static int calcStar(char ch, int op1,int op2){
+    //     if (ch == '#'){
+    //         return op1 * 2 + op2 * 3 + 4;
+    //     }else {
+    //         return 3 * op1 + op2 + 2;
+    //     }
+    // }
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String input = sc.nextLine();
-        while (input.contains("$") || input.contains("#")){
-            if (input.contains("$")) {//字符串左取右不取 7#6$5#12
-                int idx = input.lastIndexOf("$");
-                int leftStart = changeInput(input, idx, -1);
-                int op1 = Integer.parseInt(input.substring(leftStart,idx));
-                int rightEnd = changeInput(input, idx, +1);
-                int op2 = Integer.parseInt(input.substring(idx +1,rightEnd));
-                int res = calcStar('$', op1, op2);
-                input = input.substring(0,leftStart) + res + input.substring(rightEnd);
-            }else {
-                if (input.contains("#")) {
-                    int idx = input.indexOf("#",0);
-                    int leftStart = changeInput(input, idx, -1);
-                    int op1 = Integer.parseInt(input.substring(leftStart,idx));
-                    int rightEnd = changeInput(input, idx, +1);
-                    int op2 = Integer.parseInt(input.substring(idx +1,rightEnd));
-                    int res = calcStar('#', op1, op2);
-                    input = input.substring(0,leftStart) + res + input.substring(rightEnd);
-                }
-            }
-        }
-        System.out.println(input);
-    }
-
-    //opt -1表示左边的整数 1表示右边的整数 7#6$5#12 leftStart  rightEnd
-    private static int changeInput(String input,int idx,int opt){
-        char ch = input.charAt(idx + opt);
-        while (ch >= '0' && ch<= '9'){
-            if (opt>0){
-                opt++;
-            }else {
-                opt--;
-            }
-            if (idx + opt >=0 && idx + opt < input.length()){
-                ch = input.charAt(idx + opt);
-            }else {
-                break;
-            }
-        }
-        if (opt<0){
-            return opt + idx +1;
-        }else {
-            return opt + idx;
-        }
-    }
-
-    private static int calcStar(char ch, int op1,int op2){
-        if (ch == '#'){
-            return op1 * 2 + op2 * 3 + 4;
-        }else {
-            return 3 * op1 + op2 + 2;
-        }
-    }
+        //火星文计算，#;KaTeX parse error
+        Scanner scanner = new Scanner(System.in);
+        String line = scanner.nextLine();
+        String[] arr_jin = line.split("#");
+        int sum = dealWithArr_jin(arr_jin[0]);
+        for (int i = 1; i < arr_jin.length; i++) {
+            sum = calculate_jin(sum, dealWithArr_jin(arr_jin[i]));}
+        System.out.print(sum); }
+    private static Integer dealWithArr_jin(String arr_jin) {
+        String[] arr_dollar = arr_jin.split("\\$");
+        if (arr_dollar.length < 2) {
+            return Integer.parseInt(arr_jin); }
+        int temp = Integer.parseInt(arr_dollar[0]);
+        for (int j = 1; j < arr_dollar.length; j++) {
+            temp = calculate_dollar(temp, Integer.parseInt(arr_dollar[j]));}
+        return temp; }
+    private static int calculate_dollar(int x, int y) { return 3 * x + y + 2;}
+    private static int calculate_jin(int x, int y) {return 2 * x + 3 * y + 4;}
 
 }

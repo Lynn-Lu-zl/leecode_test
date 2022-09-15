@@ -51,13 +51,49 @@ public class 最长连续子序列的和等于输入值 {
      * @param args
      */
      public static void main(String[] args) {
-         //传入输入值
+
+
+         // //传入输入值
+         // Scanner sc = new Scanner(System.in);
+         // //第一行，N个正整数组成的一个序列
+         // String line = sc.nextLine();
+         // //第二行，正整数计算值，把字符串转成基本类型：用包装类Integer的api将字符串转成int类型
+         // int num = Integer.parseInt(sc.nextLine());
+         // //去除符号，返回剩余的正整数数组
+         // String[] split = line.split(",");
+         // //初始化最长子序列长度，不符合要求的
+         // int count = -1;
+         // //第一层循环，是计算1+2+3=6跳出第二层然后又从2开始,2+3+4>6
+         // for (int i = 0; i < split.length; i++) {
+         //     //初始化连续子串累加值
+         //     int sum = 0;
+         //     // 记录起始位置，如1,2,3,4,2起始为1，跳出第二层循环时1+2+3=6起始
+         //     int j = i;
+         //     //第二层循环,寻找符合条件的子串，专门是计算1+2+3=6，当1+2+3+4>6时跳出子循环，回到第一层循环从下一个索引值开始遍历
+         //     while (j < split.length) {
+         //         //对遍历的当前子串值进行累加
+         //         //sum=sum+第x个正整数
+         //         sum += Integer.parseInt(split[j]);
+         //         if (sum < num) {
+         //             // 子串值累加值小于目标值，则向后走一位，下次继续累加
+         //             j++;
+         //         } else if (sum == num) {
+         //             // 子串值累加值等于目标值，记录长度，只保留最大值
+         //             //j - i + 1--》索引从0开始--》长度比索引多1--》两层循环之间的索引之差+1
+         //             int tempCount = (j - i) + 1;
+         //             //拿当前的子串值累加值和之前赋值的比较大小，保留最大值
+         //             count = Math.max(count,tempCount);
+         //         } else {
+         //             // 子串值累加值超出目标值，退出子循环，从下个数开始
+         //             //这步不能省，万一是1,2,3,0，仍然要再走一次循环
+         //             break; } } }
+         // System.out.println(count);
+
+
+         //最长连续子序列，使他们的和等于sum，返回此子序列的长度
          Scanner sc = new Scanner(System.in);
-         //第一行，N个正整数组成的一个序列
          String line = sc.nextLine();
-         //第二行，正整数计算值，把字符串转成基本类型：用包装类Integer的api将字符串转成int类型
          int num = Integer.parseInt(sc.nextLine());
-         //去除符号，返回剩余的正整数数组
          String[] split = line.split(",");
          //初始化最长子序列长度，不符合要求的
          int count = -1;
@@ -67,29 +103,63 @@ public class 最长连续子序列的和等于输入值 {
              int sum = 0;
              // 记录起始位置，如1,2,3,4,2起始为1，跳出第二层循环时1+2+3=6起始
              int j = i;
-             //第二层循环,寻找符合条件的子串，专门是计算1+2+3=6，当1+2+3+4>6时跳出子循环，回到第一层循环从下一个索引值开始遍历
+             //第二层循环,寻找符合条件的子串，专门是计算1+2+3=6，
+             // 当1+2+3+4>6时跳出子循环，回到第一层循环从下一个索引值开始遍历
              while (j < split.length) {
                  //对遍历的当前子串值进行累加
                  //sum=sum+第x个正整数
                  sum += Integer.parseInt(split[j]);
-
                  if (sum < num) {
                      // 子串值累加值小于目标值，则向后走一位，下次继续累加
                      j++;
                  } else if (sum == num) {
                      // 子串值累加值等于目标值，记录长度，只保留最大值
-                     //j - i + 1--》索引从0开始--》长度比索引多1--》两层循环之间的索引之差+1
+          //j -i+1--》索引从0开始--》长度比索引多1-》两层循环之间的索引之差+1
                      int tempCount = (j - i) + 1;
                      //拿当前的子串值累加值和之前赋值的比较大小，保留最大值
                      count = Math.max(count,tempCount);
                  } else {
                      // 子串值累加值超出目标值，退出子循环，从下个数开始
                      //这步不能省，万一是1,2,3,0，仍然要再走一次循环
-                     break;
-                 }
-             }
-         }
-         //
+                     break; } } }
          System.out.println(count);
+
      }
+
+
+    // public static void main(String[] args) {
+    //
+    //     //最长连续子序列，使他们的和等于sum，返回此子序列的长度
+    //     Scanner sc = new Scanner(System.in);
+    //     String[] split = sc.nextLine().split(",");
+    //     int[] arr = new int[split.length];
+    //     int sum = Integer.parseInt(sc.nextLine());
+    //     int total = 0;
+    //     for (int i = 0; i < arr.length; i++) {
+    //         arr[i] = Integer.parseInt(split[i]);
+    //         total += arr[i]; }
+    //     if (total< sum){
+    //         System.out.println(-1);
+    //     }else if (total == sum){
+    //         System.out.println(split.length);
+    //     }else {
+    //         //双指针
+    //         int left = 0;
+    //         int right = 0;
+    //         int temp = 0;
+    //         while (left < arr.length && right< arr.length){
+    //             if (temp < sum){
+    //                 temp += arr[right];
+    //                 right++;
+    //             }else if (temp != sum){
+    //                 temp -= arr[left];
+    //                 left++; }
+    //             if (temp == sum){
+    //                 System.out.println(right - left);
+    //                 left++;
+    //                 right = left;
+    //                 temp = 0; } } }
+    //
+    //
+    // }
 }

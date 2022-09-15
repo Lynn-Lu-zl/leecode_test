@@ -85,6 +85,8 @@ public class 最多团队 {
 
 
          // 解题思路：遍历输入的数组，记录大于N的值的数量，将小于N的放进集合里，对集合进行排序，采用双指针，筛选大于N的组合
+
+         //最多团队，一个比赛活动要求 参赛团队的最低能力值为N
          Scanner sc = new Scanner(System.in);
          int len = Integer.parseInt(sc.nextLine());
          String[] split = sc.nextLine().split(" ");
@@ -97,10 +99,7 @@ public class 最多团队 {
              if (num >= requireValue) {
                  count++;
              } else {
-                 list.add(num);
-             }
-         }
-         // 对集合进行排序
+                 list.add(num); } }
          Collections.sort(list);
          // 双指针
          // 头指针：集合头
@@ -108,16 +107,15 @@ public class 最多团队 {
          // 尾指针：数组尾
          int end = list.size() - 1;
          while (start < end) {
-             // 当头尾指针之和满足要求，count++，头指针向前移动一步，尾指针向后移动一步
+         // 当头尾指针之和满足要求，count++，头指针向前移动一步，尾指针向后移动一步
              if (list.get(start) + list.get(end) >= requireValue) {
                  count++;
                  start++;
                  end--;
              } else { // 当头尾指针之和不满足要求，头指针向前移动一步，尾指针不变
-                 start++;
-             }
-         }
+                 start++; } }
          System.out.println(count);
+
 
      }
 }

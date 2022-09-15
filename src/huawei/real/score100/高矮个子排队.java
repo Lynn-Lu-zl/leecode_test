@@ -44,34 +44,88 @@ import java.util.Scanner;
 public class 高矮个子排队 {
      public static void main(String[] args) {
          Scanner sc = new Scanner(System.in);
-         String input = sc.nextLine();
-         String[] boys = input.split(" ");
-         int[] arr = new int[boys.length];
-         for (int i = 0; i < boys.length; i++) {
-             arr[i] = Integer.parseInt(boys[i]);
-         }
-         int idx = 0;
-         while (idx +1 < arr.length){
-             //原则奇数位大 偶数位小
-             if ((idx+1) % 2 == 0){//1算奇数位 idx要小
-                 if (arr[idx] > arr[idx+1]){
-                     int tem = arr[idx+1];
-                     arr[idx +1] = arr[idx];
-                     arr[idx] = tem;
+         int[] arr = new int[0];
+         try {
+             String input = sc.nextLine();
+             String[] boys = input.split(" ");
+             arr = new int[boys.length];
+             for (int i = 0; i < boys.length; i++) {
+                 arr[i] = Integer.parseInt(boys[i]);
+             }
+
+         // int idx = 0;
+         // while (idx +1 < arr.length){
+         //     //原则奇数位大 偶数位小
+         //     if ((idx+1) % 2 == 0){//1算奇数位 idx要小
+         //         if (arr[idx] > arr[idx+1]){
+         //             int tem = arr[idx+1];
+         //             arr[idx +1] = arr[idx];
+         //             arr[idx] = tem;
+         //         }
+         //     }else {//0算奇数位 idx要大
+         //         if (arr[idx] < arr[idx+1]){
+         //             int tem = arr[idx+1];
+         //             arr[idx +1] = arr[idx];
+         //             arr[idx] = tem;
+         //         }
+         //     }
+         //     idx++;
+         // }
+             for (int i = 0; i <arr.length-1 ; i++) {
+                 if(i%2==0 && arr[i]<arr[i+1]){ //如果位置是高位置，但下一个位置大于当前位置，替换
+                     int tmp=arr[i];
+                     arr[i]=arr[i+1];
+                     arr[i+1]=tmp;
                  }
-             }else {//0算奇数位 idx要大
-                 if (arr[idx] < arr[idx+1]){
-                     int tem = arr[idx+1];
-                     arr[idx +1] = arr[idx];
-                     arr[idx] = tem;
+                 if(i%2==1 && arr[i]>arr[i+1]){//如果位置是矮位置，但下一个位置小于当前位置，替换
+                     int tmp = arr[i];
+                     arr[i]= arr[i+1];
+                     arr[i+1] = tmp;
                  }
              }
-             idx++;
-         }
-         for (int i = 0; i < arr.length; i++) {
-             System.out.print(arr[i]+" ");
+
+             for (int anArr : arr) {
+                 System.out.print(anArr + " ");
+             }
+
+         //出现非法参数情况， 返回空数组
+         } catch (Exception e) {
+             System.out.println("[]");
          }
      }
 
+    // public static void main(String[] args) {
+    //     Scanner in = new Scanner(System.in);
+    //     List<Integer> high = null;
+    //     try {
+    //         high = Arrays.stream(in.nextLine().split(" "))
+    //             .map(Integer::parseInt).collect(Collectors.toList());
+    //     } catch (Exception e) {
+    //         System.out.println("[]");
+    //         return;
+    //     } finally {
+    //         in.close();
+    //     }
+    //
+    //     for (int i = 0; i < high.size() - 1; i++) {
+    //         if (i % 2 == 0 && high.get(i) < high.get(i + 1)) {
+    //             swap(high, i, i + 1);
+    //         }
+    //         if (i % 2 == 1 && high.get(i) > high.get(i + 1)) {
+    //             swap(high, i, i + 1);
+    //         }
+    //     }
+    //     StringBuilder builder = new StringBuilder();
+    //     high.forEach(x -> builder.append(x).append(" "));
+    //     String res = builder.substring(0, builder.length() - 1);
+    //     System.out.println(res);
+    //
+    // }
+    //
+    // static void swap(List<Integer> list, int x, int y) {
+    //     Integer tmp = list.get(x);
+    //     list.set(x, list.get(y));
+    //     list.set(y, tmp);
+    // }
 
 }

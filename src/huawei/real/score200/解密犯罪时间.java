@@ -2,9 +2,10 @@ package huawei.real.score200;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.Scanner;
 
 /**
- *
+ *https://f.daixianiu.cn/csdn/06659718672286397.html
  * 警察在侦破一个案件时，得到了线人给出的可能犯罪时间，形如“HH:MM”表示的时刻。
  * 根据警察和线人的约定，为了隐蔽，该时间时修改过的，解密规则为：利用当前出现过的数字，构造下一个距离当前时间最近的时刻，则该时间为可能的犯罪时间。
  * 每个出现数字都可以被无限次使用
@@ -17,87 +18,57 @@ import java.util.Comparator;
  * 23:52得到23:53
  * 09:17得到09:19
  * 07:08得到08:00
+ *
+ *
+ * 解题思路：
+ *
+ * 根据题意可以判断时间都是由四个数字组成，把时间各数取出按序放入数组中
+ * 对四个数进行全遍历，获取所有可能的时间（必须符合时间格式要求），并跟错误时间进行比较。分别取出大于错误时间的最小值和小于错误时间的最小值。
+ * 如果存在大于错误时间的最小值，则最小值为犯罪时间；若不存在，小于错误时间的最小值为犯罪时间
  */
 public class 解密犯罪时间 {
 
-    public static String fun(String time) {
-        char[] chars = time.toCharArray();
-        //单个数字list
-        ArrayList<Integer> nums = new ArrayList<>();
-        for (char c : chars) {
-            if (c != ':') {
-                nums.add(c - '0');
-            }
-        }
-        String[] split = time.split(":");
-        //小时
-        Integer H = Integer.parseInt(split[0]);
-        //分钟
-        Integer M = Integer.parseInt(split[1]);
-        ArrayList<Integer> list = new ArrayList<>();
-        for (int i : nums) {
-            for (int j : nums) {
-                if (i <= 5) {
-                    list.add(i * 10 + j);
-                }
-            }
-        }
-        //备选项排序，既可当H，也可以当M
-        list.sort(Comparator.comparing(o -> o));
-        //仅仅改变分钟就能得到最近的值
-        for (int i : list) {
-            if (i <= M) {
+    public static void main(String[] args) {
+        //解密犯罪时间
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        int errorTime = Integer.parseInt(s.substring(0,2)+s.substring(3));
+        String[] num = new String[4];
+        num[0] = String.valueOf(s.charAt(0));
+        num[1] = String.valueOf(s.charAt(1));
+        num[2] = String.valueOf(s.charAt(3));
+        num[3] = String.valueOf(s.charAt(4));
+        int time;
+        int min = Integer.MAX_VALUE;    //小于错误时间的最小时间（第二天）
+        int minThan = Integer.MAX_VALUE;    //大于错误时间的最小时间
+        for(int i=0;i<4;i++){
+            if(Integer.parseInt(num[i])>2){ //首位不能大于2
                 continue;
             }
-            //12:13 -> 12:31
-            return format(H + ":" + i);
-        }
-        //小时数在23以下，可以使用最近的小时数
-        if (H != 23) {
-            for (int i : list) {
-                if (i <= H) {
+            for(int j=0;j<4;j++){
+                if(Integer.parseInt(num[i])==2 && Integer.parseInt(num[j])>3){  //第一位为2时第二位则不能大于3
                     continue;
                 }
-                //确保i的合法性
-                if (i<=23){
-                    //12:59 ->15:11
-                    return format(i + ":" + list.get(0));
-                }
-            }
+                for(int k=0;k<4;k++){
+                    if(Integer.parseInt(num[k])>=6){ //第三位不能大于6
+                        continue;
+                    }
+                    for(int l=0;l<4;l++){
+                        time = Integer.parseInt(num[i]+num[j]+num[k]+num[l]);   //重构的时间
+                        if(time<errorTime){
+                            min = Math.min(min,time);
+                        }else if(time>errorTime){
+                            minThan = Math.min(minThan,time); } } } } }
+        String res;
+        if(minThan == Integer.MAX_VALUE){ //若重构的时间都小于错误时间，则时间为第二天时间
+            res = String.valueOf(min);
+        }else {
+            res = String.valueOf(minThan);
         }
-        //无法改别最近的小时与分钟。如23:59,00:00,15:15
-        return format(list.get(0) + ":" + list.get(0));
+        System.out.println(res.substring(0,2)+":"+res.substring(2));
+
     }
 
-    public static String format(String time) {
-        String[] split = time.split(":");
-        String H = split[0];
-        String M = split[1];
-        H = H.length() == 2 ? H : "0" + H;
-        M = M.length() == 2 ? M : "0" + M;
-        return H + ":" + M;
-    }
-
-    public static void main(String[] args) {
-        System.out.println("20:12" + "得到" + fun("20:12"));
-        System.out.println("23:59" + "得到" + fun("23:59"));
-        System.out.println("12:58" + "得到" + fun("12:58"));
-        System.out.println("18:52" + "得到" + fun("18:52"));
-        System.out.println("23:52" + "得到" + fun("23:52"));
-        System.out.println("09:17" + "得到" + fun("09:17"));
-        System.out.println("07:08" + "得到" + fun("07:08"));
-        System.out.println("22:59" + "得到" + fun("22:59"));
-        System.out.println("22:39" + "得到" + fun("22:39"));
-//        20:12得到20:20
-//        23:59得到22:22
-//        12:58得到15:11
-//        18:52得到18:55
-//        23:52得到23:53
-//        09:17得到09:19
-//        07:08得到08:00
-//        22:59得到22:22
-//        22:39得到23:22
-    }
 
 
 }

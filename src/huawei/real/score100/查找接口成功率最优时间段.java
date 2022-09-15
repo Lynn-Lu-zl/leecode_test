@@ -90,6 +90,7 @@ public class 查找接口成功率最优时间段 {
             total += arr[i];
         }
         double res = total/(end - start +1);
+
         return res <= target;
 
      }

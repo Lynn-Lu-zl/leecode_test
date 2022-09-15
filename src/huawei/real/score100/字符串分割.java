@@ -2,6 +2,7 @@ package huawei.real.score100;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 import java.util.Scanner;
 
 /**
@@ -31,52 +32,94 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124558394
  */
 public class 字符串分割 {
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     int count = Integer.parseInt(sc.nextLine());
+    //     String[] split = sc.nextLine().split("-");
+    //     List<String> listStr = new ArrayList<>();
+    //     StringBuilder temp = new StringBuilder();
+    //     for (int i = 1; i < split.length; i++) {
+    //         temp.append(split[i]);
+    //     }
+    //     String tem = temp.toString();
+    //     while (tem.length()>0){
+    //         if (tem.length() >= count){//截取
+    //             listStr.add(tem.substring(0,count));
+    //             tem = tem.substring(count);
+    //         }else {
+    //             listStr.add(tem);
+    //             tem = "";
+    //         }
+    //     }
+    //     StringBuilder sb= new StringBuilder();
+    //     sb.append(split[0]).append("-");
+    //     for (int i = 0; i < listStr.size(); i++) {
+    //         String s1 = listStr.get(i);
+    //         sb.append(reBalance(s1)).append("-");
+    //     }
+    //     sb.deleteCharAt(sb.length() -1 );
+    //     System.out.println(sb);
+    // }
+    // private static String reBalance(String str){
+    //     int xiao = 0;
+    //     int da = 0;
+    //     for (int i = 0; i < str.length(); i++) {
+    //         char ch = str.charAt(i);
+    //         if (ch>= 'a' && ch<= 'z'){
+    //             xiao++;
+    //         }else if (ch >= 'A' && ch <= 'Z'){
+    //             da++;
+    //         }
+    //     }
+    //     if (xiao > da ){
+    //         return str.toLowerCase();
+    //     }else if (da > xiao){
+    //         return str.toUpperCase();
+    //     }else {
+    //         return str;
+    //     }
+    // }
+
+
     public static void main(String[] args) {
+        //字符串分割 给定一个非空字符串S
         Scanner sc = new Scanner(System.in);
-        int count = Integer.parseInt(sc.nextLine());
-        String[] split = sc.nextLine().split("-");
-        List<String> listStr = new ArrayList<>();
-        StringBuilder temp = new StringBuilder();
-        for (int i = 1; i < split.length; i++) {
-            temp.append(split[i]);
-        }
-        String tem = temp.toString();
-        while (tem.length()>0){
-            if (tem.length() >= count){//截取
-                listStr.add(tem.substring(0,count));
-                tem = tem.substring(count);
-            }else {
-                listStr.add(tem);
-                tem = "";
-            }
-        }
-        StringBuilder sb= new StringBuilder();
-        sb.append(split[0]).append("-");
-        for (int i = 0; i < listStr.size(); i++) {
-            String s1 = listStr.get(i);
-            sb.append(reBalance(s1)).append("-");
-        }
-        sb.deleteCharAt(sb.length() -1 );
-        System.out.println(sb);
+        while (sc.hasNextLine()) {
+            int k = Integer.parseInt(sc.nextLine());
+            String line = sc.nextLine();
+            int index = line.indexOf("-");
+            // 第一个子串
+            String first = line.substring(0, index);
+            String replace = line.substring(index + 1)
+                .replaceAll("-", "");
+            // 存储新生成的字符串
+            List<String> list = new ArrayList<>();
+            list.add(first);
+            while (replace.length() >= k) {
+                String sub = replace.substring(0, k);
+                sub = convert(sub);
+                list.add(sub);
+                replace = replace.substring(k); }
+            if (replace.length() > 0) {
+                list.add(convert(replace)); }
+            System.out.println(String.join("-",list));}
     }
-    private static String reBalance(String str){
-        int xiao = 0;
-        int da = 0;
-        for (int i = 0; i < str.length(); i++) {
-            char ch = str.charAt(i);
-            if (ch>= 'a' && ch<= 'z'){
-                xiao++;
-            }else if (ch >= 'A' && ch <= 'Z'){
-                da++;
-            }
-        }
-        if (xiao > da ){
-            return str.toLowerCase();
-        }else if (da > xiao){
-            return str.toUpperCase();
-        }else {
-            return str;
-        }
-    }
+    private static String convert(String sub) {
+        // 统计小写字母个数
+        int lowCount = 0;
+        // 统计大写字母个数
+        int upperCount = 0;
+        for (int i = 0; i < sub.length(); i++) {
+            char c = sub.charAt(i);
+            if (Character.isLowerCase(c)) {
+                lowCount++;
+            } else if (Character.isUpperCase(c)) {
+                upperCount++; } }
+        if (lowCount > upperCount) {
+            sub = sub.toLowerCase(Locale.ROOT);
+        } else if (lowCount < upperCount) {
+            sub = sub.toUpperCase(Locale.ROOT); }
+        return sub; }
+
 
 }

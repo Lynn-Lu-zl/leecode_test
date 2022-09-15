@@ -37,21 +37,20 @@ import java.util.Scanner;
  */
 public class 拼接URL {
 
-     public static void main(String[] args) {
-         Scanner in = new Scanner(System.in);
-         String[] strings = in.nextLine().split(",");
-         StringBuilder sb = new StringBuilder();
-         if (strings.length == 0) {
-             System.out.println("/");
-             return;
-         }
-         sb.append("/");
-         sb.append(strings[0]);
-         sb.append("/");
-         sb.append(strings[1]);
-         System.out.println((sb.toString()).replaceAll("/+", "/"));
-
-
+     // public static void main(String[] args) {
+     //     Scanner in = new Scanner(System.in);
+     //     String[] strings = in.nextLine().split(",");
+     //     StringBuilder sb = new StringBuilder();
+     //     if (strings.length == 0) {
+     //         System.out.println("/");
+     //         return;
+     //     }
+     //     sb.append("/");
+     //     sb.append(strings[0]);
+     //     sb.append("/");
+     //     sb.append(strings[1]);
+     //     System.out.println((sb.toString()).replaceAll("/+", "/"));
+     // }
 
          // Scanner in = new Scanner(System.in);
          // String[] URL = in.nextLine().split(",");
@@ -91,5 +90,46 @@ public class 拼接URL {
          // }
          // System.out.println(sb.toString());
 
-     }
+
+    /**
+     * 法二
+     * @param args
+     */
+    // public static void main(String[] args) {
+    //     Scanner scanner = new Scanner(System.in);
+    //     String line = scanner.nextLine();
+    //     String[] strings = line.replace("/", "").split(",");
+    //     if (strings.length == 0) {
+    //         System.out.println("/");
+    //         return;
+    //     }
+    //     StringBuilder stringBuilder = new StringBuilder();
+    //     for (int i = 0; i < strings.length; i++) {
+    //         stringBuilder.append("/").append(strings[i]);
+    //     }
+    //     System.out.println(stringBuilder.toString());
+    // }
+
+    /**
+     * 法3
+     */
+     public static void main(String[] args) {
+         Scanner in = new Scanner(System.in);
+         String line = in.nextLine();
+         in.close();
+
+         String[] split = line.split(",");
+         if (split.length == 0) {
+             System.out.println("/");
+             return;
+         }
+
+         String combine = split[0] + "/" + split[1];
+         String url = combine.replaceAll("/+", "/");
+         System.out.println(url);
+         }
+
+
+
+
 }

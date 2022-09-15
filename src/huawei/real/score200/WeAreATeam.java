@@ -69,6 +69,8 @@ import java.util.*;
  */
 public class WeAreATeam {
     public static void main(String[] args) {
+
+        //We are a team
         Scanner sc = new Scanner(System.in);
         String[] nms = sc.nextLine().split(" ");
         int num = Integer.parseInt(nms[0]);
@@ -76,62 +78,44 @@ public class WeAreATeam {
         List<Set<Integer>> lists = new ArrayList<>();
         List<String> waitForVerify = new ArrayList<>();
         for (int i = 0; i < mes; i++) {
-
             String real = sc.nextLine();
             String[] rels = real.split(" ");
             int i1 = Integer.parseInt(rels[0]);
             int i2 = Integer.parseInt(rels[1]);
             int i3 = Integer.parseInt(rels[2]);
             if (i3 != 0){
-
                 waitForVerify.add(real);
             }else {
-
                 boolean flag = false;
                 for (int j = 0; j < lists.size(); j++) {
-
                     Set<Integer> set = lists.get(j);
                     if (set.contains(i1) || set.contains(i2)){
-
                         set.add(i1);
                         set.add(i2);
                         flag = true;
-                        break;
-                    }
-                }
+                        break; } }
                 if (!flag){
-
                     Set<Integer> set = new HashSet<>();
                     set.add(i1);
                     set.add(i2);
-                    lists.add(set);
-                }
-            }
-        }
-        //判断非0的关系
+                    lists.add(set); } } }//判断非0的关系
         for (int i = 0; i < waitForVerify.size(); i++) {
-
             String[] reli = waitForVerify.get(i).split(" ");
             int i1 = Integer.parseInt(reli[0]);
             int i2 = Integer.parseInt(reli[1]);
             int i3 = Integer.parseInt(reli[2]);
             if (i3 != 1){
-
                 System.out.println("da pian zi");
-                continue;
-            }
+                continue; }
             for (int j = 0; j < lists.size(); j++) {
-
                 Set<Integer> set = lists.get(j);
                 if (set.contains(i1) && set.contains(i2)){
-
                     System.out.println("we are a team");
                 }else {
+                    System.out.println("we are not a team"); } } }
 
-                    System.out.println("we are not a team");
-                }
-            }
-        }
+
+
     }
 
 }

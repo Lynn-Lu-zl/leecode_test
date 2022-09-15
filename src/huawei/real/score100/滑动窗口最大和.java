@@ -108,52 +108,78 @@ public class 滑动窗口最大和 {
      * @param args
      */
      public static void main(String[] args) {
-         Scanner scanner = new Scanner(System.in);
+         // Scanner scanner = new Scanner(System.in);
+         // //一共输入正整数数量
+         // String line = scanner.nextLine();
+         // int num = Integer.parseInt(line);
+         // //数据，字符串数组，可为负数
+         // String nextLine = scanner.nextLine();
+         // String[] split = nextLine.split(" ");
+         // //System.out.println(Arrays.toString(split));
+         // //变成整形数组
+         // int[] ints = new int[num];
+         // for (int i = 0; i < num; i++) {
+         //     ints[i] = Integer.parseInt(split[i]);
+         // }
+         // //System.out.println(Arrays.toString(ints));
+         //
+         // //窗口长度
+         // String s = scanner.nextLine();
+         // int win = Integer.parseInt(s);
+         // //如果长度为0--》不滑了--》最大值为0--》直接返回0
+         // if (win == 0){
+         //     System.out.println(0);
+         // }
+         //
+         // //初始化窗口和最大值
+         // int maxSum=0;
+         //
+         // for (int i = 0; i < win; i++) {
+         //     //先算原始没滑动前的值
+         //     maxSum += ints[i];
+         // }
+         //
+         // for (int i = win; i < num; i++) {
+         //     //15-10>0-->说明最大值要改变了
+         //     int diff = ints[i] - ints[i-win];
+         //     //两次滑动之前的差别在于第一个数和最后一个数，中间的值是不变的--》如果滑动后一次的数-滑动前一次的值大于0--》说明整体最大值是增加的--》最大值=上一次的最大值+两次滑动的差值
+         //     if (diff > 0){
+         //         //maxsum = maxsum + diff
+         //         //60+5
+         //         //65+3
+         //         maxSum += diff;
+         //     }
+         // }
+         // System.out.println(maxSum);
 
-         //一共输入正整数数量
+
+         //滑动窗口最大和，每次窗口滑动产生一个窗口和
+         Scanner scanner = new Scanner(System.in);
          String line = scanner.nextLine();
          int num = Integer.parseInt(line);
-
-
-         //数据，字符串数组，可为负数
          String nextLine = scanner.nextLine();
          String[] split = nextLine.split(" ");
          //System.out.println(Arrays.toString(split));
-         //变成整形数组
          int[] ints = new int[num];
          for (int i = 0; i < num; i++) {
-             ints[i] = Integer.parseInt(split[i]);
-         }
+             ints[i] = Integer.parseInt(split[i]); }
          //System.out.println(Arrays.toString(ints));
-
-         //窗口长度
          String s = scanner.nextLine();
          int win = Integer.parseInt(s);
          //如果长度为0--》不滑了--》最大值为0--》直接返回0
          if (win == 0){
-             System.out.println(0);
-         }
-
-         //初始化窗口和最大值
+             System.out.println(0); }
          int maxSum=0;
-
          for (int i = 0; i < win; i++) {
-             //先算原始没滑动前的值
-             maxSum += ints[i];
-         }
-
+             maxSum += ints[i]; }
          for (int i = win; i < num; i++) {
-             //15-10>0-->说明最大值要改变了
              int diff = ints[i] - ints[i-win];
-             //两次滑动之前的差别在于第一个数和最后一个数，中间的值是不变的--》如果滑动后一次的数-滑动前一次的值大于0--》说明整体最大值是增加的--》最大值=上一次的最大值+两次滑动的差值
+             //两次滑动之前的差别在于第一个数和最后一个数
              if (diff > 0){
-                 //maxsum = maxsum + diff
-                 //60+5
-                 //65+3
-                 maxSum += diff;
-             }
-         }
+                 maxSum += diff; } }
          System.out.println(maxSum);
+
+
      }
 
 

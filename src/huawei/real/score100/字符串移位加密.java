@@ -64,45 +64,79 @@ public class 字符串移位加密 {
     //     return sb.toString();
     // }
 
+    // public static void main(String[] args) {
+    //     Scanner scanner = new Scanner(System.in);
+    //     int n = Integer.parseInt(scanner.nextLine());
+    //     String[] strs = new String[n];
+    //     int maxLength = 3;
+    //     for (int i = 0; i < n; i++) {
+    //         strs[i] = scanner.nextLine();
+    //         if (strs[i].length() > maxLength) {
+    //             maxLength = strs[i].length();
+    //         }
+    //     }
+    //
+    //     int[] moves = getMoves(maxLength);
+    //     for (int i = 0; i < strs.length; i++) {
+    //         System.out.println(encript(strs[i], moves));
+    //     }
+    // }
+    //
+    // public static String encript(String str, int[] moves) {
+    //     char[] chars = str.toCharArray();
+    //     for (int i = 0; i < chars.length; i++) {
+    //         int enChar = chars[i] + moves[i];
+    //         if (enChar > 'z') {
+    //             enChar = enChar - 'z' + 'a' - 1;
+    //         }
+    //         chars[i] = (char) enChar;
+    //     }
+    //     return new String(chars);
+    // }
+    //
+    // public static int[] getMoves(int maxLength) {
+    //     int[] moves = new int[maxLength];
+    //     moves[0] = 1;
+    //     moves[1] = 2;
+    //     moves[2] = 4;
+    //     for (int i = 3; i < maxLength; i++) {
+    //         moves[i] = (moves[i - 1] + moves[i - 2] + moves[i - 3]) % 26;
+    //     }
+    //     return moves;
+    // }
+
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        int n = Integer.parseInt(scanner.nextLine());
-        String[] strs = new String[n];
-        int maxLength = 3;
-        for (int i = 0; i < n; i++) {
-            strs[i] = scanner.nextLine();
-            if (strs[i].length() > maxLength) {
-                maxLength = strs[i].length();
-            }
-        }
 
-        int[] moves = getMoves(maxLength);
-        for (int i = 0; i < strs.length; i++) {
-            System.out.println(encript(strs[i], moves));
-        }
-    }
+        //字符串移位加密,给你一串未加密的字符串str
+        Scanner sc = new Scanner(System.in);
+        while (sc.hasNextLine()) {
+            int n = Integer.parseInt(sc.nextLine());
+            String[] arr = new String[n];
+            // 偏移数组大小
+            int max = 4;
+            for (int i = 0; i < n; i++) {
+                arr[i] = sc.nextLine();
+                max = Math.max(max, arr[i].length());}
+            // 偏移数组
+            int[] offsetArr = new int[max];
+            offsetArr[0] = 1;
+            offsetArr[1] = 2;
+            offsetArr[2] = 4;
+            for (int i = 3; i < max; i++) {
+                offsetArr[i] = offsetArr[i-1]
+                    +offsetArr[i-2]+offsetArr[i-3];}
+            for (int i = 0; i < n; i++) {
+                String str = arr[i];
+                StringBuilder sb = new StringBuilder();
+                for (int j = 0; j < str.length(); j++){
+                    char c = str.charAt(j);
+                    int offset = offsetArr[j];
+                    // 小写字母有26个，取余，避免溢出
+                int res = (c - 'a' + offset) % 26 + 'a';
+                    sb.append((char) res); }
+                System.out.println(sb); } }
 
-    public static String encript(String str, int[] moves) {
-        char[] chars = str.toCharArray();
-        for (int i = 0; i < chars.length; i++) {
-            int enChar = chars[i] + moves[i];
-            if (enChar > 'z') {
-                enChar = enChar - 'z' + 'a' - 1;
-            }
-            chars[i] = (char) enChar;
-        }
-        return new String(chars);
-    }
 
-    public static int[] getMoves(int maxLength) {
-        int[] moves = new int[maxLength];
-        moves[0] = 1;
-        moves[1] = 2;
-        moves[2] = 4;
-        for (int i = 3; i < maxLength; i++) {
-            moves[i] = (moves[i - 1] + moves[i - 2] + moves[i - 3]) % 26;
-        }
-        return moves;
     }
 
 

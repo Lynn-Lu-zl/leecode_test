@@ -1,6 +1,7 @@
 package huawei.real.score100;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 
@@ -26,17 +27,17 @@ import java.util.Scanner;
  */
 public class 最长元音子串的长度 {
     public static void main(String[] args) {
+
+        //最长元音子串的长度（aeiouAEIOU）
         char[] arr = {'a','e','i','o','u'};
         List<Character> list = new ArrayList<>();
         for (int i = 0; i < arr.length; i++) {
-            list.add(arr[i]);
-        }
+            list.add(arr[i]); }
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         int idx = 0;
         int max = 0;
         int tem = 0;
-
         while (idx < input.length()){
             char ch = input.charAt(idx);
             if (list.contains(ch)) {
@@ -44,12 +45,33 @@ public class 最长元音子串的长度 {
             }else {
                 if (tem != 0) {
                     max = Math.max(max,tem);
-                    tem = 0;
-                }
-            }
-            idx++;
-        }
+                    tem = 0; } }
+            idx++; }
         System.out.println(max);
+
+
     }
+
+
+    // public static void main(String[] args) {
+    //     Scanner in = new Scanner(System.in);
+    //     String str = in.nextLine().toLowerCase();
+    //     in.close();
+    //
+    //     List<Character> vowel = Arrays.asList('a', 'e', 'i', 'o', 'u');
+    //
+    //     int maxLen = 0, tmpLen = 0;
+    //     for (char c : str.toCharArray()) {
+    //         if (vowel.contains(c)) {
+    //             tmpLen++;
+    //         } else {
+    //             maxLen = Math.max(maxLen, tmpLen);
+    //             tmpLen = 0;
+    //         }
+    //     }
+    //     maxLen = Math.max(maxLen, tmpLen);
+    //
+    //     System.out.println(maxLen);
+    // }
 
 }

@@ -39,48 +39,77 @@ import java.util.*;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124528902
  */
 public class 数组拼接 {
-    public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int limit = Integer.parseInt(sc.nextLine());
-        int num = Integer.parseInt(sc.nextLine());
-        Map<Integer, List<Integer>> map = new HashMap<>();
-        //存
-        for (int i = 0; i < num; i++) {
-            String[] split = sc.nextLine().split(",");
-            List<Integer> list = new ArrayList<>();
-            for (int j = 0; j < split.length; j++) {
-                list.add(Integer.parseInt(split[j]));
-            }
-            map.put(i,list);
-        }
-        //取
-        List<Integer> list = new ArrayList<>();
-        while (!map.isEmpty()){
-            Iterator<Map.Entry<Integer, List<Integer>>> iterator = map.entrySet().iterator();
-            List<Integer> removeKey = new ArrayList<>();
-            while (iterator.hasNext()){
-                Map.Entry<Integer, List<Integer>> next = iterator.next();
-                List<Integer> value = next.getValue();
-                int start = 0;
-                for (int i = 0; i < value.size(); i++) {
-                    if (i<limit){
-                        list.add(value.get(i));
-                        start++;
-                    }
-                }
-                value = value.subList(start,value.size());
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     int limit = Integer.parseInt(sc.nextLine());
+    //     int num = Integer.parseInt(sc.nextLine());
+    //     Map<Integer, List<Integer>> map = new HashMap<>();
+    //     //存
+    //     for (int i = 0; i < num; i++) {
+    //         String[] split = sc.nextLine().split(",");
+    //         List<Integer> list = new ArrayList<>();
+    //         for (int j = 0; j < split.length; j++) {
+    //             list.add(Integer.parseInt(split[j]));
+    //         }
+    //         map.put(i,list);
+    //     }
+    //     //取
+    //     List<Integer> list = new ArrayList<>();
+    //     while (!map.isEmpty()){
+    //         Iterator<Map.Entry<Integer, List<Integer>>> iterator = map.entrySet().iterator();
+    //         List<Integer> removeKey = new ArrayList<>();
+    //         while (iterator.hasNext()){
+    //             Map.Entry<Integer, List<Integer>> next = iterator.next();
+    //             List<Integer> value = next.getValue();
+    //             int start = 0;
+    //             for (int i = 0; i < value.size(); i++) {
+    //                 if (i<limit){
+    //                     list.add(value.get(i));
+    //                     start++;
+    //                 }
+    //             }
+    //             value = value.subList(start,value.size());
+    //
+    //             if (value.size() == 0){
+    //                 removeKey.add(next.getKey());
+    //             }else {
+    //                 next.setValue(value);
+    //             }
+    //         }
+    //         for (int i = 0; i < removeKey.size(); i++) {
+    //             map.remove(removeKey.get(i));
+    //         }
+    //     }
+    //     System.out.println(list);
+    // }
 
-                if (value.size() == 0){
-                    removeKey.add(next.getKey());
-                }else {
-                    next.setValue(value);
-                }
-            }
-            for (int i = 0; i < removeKey.size(); i++) {
-                map.remove(removeKey.get(i));
-            }
-        }
-        System.out.println(list);
-    }
+
+     public static void main(String[] args) {
+
+         //数组拼接，现在有多组整数数组，需要将它们合并成一个新的数组
+         Scanner scanner = new Scanner(System.in);
+         int len = Integer.parseInt(scanner.nextLine());
+         int num = Integer.parseInt(scanner.nextLine());
+         ArrayList<ArrayList<String>> list = new ArrayList<>();
+         ArrayList<String> res = new ArrayList<>();
+         int sum = 0;
+         for (int i = 0; i < num; i++) {
+             String[] arr = scanner.nextLine().split(",");
+             sum += arr.length;
+             list.add(new ArrayList<>(Arrays.asList(arr))); }
+         while (res.size() != sum) {
+             for (ArrayList<String> strList : list) {
+                 if (strList.size() == 0) continue;
+                 int times = Math.min(strList.size(), len);
+                 for (int i = 0; i < times; i++) {
+                     res.add(strList.remove(0)); } } }
+         StringBuilder builder = new StringBuilder();
+         for (String str : res) {
+             builder.append(str).append(","); }
+         String resStr = builder.toString();
+         System.out.println(resStr.substring(0, resStr.length()-1));
+
+
+         }
 
 }

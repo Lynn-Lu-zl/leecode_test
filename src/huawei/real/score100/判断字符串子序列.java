@@ -27,27 +27,91 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124516351
  */
 public class 判断字符串子序列 {
-     public static void main(String[] args) {
-         Scanner sc = new Scanner(System.in);
-         String target = sc.nextLine();//[0,100]
-         String source = sc.nextLine();//[0,50w]
-         int idx = source.length();
-         for (int i = target.length()-1; i >= 0; i--) {
-             char ta = target.charAt(i);
-             if (source.contains(String.valueOf(ta))) {
-                 int idxLast = source.lastIndexOf(String.valueOf(ta));
-                 if (idxLast < idx){
-                     idx = idxLast;
-                 }else {
-                     System.out.println(-1);
-                     return;
-                 }
-             }else {
-                 System.out.println(-1);
-                 return;
-             }
-         }
-         System.out.println(idx);
-     }
+     // public static void main(String[] args) {
+     //     Scanner sc = new Scanner(System.in);
+     //     String target = sc.nextLine();//[0,100]
+     //     String source = sc.nextLine();//[0,50w]
+     //
+     //     int idx = source.length();
+     //     for (int i = target.length()-1; i >= 0; i--) {
+     //         char ta = target.charAt(i);
+     //         if (source.contains(String.valueOf(ta))) {
+     //             int idxLast = source.lastIndexOf(String.valueOf(ta));
+     //             if (idxLast < idx){
+     //                 idx = idxLast;
+     //             }else {
+     //                 System.out.println(-1);
+     //                 return;
+     //             }
+     //         }else {
+     //             System.out.println(-1);
+     //             return;
+     //         }
+     //     }
+     //     System.out.println(idx);
+     // }
+
+     // public static void main(String[] args) {
+     //     Scanner scanner = new Scanner(System.in);
+     //     String s1 = scanner.nextLine();
+     //     String s2 = scanner.nextLine();
+     //     int m = s1.length() - 1;
+     //     int n = s2.length() - 1;
+     //     boolean flag = false;
+     //     while (m >= 0 && n >= 0) {
+     //         if (s1.charAt(m) == s2.charAt(n)) {
+     //             if (m == 0) {
+     //                 flag = true;
+     //                 System.out.println(n);
+     //             }
+     //             m--;
+     //         }
+     //         n--;
+     //     }
+     //     if (!flag) {
+     //         System.out.println(-1);
+     //     }
+     //
+     // }
+
+    /**
+     * 法3
+     */
+    public static void main(String[] args) {
+
+        /**
+         * 输入 ace
+         * abcde
+         * 输出 4
+         *
+         * fgh
+         * abcde
+         * -1
+         */
+        Scanner sc = new Scanner(System.in);
+        String s = sc.nextLine();
+        String l = sc.nextLine();
+        int w1 = 0;
+        int w2 = 0;
+        boolean flag=false;
+        for (int i = w1; i < s.length(); i++) {
+            for (int j = w2; j < l.length(); j++) {
+                if (s.charAt(i) == l.charAt(j)) {
+                    w1 = i;
+                    w2 = j;
+                    flag=true;
+                    break;
+                }
+            }
+        }
+        if (!flag) {
+            System.out.println(-1);
+        } else {
+            System.out.println(w2);
+        }
+
+    }
+
+
 
 }

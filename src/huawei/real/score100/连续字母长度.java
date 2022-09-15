@@ -1,10 +1,9 @@
 package huawei.real.score100;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
-/**
+
+/** 输出连续出现次数第k多的字母的次数
  * 给定一个字符串，只包含大写字母，求在包含同一字母的子串中，长度第 k 长的子串的长度，相同字母只取最长的那个子串。
  * 输入描述:
  * 第一行有一个子串(1<长度<=100)，只包含大写字母。
@@ -68,7 +67,7 @@ public class 连续字母长度 {
             }else {//换代
                 temp = 1;
                 pre = input.charAt(i);
-                arr[input.charAt(i) - 'A'] = Math.max(temp, arr[input.charAt(i) - 'A'] );;
+                arr[input.charAt(i) - 'A'] = Math.max(temp, arr[input.charAt(i) - 'A'] );
             }
         }
         List<Integer> list = new ArrayList<>();
@@ -85,4 +84,42 @@ public class 连续字母长度 {
         }
     }
 
+
+    /**
+     * 法2
+     */
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     String line = sc.nextLine();
+    //     int num = sc.nextInt();
+    //     char[] chars = line.toCharArray();
+    //     Map<Character, Integer> map = new HashMap<>();
+    //     int count = 1;
+    //     for (int i = 0; i < chars.length; i++) {
+    //         char c = chars[i];
+    //         while (i + 1 < chars.length && c == chars[i + 1]) {
+    //             count++;
+    //             i++;
+    //         }
+    //         if (map.containsKey(c)) {
+    //             if (count > map.get(c)) {
+    //                 map.put(c, count);
+    //             }
+    //         } else {
+    //             map.put(c, count);
+    //         }
+    //         count = 1;
+    //     }
+    //     if (map.size() < num) {
+    //         System.out.println(-1);
+    //         return;
+    //     }
+    //     Object[] array = map.values().toArray();
+    //     Arrays.sort(array, (a1, a2)->{
+    //         return (Integer)a2 - (Integer) a1;
+    //     });
+    //
+    //     System.out.println(array[num - 1]);
+    //
+    // }
 }

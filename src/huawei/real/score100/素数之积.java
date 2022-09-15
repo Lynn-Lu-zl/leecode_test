@@ -28,26 +28,81 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124544351
  */
 public class 素数之积 {
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     int target = sc.nextInt();//[0,2147483647]
+    //     int max = target;
+    //     for (int i = 3; i <= max; i++) {
+    //         //先判断能不能被target整除
+    //         if (target % i == 0){
+    //             max = target / i;
+    //             if (checkSu(i) && checkSu(target/i)){
+    //                 System.out.println(i + " " + target/i);
+    //                 return;
+    //             }
+    //         }
+    //     }
+    //     System.out.println(-1 + " " + -1);
+    // }
+    // //素数是指除了1和本身不能被其他所有数整除
+    // private static boolean checkSu(int num){
+    //     for (int i = 2; i < num; i++) {
+    //         if (num % i == 0){
+    //             return false;
+    //         }
+    //     }
+    //     return true;
+    // }
+    //
+    //
+    //
+
+    /**
+     * 法二
+     * @param args
+     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        int target = sc.nextInt();//[0,2147483647]
-        int max = target;
-        for (int i = 3; i <= max; i++) {
-            //先判断能不能被target整除
-            if (target % i == 0){
-                max = target / i;
-                if (checkSu(i) && checkSu(target/i)){
-                    System.out.println(i + " " + target/i);
-                    return;
-                }
+        Scanner scanner = new Scanner(System.in);
+        int num = scanner.nextInt();
+        int a = -1;
+        int b = -1;
+        // 计算输入数字的平方根，原因如上
+        double sqrt = Math.sqrt(num);
+        for (int i = 2; i <= sqrt; i++) {
+            // 判断是否为素数
+            if (!isPrime(i)) {
+                continue;
             }
+            // 判断能否整除
+            if (num % i != 0) {
+                continue;
+            }
+            // 判断另一个乘数是否为素数
+            if (!isPrime(num / i)) {
+                continue;
+            }
+            // 结果赋值
+            a = i;
+            b = num / i;
         }
-        System.out.println(-1 + " " + -1);
+
+        System.out.println(a + " " + b);
     }
-    //素数是指除了1和本身不能被其他所有数整除
-    private static boolean checkSu(int num){
-        for (int i = 2; i < num; i++) {
-            if (num % i == 0){
+
+    /**
+     * 判断是否是素数
+     *
+     * @param arg 入参
+     * @return bool
+     */
+    public static boolean isPrime(int arg) {
+        if (arg <= 1) {
+            return false;
+        }
+        // 计算输入数字的平方根，原因如上
+        double sqrt = Math.sqrt(arg);
+        for (int j = 2; j <= sqrt; j++) {
+            if (arg % j == 0) {
                 return false;
             }
         }

@@ -34,7 +34,6 @@ import java.util.Scanner;
  * 4
  * 输入
  * 1,2,2
- * 1
  * 输出
  * 2,0,1
 
@@ -60,19 +59,19 @@ public class 打印任务排序 {
      */
      public static void main(String[] args) {
 
+         //打印任务排序，某个打印机根据打印队列执行打印任务
          Scanner in = new Scanner(System.in);
          String[] s = in.nextLine().split(",");
          int[] nums = new int[s.length];
          for (int i = 0; i < nums.length; i++) {
-             nums[i] = Integer.parseInt(s[i]);
-         }
+             nums[i] = Integer.parseInt(s[i]); }
          Queue<Integer> queue = new ArrayDeque<>();
-         PriorityQueue<int[]> prior = new PriorityQueue<>((a, b) -> (b[0] == a[0] ? a[1] - b[1] : b[0] - a[0]));
+         PriorityQueue<int[]> prior = new PriorityQueue<>((a, b) ->
+             (b[0] == a[0] ? a[1] - b[1] : b[0] - a[0]));
          int[] res = new int[nums.length];
          for (int i = 0; i < nums.length; i++) {
-             queue.offer(nums[i]);  // 入队
-             prior.offer(new int[]{nums[i], i});  // 元素以及相应的顺序入队
-         }
+             queue.offer(nums[i]); //元素以及相应的顺序入队
+             prior.offer(new int[]{nums[i], i}); }
          int index = 0;
          while(!queue.isEmpty()) {
              int poll1 = queue.poll();
@@ -81,17 +80,14 @@ public class 打印任务排序 {
                  // 按打印顺序存储结果
                  res[poll2[1]] = index;
                  index++;
-
-             } else {
+                 } else {
                  queue.offer(poll1);
-                 prior.offer(poll2);
-             }
-         }
+                 prior.offer(poll2); } }
          for (int i = 0; i < res.length; i++) {
              System.out.print(res[i]);
              if (i != res.length - 1) {
-                 System.out.print(",");
-             }
-         }
+                 System.out.print(","); } }
+
+
          }
 }

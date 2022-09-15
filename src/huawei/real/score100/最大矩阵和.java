@@ -25,9 +25,10 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124579505
  */
 public class 最大矩阵和 {
-    public static Map<Node04,Integer> usedMap = new HashMap<Node04, Integer>();
 
+    public static Map<Node04,Integer> usedMap = new HashMap<Node04, Integer>();
     public static void main(String[] args) {
+        //最大矩阵和，使得这个子矩阵内所有的数字和尽量大
         Scanner sc =new Scanner(System.in);
         String[] nums = sc.nextLine().split(" ");
         int n1 = Integer.parseInt(nums[0]);//行
@@ -36,65 +37,46 @@ public class 最大矩阵和 {
         for (int i = 0; i < n1; i++) {
             String[] input = sc.nextLine().split(" ");
             for (int j = 0; j < m1; j++) {
-                arr[i][j] = Integer.parseInt(input[j]);
-            }
-        }
-        System.out.println(calcMax(arr,0,n1,0,m1));
-    }
-
+                arr[i][j] = Integer.parseInt(input[j]); } }
+        System.out.println(calcMax(arr,0,n1,0,m1)); }
     public static int calcMax(int[][] arr,int startX,int endX,int startY,int endY){
         Node04 node = new Node04(startX,endX,startY,endY);
         int max = 0;
         if (usedMap.containsKey(node)) {
             return usedMap.get(node);
         }else {
-            //计算当前范围的node结果值
-            //分成4个方向 上下左右各切一刀
+            //计算当前范围的node结果值，分成4个方向 上下左右各切一刀
             max = calcRes(arr,startX,endX,startY,endY);
             if (startX + 1 <= endX){
                 int res1 = calcMax(arr, startX + 1, endX, startY, endY);
                 int res2 = calcMax(arr, startX, endX-1, startY, endY);
-                max = Math.max(max,Math.max(res1,res2));
-            }
+                max = Math.max(max,Math.max(res1,res2)); }
             if (startY+1 <= endY){
                 int res3 = calcMax(arr, startX , endX, startY+1, endY);
                 int res4 = calcMax(arr, startX, endX, startY, endY-1);
-                max = Math.max(max,Math.max(res3,res4));
-            }
-            Integer put = usedMap.put(node, max);
-        }
-        return max;
-    }
-
+                max = Math.max(max,Math.max(res3,res4)); }
+            Integer put = usedMap.put(node, max); }
+        return max; }
     public static int calcRes(int[][] arr,int x1,int x2,int y1,int y2){
         int total = 0;
         for (int i = x1; i < x2; i++) {
             for (int j = y1; j < y2; j++) {
-                total += arr[i][j];
-            }
-        }
-        return total;
-    }
-
+                total += arr[i][j]; } }
+        return total; }
     public static class Node04{
         private int startX;
         private int endX;
         private int startY;
         private int endY;
-
         public Node04(int startX, int endX, int startY, int endY) {
             this.startX = startX;
             this.endX = endX;
             this.startY = startY;
-            this.endY = endY;
-        }
-
+            this.endY = endY; }
         @Override
         public boolean equals(Object obj) {
             Node04 node = (Node04) obj;
             return node.startX == this.startX && node.endX == this.endX &&
-                node.startY == this.startY && node.endY == this.endY;
-        }
-    }
+                node.startY == this.startY && node.endY == this.endY; }}
 
 }

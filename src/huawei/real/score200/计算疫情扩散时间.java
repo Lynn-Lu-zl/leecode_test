@@ -41,11 +41,9 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/weixin_44505462/article/details/125494603
  */
 public class 计算疫情扩散时间 {
-
          // 优化思路，把繁琐的数组转字符串判断是否包含0，
          // 改为抽象一个检查数组判断包含0的方法，
          // 去除转字符串数组，再转字符串的繁琐过程
-
          //检查区域是否已经全部被污染
          public static int isCheck(int[][] source,int n){
              for(int i = 0;i < n;i++){
@@ -57,10 +55,8 @@ public class 计算疫情扩散时间 {
              }
              return 1;
          }
-
          //污染过程
          public static int[][] black(int[][] source,int n){
-
              //临时数组，保存改变的数组temp，source为原数组，作为基点，查找相邻污染点
              int[][] temp = new int[n][n];
              for(int i = 0;i < n;i++){
@@ -68,7 +64,6 @@ public class 计算疫情扩散时间 {
                      temp[i][j]=source[i][j];
                  }
              }
-
              //污染动作
              for(int i = 0;i < n;i++){
                  for(int j = 0;j <n;j++){
@@ -90,20 +85,16 @@ public class 计算疫情扩散时间 {
              }
              return temp;
          }
-
          public static void main(String[] args){
              // long startTime=System.currentTimeMillis(); //获取开始时间
-
-             //获取输入数据
+             //疫情扩散时间，多少天以后，全部区域都会被感染
              Scanner in = new Scanner(System.in);
              String str = in.nextLine();
-
              //如果全为0或者全为1，返回-1
              if(!str.contains("1")||!str.contains("0")){
                  System.out.print("-1");
                  System.exit(0);
              }
-
              //分割字符串，获取二维数组维度n
              String[] arr = str.split(",");
              int len = arr.length;
@@ -116,19 +107,15 @@ public class 计算疫情扩散时间 {
                      source[i][j]=Integer.parseInt(arr[i*n+j]);
                  }
              }
-
              //定义天数
              int day = 0;
-
              //若检查区域还没有全部被污染，则继续循环
              while(isCheck(source,n)== 0){
                  source = black(source,n);
                  day++;
              }
-
              //输出结果
              System.out.print(day);
-
              //计算运行时间
              // long endTime=System.currentTimeMillis(); //获取结束时间
              // System.out.println("程序运行时间： "+(endTime-startTime)+"ms");

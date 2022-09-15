@@ -28,7 +28,7 @@ import java.util.Scanner;
 public class 乱序整数序列两数之和绝对值最小 {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        while (sc.hasNextLine()) {
+        // while (sc.hasNextLine()) {
             String[] split = sc.nextLine().split(" ");
             int length = split.length;
             int[] arr = new int[length];
@@ -53,7 +53,7 @@ public class 乱序整数序列两数之和绝对值最小 {
                 System.out.print(i + " ");
             }
             System.out.println(min);
-        }
+        // }
         sc.close();
     }
 

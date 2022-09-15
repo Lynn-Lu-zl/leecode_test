@@ -72,14 +72,14 @@ import java.util.Scanner;
  */
 public class 工单调度策略 {
     public static void main(String[] args) {
+
+        //工单调度策略，当小区通信设备上报警时
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
         int[][] num = new int[N][2];
         for (int i = 0; i < N; i++) {
             for (int j = 0; j < 2; j++) {
-                num[i][j] = in.nextInt();
-            }
-        }
+                num[i][j] = in.nextInt(); } }
         // 贪心算法，先按时间升序，积分降序排序，优先处理时间紧，积分大的工单
         Arrays.sort(num, (o1, o2)-> o1[0] == o2[0] ? o2[1] - o1[1] : o1[0] - o2[0]);
         // 优先队列按照积分从小到大排,最小的在堆顶
@@ -93,13 +93,11 @@ public class 工单调度策略 {
                 queue.offer(num[i]);
             } else if (!queue.isEmpty() && queue.peek()[1] < score) {
                 queue.poll();
-                queue.offer(num[i]);
-            }
-        }
+                queue.offer(num[i]); } }
         while (!queue.isEmpty()) {
-            res += queue.poll()[1];
-        }
+            res += queue.poll()[1]; }
         System.out.println(res);
+
     }
 
 }

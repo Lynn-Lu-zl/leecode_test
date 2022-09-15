@@ -82,6 +82,8 @@ import java.util.Stack;
  */
 public class 最长的指定瑕疵度的元音字串 {
     public static void main(String[] args) {
+
+        //最长的指定瑕疵度的元音字串
         Scanner sc = new Scanner(System.in);
         while (sc.hasNext()) {
             // 要求出现的瑕疵数
@@ -94,8 +96,7 @@ public class 最长的指定瑕疵度的元音字串 {
             for (int i = 0; i < input.length(); i++) {
                 // 字符串起始位从i开始，首位不是元音字符的跳过
                 if (!str.contains("" + input.charAt(i))) {
-                    continue;
-                }
+                    continue; }
                 Stack<Character> stack = new Stack<>();
                 // 统计当前瑕疵个数
                 int current = 0;
@@ -108,18 +109,15 @@ public class 最长的指定瑕疵度的元音字串 {
                             // 清栈，从0开始统计
                             // stack.clear();
                             // current = 0;
-                            break;
-                        }
-                    }
+                            break; } }
                     // 瑕疵数必须符合要求，最后一个元素必须是元音字符,
-                    if (!stack.isEmpty() && current == flaw && str.contains("" + stack.peek())) {
-                        max = Math.max(max, stack.size());
-                    }
-                }
-            }
-            System.out.println(max);
-        }
-        sc.close();
+                    if (!stack.isEmpty() && current == flaw
+                        && str.contains("" + stack.peek()))
+                        {max = Math.max(max, stack.size()); } } }
+            System.out.println(max); }
+
+
+
     }
 
 }

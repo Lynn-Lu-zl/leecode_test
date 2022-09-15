@@ -159,6 +159,7 @@ public class 学生方阵 {
      * 模拟
      *
      */
+    //学生方阵，学校组织活动，将学生排成一个矩形方阵
     Scanner in = new Scanner(System.in);
     String[] str1 = in.nextLine().split(",");
     int m = Integer.parseInt(str1[0]);
@@ -167,109 +168,77 @@ public class 学生方阵 {
         for (int i = 0; i < m; i++) {
         String[] s1 = in.nextLine().split(",");
         for (int j = 0; j < n; j++) {
-            s[i][j] = s1[j];
-        }
-    }
+            s[i][j] = s1[j]; } }
     int[][] dp1 = new int[m][n];  // 从左往右
     int[][] dp2 = new int[m][n];  // 从上往下
     int[][] dp3 = new int[m][n];  // 对角线
     int[][] dp4 = new int[m][n];  // 反对角线
-    // 特例，只有一行或只有一列，不能给每一个等于M的初始化为1，还要考虑前一个的情况
+    //特例，只有一行或只有一列，不能给每一个等于M的初始化为1，还要考虑前一个的情况
     int ans = 0;
         if (m == 1) {
         if (s[0][0].equals("M")) {
-            dp1[0][0] = 1;
-        }
+            dp1[0][0] = 1; }
         for (int j = 1; j < n; j++) {
             if (s[0][j - 1].equals("M")) {
                 if (s[0][j].equals("M")) {
-                    dp1[0][j] = dp1[0][j - 1] + 1;
-                }
+                    dp1[0][j] = dp1[0][j - 1] + 1; }
             } else {
                 if (s[0][j].equals("M")){
-                    dp1[0][j] = 1;
-                }
-            }
-        }
+                    dp1[0][j] = 1; } } }
         for (int j = 0; j < n; j++) {
-            ans = Math.max(ans, dp1[0][j]);
-        }
+            ans = Math.max(ans, dp1[0][j]); }
         System.out.println(ans);
-        return;
-    }
+        return; }
         if (n == 1) {
         if (s[0][0].equals("M")) {
-            dp2[0][0] = 1;
-        }
+            dp2[0][0] = 1; }
         for (int i = 1; i < m; i++) {
             if (s[i - 1][0].equals("M")) {
                 if (s[i][0].equals("M")) {
-                    dp2[i][0] = dp2[i - 1][0] + 1;
-                }
+                    dp2[i][0] = dp2[i - 1][0] + 1; }
             } else {
                 if (s[i][0].equals("M")) {
-                    dp2[i][0] = 1;
-                }
-            }
-        }
+                    dp2[i][0] = 1; } } }
         for (int i = 0; i < m; i++) {
-            ans = Math.max(ans, dp2[i][0]);
-        }
+            ans = Math.max(ans, dp2[i][0]); }
         System.out.println(ans);
-        return;
-    }
+        return; }
     // 初始化dp1, dp2, dp3, dp4数组
         for (int i = 0; i < m; i++) {
         if (s[i][0].equals("M")) {
             dp1[i][0] = 1;
             dp2[i][0] = 1;
-            dp3[i][0] = 1;
-        }
-    }
+            dp3[i][0] = 1; } }
         for (int j = 0; j < n; j++) {
         if (s[0][j].equals("M")) {
             dp1[0][j] = 1;
             dp2[0][j] = 1;
             dp3[0][j] = 1;
-            dp4[0][j] = 1;
-        }
-    }
+            dp4[0][j] = 1; } }
     // 初始化dp4数组
         for (int i = 0; i < m; i++) {
         if (s[i][n - 1].equals("M")) {
-            dp4[i][n - 1] = 1;
-        }
-    }
+            dp4[i][n - 1] = 1; } }
         for (int i = 1; i < m; i++) {
         for (int j = 1; j < n; j++) {
             if (s[i][j].equals("M")) {
                 if (s[i][j - 1].equals("M")) { // 从左往右
-                    dp1[i][j] = dp1[i][j - 1] + 1;
-                }
+                    dp1[i][j] = dp1[i][j - 1] + 1; }
                 if (s[i - 1][j].equals("M")) {  // 从上往下
-                    dp2[i][j] = dp2[i - 1][j] + 1;
-                }
+                    dp2[i][j] = dp2[i - 1][j] + 1; }
                 if (s[i - 1][j - 1].equals("M")) { // 对角线
-                    dp3[i][j] = dp3[i - 1][j - 1] + 1;
-                }
-            }
-        }
-    }
+                    dp3[i][j] = dp3[i - 1][j - 1] + 1; } } } }
         for (int i = 1; i < m; i++) {
         for (int j = n - 2; j >= 0; j--) {
             if (s[i][j].equals("M")) {
                 if (s[i - 1][j + 1].equals("M")) { // 反对角线
-                    dp4[i][j] = dp4[i - 1][j + 1] + 1;
-                }
-            }
-        }
-    }
+                    dp4[i][j] = dp4[i - 1][j + 1] + 1; } } } }
         for (int i = 0; i < m; i++) {  // 取四个数组中的最大值
         for (int j = 0; j < n; j++) {
-            ans = Math.max(ans, Math.max(dp1[i][j], Math.max(dp2[i][j], Math.max(dp3[i][j], dp4[i][j]))));
-        }
-    }
+            ans = Math.max(ans, Math.max(dp1[i][j], Math.max(dp2[i][j],
+                Math.max(dp3[i][j], dp4[i][j])))); } }
         System.out.println(ans);
+
 }
 
 }

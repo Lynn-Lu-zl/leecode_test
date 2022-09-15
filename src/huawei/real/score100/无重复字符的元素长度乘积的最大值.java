@@ -22,6 +22,8 @@ import java.util.Scanner;
  */
 public class 无重复字符的元素长度乘积的最大值 {
      public static void main(String[] args) {
+
+         //无重复字符的元素长度乘积的最大值，iwdvpbn与hk无相同的字符
          Scanner in = new Scanner(System.in);
          String[] words = in.nextLine().split(",");
          int maxLength = 0;
@@ -34,17 +36,13 @@ public class 无重复字符的元素长度乘积的最大值 {
                      for (int n = 0; n < word2.length; n++) {
                          if (word1[m] == word2[n]) {
                              flag = false;
-                             break;
-                         }
-                     }
-                 }
+                             break; } } }
                  if (flag) {  // 两个字符串不相等
                      int Length = word1.length * word2.length;
-                     maxLength = Math.max(maxLength, Length);
-                 }
-             }
-         }
+                     maxLength = Math.max(maxLength, Length); } } }
          System.out.println(maxLength);
+
+
      }
 
     // public static void main(String[] args) {

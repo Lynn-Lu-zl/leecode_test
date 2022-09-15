@@ -33,6 +33,7 @@ public class 矩阵扩散 {
         int y1 = Integer.parseInt(split[3]);
         int x2 = Integer.parseInt(split[4]);
         int y2 = Integer.parseInt(split[5]);
+
         arr[x1][y1] = 1;
         arr[x2][y2] = 1;
         System.out.println(calcSecond(arr));

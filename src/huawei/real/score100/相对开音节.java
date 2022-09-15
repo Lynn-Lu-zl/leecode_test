@@ -31,74 +31,105 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124544351
  */
 public class 相对开音节 {
-    public static void main(String[] args) {
-        Scanner sc =new Scanner(System.in);
-        String[] input = sc.nextLine().split(" ");
-        int total = 0;
-        for (int i = 0; i < input.length; i++) {
-            String content = input[i];
-            boolean flag = true;
-            for (int j = 0; j < content.length(); j++) {
-                if (content.charAt(j) < 'a' ||  content.charAt(j)> 'z'){
-                    flag = false;
-                    break;
-                }
-            }
-            if (flag){
-                total += checkKai(content);
-            }
-        }
-        System.out.println(total);
-    }
+    // public static void main(String[] args) {
+    //     Scanner sc =new Scanner(System.in);
+    //     String[] input = sc.nextLine().split(" ");
+    //     int total = 0;
+    //     for (int i = 0; i < input.length; i++) {
+    //         String content = input[i];
+    //         boolean flag = true;
+    //         for (int j = 0; j < content.length(); j++) {
+    //             if (content.charAt(j) < 'a' ||  content.charAt(j)> 'z'){
+    //                 flag = false;
+    //                 break;
+    //             }
+    //         }
+    //         if (flag){
+    //             total += checkKai(content);
+    //         }
+    //     }
+    //     System.out.println(total);
+    // }
+    //
+    // private static int checkKai(String str){
+    //     String strTemp = "";
+    //     for (int i = str.length()-1; i >=0 ; i--) {
+    //         strTemp += str.charAt(i);
+    //     }
+    //
+    //     int left = 0;
+    //     int right = 0;
+    //     int total = 0;
+    //     String tem = "";
+    //     while (right<=str.length()){
+    //         tem = strTemp.substring(left,right);
+    //         if (tem.length() < 4 ){
+    //             right++;
+    //             continue;
+    //         }
+    //         if (checkTrue(tem)) {
+    //             total++;
+    //         }
+    //         left++;
+    //         right++;
+    //
+    //     }
+    //     return total;
+    // }
+    //
+    // private static boolean checkTrue(String str){
+    //     //辅音+元音（aeiou）+辅音(r除外)+e blame
+    //     if (!yuanyin.contains(str.charAt(0)) && 'e' == str.charAt(str.length()-1)){//首位是辅音 末尾是元音
+    //         int temYuan = 0;
+    //         for (int i = 1; i < str.length()-1; i++) {//中间2位或3位
+    //             if (yuanyin.contains(str.charAt(i))){
+    //                 temYuan = i;
+    //             }
+    //             if (temYuan!= 0 && !yuanyin.contains(str.charAt(i)) && str.charAt(i) != 'r' && i> temYuan){
+    //                 return true;
+    //             }
+    //         }
+    //     }
+    //     return false;
+    // }
+    //
+    // private static List<Character> yuanyin = new ArrayList<>();
+    // static {
+    //     char[] f1 = {'a','e','i','o','u'};
+    //     for (int i = 0; i < f1.length; i++) {
+    //         yuanyin.add(f1[i]);
+    //     }
+    // }
 
-    private static int checkKai(String str){
-        String strTemp = "";
-        for (int i = str.length()-1; i >=0 ; i--) {
-            strTemp += str.charAt(i);
-        }
 
-        int left = 0;
-        int right = 0;
-        int total = 0;
-        String tem = "";
-        while (right<=str.length()){
-            tem = strTemp.substring(left,right);
-            if (tem.length() < 4 ){
-                right++;
-                continue;
-            }
-            if (checkTrue(tem)) {
-                total++;
-            }
-            left++;
-            right++;
+    /**
+     * 法2
+     */
 
-        }
-        return total;
-    }
+     public static void main(String[] args) {
+         //相对开音节，辅音+元音（aeiou）+辅音(r除外)+e
+         Scanner in = new Scanner(System.in);
+         String line = in.nextLine();
+         String[] words = line.split(" ");
+         int count = 0;
+         for (String word : words) {
+             char[] chars = word.toCharArray();
+             if (word.replaceAll("[a-z]+","").isEmpty()){
+                 for (int i = 0, j = chars.length - 1; i < j; i++, j--) {
+                     char tmp = chars[i];
+                     chars[i] = chars[j];
+                     chars[j] = tmp; } }
+             if (chars.length < 4) continue;
+             for (int i = 0; i < chars.length - 3; i++) {
+                 if (!isVowel(chars[i])
+                     && isVowel(chars[i + 1])
+                     && !isVowel(chars[i + 2]) && chars[i + 2] != 'r'
+                     && chars[i + 3] == 'e') {
+                     count++; } } }
+         System.out.println(count); }
+    private static boolean isVowel(char c) {
+        return c == 'a' || c == 'e' || c == 'i'
+            || c == 'o' || c == 'u'; }
 
-    private static boolean checkTrue(String str){
-        //辅音+元音（aeiou）+辅音(r除外)+e blame
-        if (!yuanyin.contains(str.charAt(0)) && 'e' == str.charAt(str.length()-1)){//首位是辅音 末尾是元音
-            int temYuan = 0;
-            for (int i = 1; i < str.length()-1; i++) {//中间2位或3位
-                if (yuanyin.contains(str.charAt(i))){
-                    temYuan = i;
-                }
-                if (temYuan!= 0 && !yuanyin.contains(str.charAt(i)) && str.charAt(i) != 'r' && i> temYuan){
-                    return true;
-                }
-            }
-        }
-        return false;
-    }
-
-    private static List<Character> yuanyin = new ArrayList<>();
-    static {
-        char[] f1 = {'a','e','i','o','u'};
-        for (int i = 0; i < f1.length; i++) {
-            yuanyin.add(f1[i]);
-        }
-    }
 
 }

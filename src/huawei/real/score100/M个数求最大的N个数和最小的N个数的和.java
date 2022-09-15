@@ -89,4 +89,64 @@ public class M个数求最大的N个数和最小的N个数的和 {
          }
 
          }
+
+
+    /**
+     * 法2
+     */
+    // public static void main(String[] args) {
+              /**
+               * list实现去重
+               */
+              // Scanner in = new Scanner(System.in);
+              // int n = in.nextInt();
+              // ArrayList<Integer> list = new ArrayList<>();
+              // for (int i = 0; i < n; i++) {
+              //     int num = in.nextInt();
+              //     if (!list.contains(num)) {
+              //         list.add(num);
+              //     }
+              // }
+              // int N = in.nextInt();
+              // Collections.sort(list);
+              // if (list.size() < 2 * N) {
+              //     System.out.println(-1);
+              //     return ;
+              // }
+              // int sum = 0;
+              // for (int i = 0; i < N; i++) {
+              //     sum += (list.get(i) + list.get(list.size() - 1 - i));
+              // }
+              // System.out.println(sum);
+              // }
+              // }
+
+    /**
+     * 法3
+     * @param args
+     */
+    // public static void main(String[] args) {
+    //
+    //     /**
+    //      * 用TreeSet直接去重并排序，只是获取元素的时候仍需转为list
+    //      */
+    //     Scanner in = new Scanner(System.in);
+    //     int n = in.nextInt();
+    //     TreeSet<Integer> set = new TreeSet<>();
+    //     for (int i = 0; i < n; i++) {
+    //         int num = in.nextInt();
+    //         set.add(num);
+    //     }
+    //     int N = in.nextInt();
+    //     if (set.size() < 2 * N) {
+    //         System.out.println(-1);
+    //         return ;
+    //     }
+    //     ArrayList<Integer> list = new ArrayList<>(set);
+    //     int sum = 0;
+    //     for (int i = 0; i < N; i++) {
+    //         sum += (list.get(i) + list.get(list.size() - 1 - i));
+    //     }
+    //     System.out.println(sum);
+    // }
 }

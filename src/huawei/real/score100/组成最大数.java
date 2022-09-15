@@ -23,7 +23,9 @@ import java.util.*;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124579505
  */
 public class 组成最大数 {
+
     public static void main(String[] args) {
+        //组成最大数，小组中每位都有一张卡片
         Scanner sc = new Scanner(System.in);
         String[] split = sc.nextLine().split(",");
         //首位排序后，在对次位进行排序
@@ -32,22 +34,16 @@ public class 组成最大数 {
             int ch = Integer.parseInt(String.valueOf(split[i].charAt(0)));
             List<String> def = map.getOrDefault(ch, new ArrayList<>());
             def.add(split[i]);
-            map.put(ch,def);
-        }
-        //到过来输出
-        StringBuilder sb = new StringBuilder();
+            map.put(ch,def); }
+        StringBuilder sb = new StringBuilder(); //倒过来输出
         for (int i = 9; i >0 ; i--) {
             if (map.containsKey((Object) i )) {
                 List<String> strings = map.get(i);
-                sb.append(getChangeList(strings));
-            }
-        }
-        System.out.println(sb);
-    }
-    //9,99,91,98,991,905,9
-    //9,99,991,98,91,905
+                sb.append(getChangeList(strings)); } }
+        System.out.println(sb); }
     //思路转为拿出一个数，比较后面有没有比他大的数，有则当前数放到最后，没有则直接拼接
     private static String getChangeList(List<String> list){
+        //9,99,91,98,991,905,9--》9,99,991,98,91,905
         LinkedList<String> linkList = new LinkedList<>(list);
         StringBuilder sb = new StringBuilder();
         while (linkList.size() > 0){
@@ -55,34 +51,24 @@ public class 组成最大数 {
             boolean flag = true;
             if (tem.length() != 1){
                 for (int i = 1; i < linkList.size(); i++) {
-                    if (compareMax(tem,linkList.get(i))){//tem不是当前最大值
-                        linkList.remove(0);
+                    if (compareMax(tem,linkList.get(i))){
+                        linkList.remove(0);//tem不是当前最大值
                         linkList.addLast(tem);
                         flag = false;
-                        break;
-                    }
-                }
-            }//没有比当前值更大的，直接删掉当前值
-            if (flag){
+                        break; } } }
+            if (flag){//没有比当前值更大的，直接删掉当前值
                 sb.append(tem);
-                linkList.remove(0);
-            }
-        }
-        return sb.toString();
-    }
-    //98,99,901,902,998
+                linkList.remove(0); } }
+        return sb.toString(); }
     private static boolean compareMax(String idx0,String idx1){
-        int idx1Length = idx0.length();
+        int idx1Length = idx0.length();//98,99,901,902,998
         int idx2Length = idx1.length();
         int length =Math.min(idx1Length,idx2Length);
         for (int i = 1; i < length; i++) {
             int i1 = Integer.parseInt(String.valueOf(idx0.charAt(i)));
             int i2 = Integer.parseInt(String.valueOf(idx1.charAt(i)));
             if (i1 != i2){
-                return i2 - i1 > 0;
-            }
-        }
-        return idx2Length == length;
-    }
+                return i2 - i1 > 0; } }
+        return idx2Length == length; }
 
 }

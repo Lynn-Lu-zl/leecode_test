@@ -1,5 +1,6 @@
 package huawei.real.score100;
 
+import java.util.HashMap;
 import java.util.Scanner;
 
 /**
@@ -32,36 +33,65 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124528902
  */
 public class 数据分类 {
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     String[] input = sc.nextLine().split(" ");
+    //     int c1 = Integer.parseInt(input[0]);
+    //     int b1 = Integer.parseInt(input[1]);
+    //     int[] arr = new int[b1-1];
+    //     for (int i = 2; i < input.length; i++) {
+    //         int res = calcAdd(Integer.parseInt(input[i])) % b1;
+    //         if (res < c1){//有效
+    //             arr[res]++;
+    //         }
+    //     }
+    //     int max = -1;
+    //     for (int i = 0; i < arr.length ; i++) {
+    //         max = Math.max(max,arr[i]);
+    //     }
+    //     System.out.println(max);
+    // }
+    //
+    // private static int calcAdd(int num){
+    //     String str = Integer.toBinaryString(num);
+    //     //100000000
+    //     int total = 0;
+    //     while (str.length() > 8){
+    //         String temp = str.substring(str.length()-8);
+    //         total += Integer.parseInt(temp);
+    //         str = str.substring(0,str.length()-8);
+    //     }
+    //     total += Integer.parseInt(str);
+    //     return total;
+    // }
+
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String[] input = sc.nextLine().split(" ");
-        int c1 = Integer.parseInt(input[0]);
-        int b1 = Integer.parseInt(input[1]);
-        int[] arr = new int[b1-1];
-        for (int i = 2; i < input.length; i++) {
-            int res = calcAdd(Integer.parseInt(input[i])) % b1;
-            if (res < c1){//有效
-                arr[res]++;
+        //数据分类
+        Scanner in = new Scanner(System.in);
+        int c = in.nextInt(), b = in.nextInt();
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int i=0;i<10;++i) {
+            int num = in.nextInt();
+            int sum = 0;
+            while(num>0) {
+                sum += num & 0xff;
+                num >>= 8;
+            }
+            int res = sum%b;
+            if(res<c) {
+                if(!map.containsKey(res)) {
+                    map.put(res, 1);
+                }else {
+                    map.replace(res, map.get(res)+1);
+                }
             }
         }
-        int max = -1;
-        for (int i = 0; i < arr.length ; i++) {
-            max = Math.max(max,arr[i]);
+        int max = 0;
+        for(int value : map.values()) {
+            max = Math.max(max, value);
         }
         System.out.println(max);
     }
 
-    private static int calcAdd(int num){
-        String str = Integer.toBinaryString(num);
-        //100000000
-        int total = 0;
-        while (str.length() > 8){
-            String temp = str.substring(str.length()-8);
-            total += Integer.parseInt(temp);
-            str = str.substring(0,str.length()-8);
-        }
-        total += Integer.parseInt(str);
-        return total;
-    }
 
 }

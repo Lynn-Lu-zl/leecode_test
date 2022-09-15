@@ -52,6 +52,8 @@ import java.util.Scanner;
  */
 public class 小朋友身高位置 {
      public static void main(String[] args) {
+
+         //小朋友身高位置，第i个小朋友可以看到第一个比自己身高更高的小朋友j
          Scanner sc = new Scanner(System.in);
          // 数组长度
          int len = Integer.parseInt(sc.nextLine());
@@ -60,17 +62,39 @@ public class 小朋友身高位置 {
          // 双层循环，依次往后比较
          for (int i = 0; i < len - 1; i++) {
              for (int j = i + 1; j < len; j++) {
-                 if (Integer.parseInt(split[i]) < Integer.parseInt(split[j])) {
+                 if (Integer.parseInt(split[i])<Integer.parseInt(split[j])){
                      System.out.print(j + " ");
-                     break;
-                 }
+                     break; }
                  // 当看到最后一个，还没结束，说明没有，输出0
                  if (j == len - 1) {
-                     System.out.print(0 + " ");
-                 }
-             }
-         }
+                     System.out.print(0 + " "); } } }
          // 队首直接输出0
          System.out.print(0);
          }
+
+
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     int count = Integer.parseInt(sc.nextLine());
+    //     String[] input = sc.nextLine().split(" ");
+    //     int[] arr = new int[count];
+    //     for (int i = 0; i < input.length; i++) {
+    //         //右边第一个比自己身高高的人
+    //         int idx = 0;
+    //         for (int j = i+1; j < input.length; j++) {
+    //             if (Integer.parseInt(input[i]) < Integer.parseInt(input[j])){
+    //                 idx = j;
+    //                 break;
+    //             }
+    //         }
+    //         arr[i] = idx;
+    //     }
+    //     for (int i = 0; i < arr.length; i++) {
+    //         if (i!= arr.length-1){
+    //             System.out.print(arr[i] + " ");
+    //         }else {
+    //             System.out.print(arr[i]);
+    //         }
+    //     }
+    // }
 }

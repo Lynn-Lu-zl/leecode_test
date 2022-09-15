@@ -68,6 +68,7 @@ public class 服务启动 {
      */
     public static void main(String[] args) {
 
+        //服务启动 服务间有依赖关系，启动一个指定服务
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
         int M = in.nextInt();
@@ -82,9 +83,7 @@ public class 服务启动 {
                 graph.get(i).add(Integer.parseInt(split[j]));
             }
         }
-
-        // bfs
-        Deque<Integer> queue = new LinkedList<>();
+        Deque<Integer> queue = new LinkedList<>(); // bfs
         queue.add(M);
         Set<Integer> visited = new HashSet<>();
         visited.add(M);
@@ -121,6 +120,7 @@ public class 服务启动 {
         } else {
             System.out.println(ansArr[ansArr.length - 1]);
         }
+
     }
 
 }

@@ -29,23 +29,23 @@ import java.util.Scanner;
  */
 public class 求符合要求的结对方式 {
     public static void main(String[] args) {
+
+        //求符合要求的结对方式，数组A代表程序员的工作能力
         Scanner sc = new Scanner(System.in);
         int people = Integer.parseInt(sc.nextLine());
         String[] input = sc.nextLine().split(" ");
         int target = Integer.parseInt(sc.nextLine());
         int[] arr = new int[people];
         for (int i = 0; i < people; i++) {
-            arr[i] = Integer.parseInt(input[i]);
-        }
+            arr[i] = Integer.parseInt(input[i]); }
         int count = 0;
         for (int i = 0; i < people; i++) {
             for (int j = i + 1; j < people; j++) {
                 if (target == arr[i] + arr[j]){
-                    count++;
-                }
-            }
-        }
+                    count++; } } }
         System.out.println(count);
+
+
     }
 
 }

@@ -43,6 +43,8 @@ import java.util.TreeSet;
  * 原文链接：https://blog.csdn.net/weixin_44052055/article/details/124040054
  */
 public class 最大社交距离 {
+
+    //最大社交距离,疫情期间需要大家保证一定的社交距离，公司组织开交流会议。
      public static void main(String[] args) {
          Scanner in = new Scanner(System.in);
          int seatNum = in.nextInt();
@@ -83,21 +85,14 @@ public class 最大社交距离 {
                         int len = ints[j + 1] - ints[j];
                         if (len / 2 > maxLen) {
                             maxLen = len / 2;
-                            start = ints[j];
-                        }
-                    }
+                            start = ints[j]; } }
                     seatedNums.add(start + maxLen);  // 将对应的起始位置加上最远距离加入seatedNums
                     if (i == seatOrLeave.length - 1) {
                         return start + maxLen;
                     }
                 } else {  // 位置坐满
-                    return -1;
-                }
+                    return -1; }
             } else {  // 如果是负数，则将该座位移出
-                seatedNums.remove(-op);
-            }
-        }
-        return 0;
-
-         }
+                seatedNums.remove(-op); } }
+        return 0; }
 }

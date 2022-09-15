@@ -2,7 +2,7 @@ package huawei.real.score100;
 
 import java.util.Scanner;
 
-/**绘图机器计算面积
+/**绘图机器计算面积  求坐标轴上画出图形的面积
  * 题目描述：
  * 绘图机器的绘图笔初始位置在原点(0,0) 机器启动后按照以下规则来进行绘制直线
  *
@@ -34,14 +34,10 @@ import java.util.Scanner;
  * 2 1
  * 3 1
  * 4 -2
- * 1
- * 2
- * 3
- * 4
- * 5
+
  * 输出
  * 12
- * 1
+
  * 说明
  * 通过操作机器最后绘制了如下图形（蓝色为绘制笔绘制的直线）
  *
@@ -88,6 +84,38 @@ public class 绘图机器计算面积 {
          }
          area += (end - a) * Math.abs(b);
          System.out.println(area);
-
          }
+
+
+    /**
+     * 90%通过率
+     * @param args
+     */
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     while(sc.hasNext()){
+    //         // 几组数据
+    //         int n = sc.nextInt();
+    //         // x轴终点坐标
+    //         int e = sc.nextInt();
+    //         // 结果
+    //         int sum = 0;
+    //         int x = 0, y = 0;
+    //         for (int i = 0; i < n; i++) {
+    //             int a = sc.nextInt();
+    //             int b = sc.nextInt();
+    //             // y轴提供的是偏移量 可以为负
+    //             if (y != 0){
+    //                 sum += (a-x)*Math.abs(y);
+    //             }
+    //             x = a;
+    //             y = y + b;
+    //         }
+    //         if (x < e) {
+    //             sum += (e-x)*Math.abs(y);
+    //         }
+    //         System.out.println(sum);
+    //     }
+    // }
+
 }

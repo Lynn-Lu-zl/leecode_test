@@ -36,100 +36,93 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124544351
  */
 public class 停车场车辆统计 {
-     public static void main(String[] args) {
-         /**
-          *
-          * 1,1,0,0,1,1,1,0,1
-          *
-          * 最少车辆--》说明什么都按最多的分量计算--》
-          * 1、0就是没车
-          * 2、只有1个1就是一辆小车
-          * 2、2个1连续就是一辆货车，
-          * 3、3个1连续就是一辆卡车
-          *
-          * 把0当成分割点--》[11, 111, 1]
-          * 两层循环：
-          * 循环整数数组--》
-          * 对截取的每段索引值的长度进行取模--》
-          * 循环获取每段索引值的长度
-          * 该索引值长度%3=0--》卡车
-          * 该索引值长度%2=0--》货车
-          * 剩下是汽车
-          * 
-          * 操作完要对索引值长度清零
-          * 
-          */
-         // Scanner scanner = new Scanner(System.in);
-         // String line = scanner.nextLine();
-         // String[] strings = line
-         //     .replaceAll(",", "")
-         //     .replaceAll("0+","0")
-         //     .split("0");
-         // //1,1,0,0,1,1,1,0,1--》[11, 111, 1]
-         // System.out.println(Arrays.toString(strings));
-         // //记录返回值
-         // int num = 0;
-         // for (int i = 0; i < strings.length; i++) {
-         //     //[11, 111, 1]的分割后每段的长度：2、3、1
-         //     int n = strings[i].length();
-         //     //System.out.println(n);
-         //     while (n != 0){
-         //         //卡车3
-         //         if(n/3 != 0){
-         //             num+=n/3;
-         //             //变成0，n=n%3--》无论是1还是2都为0
-         //             n%=3;
-         //
-         //             //货车2
-         //         }else if(n/2 != 0){
-         //             num+=n/2;
-         //             n%=2;
-         //             System.out.println(n%=2);
-         //         }else{
-         //             //小车1
-         //             num += n;
-         //             n=0;
-         //         }
-         //     }
-         // }
-         // System.out.println(num);
+    /**
+     *
+     * 1,1,0,0,1,1,1,0,1
+     *
+     * 最少车辆--》说明什么都按最多的分量计算--》
+     * 1、0就是没车
+     * 2、只有1个1就是一辆小车
+     * 2、2个1连续就是一辆货车，
+     * 3、3个1连续就是一辆卡车
+     *
+     * 把0当成分割点--》[11, 111, 1]
+     * 两层循环：
+     * 循环整数数组--》
+     * 对截取的每段索引值的长度进行取模--》
+     * 循环获取每段索引值的长度
+     * 该索引值长度%3=0--》卡车
+     * 该索引值长度%2=0--》货车
+     * 剩下是汽车
+     *
+     * 操作完要对索引值长度清零
+     *
+     */
 
-         Scanner scanner = new Scanner(System.in);
-         String line = scanner.nextLine();
-         String[] strings = line
-             .replaceAll(",", "")
-             .replaceAll("0+","0")
-             .split("0");
-         //1,1,0,0,1,1,1,0,1--》[11, 111, 1]
-         System.out.println(Arrays.toString(strings));
-         //记录返回值
-         int num = 0;
-         for (int i = 0; i < strings.length; i++) {
-             //[11, 111, 1]的分割后每段值的长度：2、3、1
-             int n = strings[i].length();
-             //System.out.println(n);
-             while (n != 0){
-                 //卡车3
-                 if(n%3 == 0){
-                     num++;
-                     //变成0，n=n%3--》无论是1还是2都为0
-                     //n%=3;
-                     //可以直接变成0，每次计算完一次车种都转成0否则会一直是n不等于0然后循环
-                     n=0;
+     // public static void main(String[] args) {
+     //     Scanner scanner = new Scanner(System.in);
+     //     String line = scanner.nextLine();
+     //     String[] strings = line
+     //         .replaceAll(",", "")
+     //         .replaceAll("0+","0")
+     //         .split("0");
+     //     //1,1,0,0,1,1,1,0,1--》[11, 111, 1]
+     //     System.out.println(Arrays.toString(strings));
+     //     //记录返回值
+     //     int num = 0;
+     //     for (int i = 0; i < strings.length; i++) {
+     //         //[11, 111, 1]的分割后每段值的长度：2、3、1
+     //         int n = strings[i].length();
+     //         //System.out.println(n);
+     //         while (n != 0){
+     //             //卡车3
+     //             if(n%3 == 0){
+     //                 num++;
+     //                 //变成0，n=n%3--》无论是1还是2都为0
+     //                 //n%=3;
+     //                 //可以直接变成0，每次计算完一次车种都转成0否则会一直是n不等于0然后循环
+     //                 n=0;
+     //
+     //                 //货车2
+     //             }else if(n%2 == 0){
+     //                 num++;
+     //                 // n%=2;
+     //                 n=0;
+     //
+     //             }else{
+     //                 //小车1
+     //                 num++;
+     //                 n=0;
+     //             }
+     //         }
+     //     }
+     //     System.out.println(num);
+     // }
 
-                     //货车2
-                 }else if(n%2 == 0){
-                     num++;
-                     // n%=2;
-                     n=0;
+    /**
+     * 法2
+     * @param args
+     */
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        String cars = in.nextLine()
+            .replaceAll(",", "");
+        in.close();
 
-                 }else{
-                     //小车1
-                     num++;
-                     n=0;
-                 }
-             }
-         }
-         System.out.println(num);
-     }
+        int count = 0;
+
+        String[] split = cars.split("[0]+");
+        for (String car : split) {
+            int len = car.length();
+            while (len > 3) {
+                count++;
+                len -= 3;
+            }
+            if (len != 0) {
+                count++;
+            }
+        }
+
+        System.out.println(count);
+    }
 }

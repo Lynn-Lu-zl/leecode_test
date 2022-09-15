@@ -38,40 +38,32 @@ import java.util.Stack;
  */
 public class 表达式括号匹配 {
      public static void main(String[] args) {
-         /**
-          *
-          */
+
+
+         //表达式括号匹配
          Scanner scanner = new Scanner(System.in);
-         //输入
          String line = scanner.nextLine();
          if (line.isEmpty()){
-             System.out.println(-1);
-         }
+             System.out.println(-1); }
          char[] chars = line.toCharArray();
          System.out.println(chars);
-
          Stack<Character> stack = new Stack<>();
-
-         //输出括号的对数
          int count = 0;
          for (char aChar : chars) {
-             //栈为空或者栈顶元素为遍历值为左括号则入栈
+         //栈为空或者栈顶元素为遍历值为左括号则入栈
             if (stack.isEmpty() || aChar == '('){
                 stack.push(aChar);
-                //这是栈肯定不为空且栈顶元素为左括号--》如果遍历的是右括号则弹出一个左括号
+         //这是栈肯定不为空且栈顶元素为左括号
             }else if (aChar == ')'){
-            // }else if (stack.peek()=='(' && aChar == ')'){
                 stack.pop();
-                //成功弹出一对就计数叠加
-                count++;
-            }
-         }
+                count++; } }
          //循环结束后栈为空则输出正确的括号数
          if (stack.empty()){
              System.out.println(count);
          }else {
              //不为空则返回-1
-             System.out.println(-1);
-         }
+             System.out.println(-1); }
+
+
      }
 }

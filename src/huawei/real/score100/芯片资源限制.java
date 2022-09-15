@@ -48,13 +48,15 @@ import java.util.Scanner;
  */
 public class 芯片资源限制 {
      public static void main(String[] args) {
+         //芯片资源限制，一个业务芯片的容量为10G
          Scanner in = new Scanner(System.in);
          int M = in.nextInt();
          int N = in.nextInt();
          in.nextLine();
          String[] str = in.nextLine().split(" ");
          int a = 0; // 记录芯片被业务A的使用个数,即芯片资源ID
-         int index1 = 1, index2 = 1;  // 未满状态的第一块芯片编号和全空状态的第一块芯片编号
+         // 未满状态的第一块芯片编号和全空状态的第一块芯片编号
+         int index1 = 1, index2 = 1;
          for (int i = 0; i < N - 1; i++) {  // 前N-1个业务的分配
              if (str[i].charAt(0) == 'A') {
                  if (a + 1 == 4) {
@@ -63,18 +65,13 @@ public class 芯片资源限制 {
                  } else {
                      a++;
                      if (index1 == index2) {
-                         index2++;
-                     }
-                 }
+                         index2++; } }
              } else if (str[i].charAt(0) == 'B') {
                  if (index1 == index2) {
                      index1++;
                      index2++;
                  } else {
-                     index2++;
-                 }
-             }
-         }
+                     index2++; } } }
          // 判断最后一个
          if (str[N - 1].charAt(0) == 'A') {
              if (index1 > M) {
@@ -82,17 +79,16 @@ public class 芯片资源限制 {
                  System.out.println(0);
              } else {
                  System.out.println(index1);
-                 System.out.println(a + 1);
-             }
+                 System.out.println(a + 1); }
          } else {
              if (index2 > M) {
                  System.out.println(0);
                  System.out.println(0);
              } else {
                  System.out.println(index2);
-                 System.out.println(1);
-             }
-         }
+                 System.out.println(1); } }
+
+
 
          }
 }

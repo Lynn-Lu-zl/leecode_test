@@ -31,39 +31,40 @@ import java.util.*;
  */
 public class 字符串统计 {
     public static void main(String[] args) {
+
+
+        //剩余可用字符集,@前的为全量字符集
         Scanner sc = new Scanner(System.in);
         String[] split = sc.nextLine().split("@");
         if (split.length<2){
             System.out.println(split[0]);
-            return;
-        }
+            return; }
         List<String> list = new ArrayList<>();
         Map<String,Integer> map = new HashMap<>();
         String[] full = split[0].split(",");
         for (int i = 0; i < full.length; i++) {
             String[] dan = full[i].split(":");
             list.add(dan[0]);
-            map.put(dan[0],Integer.parseInt(dan[1]));
-        }
+            map.put(dan[0],Integer.parseInt(dan[1])); }
         String[] used = split[1].split(",");
         for (int i = 0; i < used.length; i++) {
             String[] dan = used[i].split(":");
             int fullCount = map.get(dan[0]);
             if (fullCount > Integer.parseInt(dan[1])){
-                map.put(dan[0],fullCount - Integer.parseInt(dan[1]));
+                map.put(dan[0],fullCount-Integer.parseInt(dan[1]));
             }else {
                 map.remove(dan[0]);
-                list.remove(dan[0]);
-            }
-        }
+                list.remove(dan[0]); } }
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < list.size(); i++) {
             String tem = list.get(i);
             int left = map.get(tem);
-            sb.append(tem).append(":").append(left).append(",");
-        }
+            sb.append(tem).append(":").append(left).append(",");}
         sb.deleteCharAt(sb.length()-1);
         System.out.println(sb);
+
+
+
     }
 
 

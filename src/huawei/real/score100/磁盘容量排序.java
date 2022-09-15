@@ -87,7 +87,7 @@ public class 磁盘容量排序 {
              num[i][0] = i + 1;
              num[i][1] = sum;
          }
-         Arrays.sort(num, (e1, e2)->(e1[1]==e2[1]?(e1[0]-e2[0]):(e1[1]-e2[1])));
+         Arrays.sort(num, (e1, e2)->(e1[1]==e2[1] ? (e1[0]-e2[0]) : (e1[1]-e2[1])));
          for (int i = 0; i < n; i++) {
              if (i == n - 1) {
                  System.out.print(map.get(num[i][0]));

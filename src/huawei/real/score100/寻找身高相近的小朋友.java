@@ -24,40 +24,99 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124551079
  */
 public class 寻找身高相近的小朋友 {
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     String[] input = sc.nextLine().split(" ");
+    //     int myHigh = Integer.parseInt(input[0]);
+    //     int count = Integer.parseInt(input[1]);
+    //     String[] students = sc.nextLine().split(" ");
+    //     List<Student> list = new ArrayList<>();
+    //     for (int i = 0; i < count; i++) {
+    //         int highTemp = Integer.parseInt(students[i]);
+    //         list.add(new Student(highTemp, Math.abs(myHigh - highTemp)));
+    //     }
+    //     list.sort(null);
+    //     for (int i = 0; i < list.size(); i++) {
+    //         System.out.print(list.get(i).high + " ");
+    //     }
+    //     System.out.println();
+    // }
+    // private static class Student implements Comparable<Student>{
+    //     private int high;
+    //     private int gap;
+    //
+    //     public Student(int high, int gap) {
+    //         this.high = high;
+    //         this.gap = gap;
+    //     }
+    //
+    //     @Override
+    //     public int compareTo(Student stu) {
+    //         if (stu.gap != this.gap){
+    //             return this.gap - stu.gap ;
+    //         }else {
+    //             return this.high - stu.high ;
+    //         }
+    //     }
+    // }
+
+
+    /**
+     * 法2
+     */
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-        String[] input = sc.nextLine().split(" ");
-        int myHigh = Integer.parseInt(input[0]);
-        int count = Integer.parseInt(input[1]);
-        String[] students = sc.nextLine().split(" ");
-        List<Student> list = new ArrayList<>();
-        for (int i = 0; i < count; i++) {
-            int highTemp = Integer.parseInt(students[i]);
-            list.add(new Student(highTemp, Math.abs(myHigh - highTemp)));
-        }
-        list.sort(null);
-        for (int i = 0; i < list.size(); i++) {
-            System.out.print(list.get(i).high + " ");
-        }
-        System.out.println();
-    }
-    private static class Student implements Comparable<Student>{
-        private int high;
-        private int gap;
 
-        public Student(int high, int gap) {
-            this.high = high;
-            this.gap = gap;
-        }
+            //寻找身高相近的小朋友,小明今年升学到小学一年级
+            Scanner scanner = new Scanner(System.in);
+            int h = scanner.nextInt();
+            int n = scanner.nextInt();
+            List<Integer> highs = new ArrayList<>(n);
+            for (int i = 0; i < n; i++) {
+                highs.add(scanner.nextInt()); }
+            highs.sort((h1, h2) -> {
+                int diff1 = Math.abs(h1 - h);
+                int diff2 = Math.abs(h2 - h);
+             return diff1 == diff2 ? h1-h2:diff1-diff2;});
+            for (int i = 0; i < highs.size(); i++) {
+                System.out.print(highs.get(i));
+                if (i != highs.size() - 1) {
+                    System.out.print(" "); } }
 
-        @Override
-        public int compareTo(Student stu) {
-            if (stu.gap != this.gap){
-                return this.gap - stu.gap ;
-            }else {
-                return this.high - stu.high ;
-            }
-        }
     }
+
+
+    /**
+     * 法3
+     * @param args
+     */
+    // public static void main(String[] args) {
+    //     //寻找身高相近的小朋友,发现其他小朋友身高参差不齐
+    //     Scanner sc = new Scanner(System.in);
+    //     String[] input = sc.nextLine().split(" ");
+    //     int myHigh = Integer.parseInt(input[0]);
+    //     int count = Integer.parseInt(input[1]);
+    //     String[] students = sc.nextLine().split(" ");
+    //     List<Student> list = new ArrayList<>();
+    //     for (int i = 0; i < count; i++) {
+    //         int highTemp = Integer.parseInt(students[i]);
+    //         list.add(new Student(highTemp, Math.abs(myHigh - highTemp)));}
+    //     list.sort(null);
+    //     for (int i = 0; i < list.size(); i++) {
+    //         System.out.print(list.get(i).high + " "); }
+    //     System.out.println(); }
+    // private static class Student implements Comparable<Student>{
+    //     private int high;
+    //     private int gap;
+    //     public Student(int high, int gap) {
+    //         this.high = high;
+    //         this.gap = gap; }
+    //     @Override
+    //     public int compareTo(Student stu) {
+    //         if (stu.gap != this.gap) {
+    //             return this.gap - stu.gap;
+    //         } else {
+    //             return this.high - stu.high; }}}
+
+
 
 }

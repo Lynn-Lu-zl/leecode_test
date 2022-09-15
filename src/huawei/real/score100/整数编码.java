@@ -46,6 +46,8 @@ import java.util.Scanner;
  */
 public class 整数编码 {
     public static void main(String[] args) {
+
+        //整数编码，使得待编码的数字越小，编码后所占用的字节数越小
         char[] arr = {'A','B','C','D','E','F','G','H','I','J','K','L',
             'M','N','O','P','K','R','S','T','U','V','W','X','Y','Z'};
         Scanner sc = new Scanner(System.in);
@@ -60,31 +62,62 @@ public class 整数编码 {
                 flag = false;
                 int mid = 7 - str.length();
                 for (int i = 0; i < mid; i++) {
-                    str = "0" + str;
-                }
-            }
+                    str = "0" + str; } }
             String sub = str.substring(str.length() - 7);
             str = str.substring(0,str.length() - 7);
             if (flag){
                 sub = "1" + sub;
             }else {
-                sub = "0" + sub;
-            }
-            String res = Integer.toHexString(Integer.parseInt(sub, 2));
+                sub = "0" + sub; }
+            String res = Integer.toHexString(Integer.parseInt(sub,2));
             if (res.length()<2){//16进制不足2位补0
-                res = "0" + res;
-            }
+                res = "0" + res; }
             //string.toUpperCase() 使用直接将小写改成大写
             for (int i = 0; i < res.length(); i++) {
                 char ch = res.charAt(i);
                 if (ch>= 'a' && ch<= 'z'){
-                    ch = arr[ch - 'a'];
-                }
-                sb.append(ch);
-            }
-        }
+                    ch = arr[ch - 'a']; }
+                sb.append(ch); } }
         //每个字符如果是小写要转成大写
         System.out.println(sb);
+
+
     }
+
+
+    /**
+     * 法2,64%
+     */
+     // public static void main(String[] args) {
+     //     Scanner in = new Scanner(System.in);
+     //     int num = Integer.parseInt(in.nextLine());
+     //     in.close();
+     //
+     //     String binary = Integer.toBinaryString(num);
+     //
+     //     int len = binary.length();
+     //
+     //     StringBuilder sb = new StringBuilder();
+     //     for (int i = len; i > 0; i -= 7) {
+     //         int start = Math.max(i - 7, 0);
+     //
+     //         String bin = binary.substring(start, i);
+     //
+     //         if (bin.length() < 7) {
+     //             StringBuilder head = new StringBuilder();
+     //             for (int j = 0; j < 7 - bin.length(); j++) {
+     //                 head.append("0");
+     //             }
+     //             bin = head.append(bin).toString();
+     //         }
+     //         bin = i - 7 <= 0 ? "0" + bin : "1" + bin;
+     //         String hex = Integer.toHexString(Integer.parseInt(bin, 2)).toUpperCase();
+     //         if (hex.length() == 1) hex = "0" + hex;
+     //         sb.append(hex);
+     //     }
+     //
+     //     System.out.println(sb);
+     // }
+
 
 }

@@ -1,9 +1,12 @@
 package huawei.real.score100;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Scanner;
 
 /**
+ *  满足规则的数组组合 /  是否有满足规则的数字组合   有人考过
  * 给定一个正整数数组，检查数组中是否存在满足规则的数字组合
  * 规则：
  * A = B + 2C
@@ -38,39 +41,67 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124509176
  */
 public class 检查是否存在满足条件的数字组合 {
+    // public static void main(String[] args) {
+    //     Scanner sc = new Scanner(System.in);
+    //     int count = Integer.parseInt(sc.nextLine());
+    //     int[] arr = new int[count];
+    //     String[] input = sc.nextLine().split(" ");
+    //     for (int i = 0; i < count; i++) {
+    //         arr[i] = Integer.parseInt(input[i]);
+    //     }
+    //     Arrays.sort(arr);
+    //     for (int i = 0; i < count; i++) {
+    //         for (int j = i + 1; j < count; j++) {
+    //             if (checkAdd(arr,i,j)) {
+    //                 return;
+    //             }
+    //         }
+    //     }
+    //     System.out.println(0);
+    // }
+    //
+    // private static boolean checkAdd(int[] arr,int idx1,int idx2){//a
+    //     int sub1 = 2 * arr[idx1] + arr[idx2];
+    //     int sub2 = arr[idx1] + 2 * arr[idx2];
+    //     for (int i = 0; i < arr.length; i++) {
+    //         if (arr[i] == sub1 && i> idx1 && i> idx2) {
+    //             System.out.println(sub1 + " " + arr[idx2] + " " + arr[idx1]);
+    //             return true;
+    //         }
+    //         if (i> idx1 && i> idx2 && arr[i] == sub2) {
+    //             System.out.println(sub1 + " " + arr[idx1] + " " + arr[idx2]);
+    //             return true;
+    //         }
+    //     }
+    //     return false;
+    // }
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        int count = Integer.parseInt(sc.nextLine());
-        int[] arr = new int[count];
-        String[] input = sc.nextLine().split(" ");
-        for (int i = 0; i < count; i++) {
-            arr[i] = Integer.parseInt(input[i]);
+        int len = Integer.parseInt(sc.nextLine());
+        String line = sc.nextLine();
+        String[] split = line.split(" ");
+        List<Integer> list = new ArrayList<>();
+        for (int i = 0; i < len; i++) {
+            list.add(Integer.parseInt(split[i]));
         }
-        Arrays.sort(arr);
-        for (int i = 0; i < count; i++) {
-            for (int j = i + 1; j < count; j++) {
-                if (checkAdd(arr,i,j)) {
-                    return;
+        // 对list进行排序
+        Collections.sort(list);
+        // 三重循环，虽然效率低，但是简单
+        for (int a = len - 1; a >= 0; a--) {
+            // A的值肯定是大于等于B、C的，所以B、C的取值范围要在a前
+            for (int b = 0; b < a; b++) {
+                // c!=b 是因为每个成员只能在结果算式中使用一次
+                for (int c = 0; c < a && c != b; c++) {
+                    if (list.get(a) == list.get(b) + 2*list.get(c)) {
+                        System.out.println(list.get(a) + " " + list.get(b) + " " + list.get(c));
+                        return;
+                    }
                 }
             }
         }
         System.out.println(0);
-    }
 
-    private static boolean checkAdd(int[] arr,int idx1,int idx2){//a
-        int sub1 = 2 * arr[idx1] + arr[idx2];
-        int sub2 = arr[idx1] + 2 * arr[idx2];
-        for (int i = 0; i < arr.length; i++) {
-            if (arr[i] == sub1 && i> idx1 && i> idx2) {
-                System.out.println(sub1 + " " + arr[idx2] + " " + arr[idx1]);
-                return true;
-            }
-            if (i> idx1 && i> idx2 && arr[i] == sub2) {
-                System.out.println(sub1 + " " + arr[idx1] + " " + arr[idx2]);
-                return true;
-            }
-        }
-        return false;
     }
 
 }

@@ -84,6 +84,7 @@ public class 报文解压缩 {
          // System.out.println(res);
 
 
+         //报文解压缩,为了提升数据传输的效率
          Scanner sc = new Scanner(System.in);
          String input = sc.nextLine();
          char[] ch = input.toCharArray();
@@ -91,8 +92,7 @@ public class 报文解压缩 {
          for (int i = 0; i < input.length(); i++) {
              int t = i;
              while(ch[i] <= '9' && ch[i] >= '0'){
-                 i++;
-             }
+                 i++; }
              stack.push(input.substring(t, i));
              if (ch[i] != ']')
                  stack.push(String.valueOf(ch[i]));
@@ -109,18 +109,13 @@ public class 报文解压缩 {
                              sb1.append(sb);
                          }
                          stack.push(sb1.toString());
-                         break;
-                     }
-                 }
-             }
-         }
+                         break; } } } }
          String result = "";
          while(!stack.isEmpty()){
-             result += stack.pop();
-         }
+             result += stack.pop(); }
          for (int i = result.length() - 1; i >= 0; i--) {
-             System.out.print(result.charAt(i));
-         }
+             System.out.print(result.charAt(i)); }
+
      }
 
 

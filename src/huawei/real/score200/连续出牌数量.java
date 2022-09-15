@@ -35,6 +35,7 @@ import java.util.Scanner;
  */
 public class 连续出牌数量 {
     public static void main(String[] args) {
+        //连续出牌数量，数字从0-9，有r(红色),，g(绿色），b(蓝色)，y(黄色)四种颜色
         Scanner in = new Scanner(System.in);
         String[] str1 = in.nextLine().split(" ");
         String[] str2 = in.nextLine().split(" ");

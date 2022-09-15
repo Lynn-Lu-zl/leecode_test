@@ -1,8 +1,6 @@
 package huawei.real.score100;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  *   运维工程师采集到某产品线网运行一天产生的日志n条
@@ -28,9 +26,9 @@ import java.util.Scanner;
  *
  *    示例：
  *  输入：
- *   2
- *   01:41:8.9
- *   1:1:09.211
+ 2
+ 01:41:8.9
+ 1:1:09.211
  *  输出
  *    1:1:09.211
  *    01:41:8.9
@@ -56,55 +54,76 @@ import java.util.Scanner;
  *   时间相同保持输入顺序
  */
 public class 日志排序 {
+     // public static void main(String[] args) {
+     //     Scanner sc = new Scanner(System.in);
+     //     // 输入的个数
+     //     int len = Integer.parseInt(sc.nextLine());
+     //     List<String> list = new ArrayList<>();
+     //     int i = 0;
+     //     while (i < len) {
+     //         list.add(sc.nextLine());
+     //         i++;
+     //     }
+     //     sc.close();
+     //     // 对集合进行排序  a1与a2比较，结果大于0互换位置 小于等于0不变
+     //     list.stream().sorted((a1, a2) -> {
+     //         // 根据规则切分出时 分 秒 毫秒
+     //         String[] time1 = a1.split(":");
+     //         String[] time2 = a2.split(":");
+     //
+     //         // 用.进行分割时需要用到转义字符 \\
+     //         String[] s_n1 = time1[2].split("\\.");
+     //         String[] s_n2 = time2[2].split("\\.");
+     //         int h1 = Integer.parseInt(time1[0]);
+     //         int h2 = Integer.parseInt(time2[0]);
+     //         int m1 = Integer.parseInt(time1[1]);
+     //         int m2 = Integer.parseInt(time2[1]);
+     //         int s1 = Integer.parseInt(s_n1[0]);
+     //         int s2 = Integer.parseInt(s_n2[0]);
+     //         int n1 = Integer.parseInt(s_n1[1]);
+     //         int n2 = Integer.parseInt(s_n2[1]);
+     //
+     //         // 小时不相等比较小时
+     //         if (h1 != h2) {
+     //             return h1 - h2;
+     //         }
+     //         // 分钟不相等比较分钟
+     //         if (m1 != m2) {
+     //             return m1 - m2;
+     //         }
+     //         // 秒不相等比较秒
+     //         if (s1 != s2) {
+     //             return s1 - s2;
+     //         }
+     //         // 毫秒不相等比较毫秒
+     //         if (n1 != n2) {
+     //             return n1 - n2;
+     //         }
+     //         // 都相等按原来顺序
+     //         return 0;
+     //     }).forEach((a) -> {
+     //         System.out.println(a);
+     //     });
+     //     }
+
+
      public static void main(String[] args) {
-         Scanner sc = new Scanner(System.in);
-         // 输入的个数
-         int len = Integer.parseInt(sc.nextLine());
-         List<String> list = new ArrayList<>();
-         int i = 0;
-         while (i < len) {
-             list.add(sc.nextLine());
-             i++;
-         }
-         sc.close();
-         // 对集合进行排序  a1与a2比较，结果大于0互换位置 小于等于0不变
-         list.stream().sorted((a1, a2) -> {
-             // 根据规则切分出时 分 秒 毫秒
-             String[] time1 = a1.split(":");
-             String[] time2 = a2.split(":");
+         //日志排序，运维工程师采集到某产品线网运行一天产生的日志n条
+         Scanner in = new Scanner(System.in);
+         int n = Integer.parseInt(in.nextLine());
+         LinkedList<String> times = new LinkedList<>();
+         for (int i = 0; i < n; i++) {
+             times.add(in.nextLine()); }
+         times.sort(Comparator.comparingLong(日志排序::getTime));
+         times.forEach(System.out::println); }
+    private static long getTime(String str) {
+        String[] t1 = str.split(":");
+        String[] t2 = t1[2].split("\\.");
+        int h = Integer.parseInt(t1[0]) * 60 * 60 * 1000;
+        int m = Integer.parseInt(t1[1]) * 60 * 1000;
+        int s = Integer.parseInt(t2[0]) * 1000;
+        int n = Integer.parseInt(t2[1]);
+        return h + m + s + n; }
 
-             // 用.进行分割时需要用到转义字符 \\
-             String[] s_n1 = time1[2].split("\\.");
-             String[] s_n2 = time2[2].split("\\.");
-             int h1 = Integer.parseInt(time1[0]);
-             int h2 = Integer.parseInt(time2[0]);
-             int m1 = Integer.parseInt(time1[1]);
-             int m2 = Integer.parseInt(time2[1]);
-             int s1 = Integer.parseInt(s_n1[0]);
-             int s2 = Integer.parseInt(s_n2[0]);
-             int n1 = Integer.parseInt(s_n1[1]);
-             int n2 = Integer.parseInt(s_n2[1]);
 
-             // 小时不相等比较小时
-             if (h1 != h2) {
-                 return h1 - h2;
-             }
-             // 分钟不相等比较分钟
-             if (m1 != m2) {
-                 return m1 - m2;
-             }
-             // 秒不相等比较秒
-             if (s1 != s2) {
-                 return s1 - s2;
-             }
-             // 毫秒不相等比较毫秒
-             if (n1 != n2) {
-                 return n1 - n2;
-             }
-             // 都相等按原来顺序
-             return 0;
-         }).forEach((a) -> {
-             System.out.println(a);
-         });
-         }
 }

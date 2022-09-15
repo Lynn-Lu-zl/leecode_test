@@ -79,6 +79,7 @@ public class 猴子吃桃 {
          //     return time <= H;
          //      }
 
+         //猴子吃桃，孙悟空喜欢吃蟠桃
          Scanner in = new Scanner(System.in);
          String[] str = in.nextLine().split(" ");
          int[] nums = new int[str.length - 1];

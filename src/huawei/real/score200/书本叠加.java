@@ -29,14 +29,17 @@ import java.util.Scanner;
  */
 public class 书本叠加 {
     public static void main(String[] args) {
+
+        //书本叠加，当A书的长度和宽度都大于B书时
         Scanner in = new Scanner(System.in);
-        String s = in.nextLine().replaceAll("\\[", "").replaceAll("\\]", "");
+        String s = in.nextLine()
+            .replaceAll("\\[", "")
+            .replaceAll("\\]", "");
         String[] str = s.split(",");
         int[][] nums = new int[str.length / 2][2];
         for (int i = 0; i < nums.length; i++) {
             nums[i][0] = Integer.parseInt(str[i * 2]);
-            nums[i][1] = Integer.parseInt(str[i * 2 + 1]);
-        }
+            nums[i][1] = Integer.parseInt(str[i * 2 + 1]); }
         Arrays.sort(nums, (a, b) -> (a[0] == b[0] ? b[1] - a[1] : a[0] - b[0]));
         int[] dp = new int[nums.length];
         Arrays.fill(dp, 1);
@@ -44,12 +47,10 @@ public class 书本叠加 {
         for (int i = 0; i < nums.length; i++) {
             for (int j = 0; j < i; j++) {
                 if (nums[i][1] > nums[j][1]) {
-                    dp[i] = Math.max(dp[i], dp[j] + 1);
-                }
-            }
-            res = Math.max(dp[i], res);
-        }
+                    dp[i] = Math.max(dp[i], dp[j] + 1); } }
+            res = Math.max(dp[i], res); }
         System.out.println(res);
+
     }
 
 }

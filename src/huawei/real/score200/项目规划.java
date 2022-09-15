@@ -119,7 +119,7 @@ import java.util.Scanner;
 public class 项目规划 {
     public static int res = 0;
     public static void main(String[] args) {
-        //暴力回溯
+        //H公司在做项目规划，当前3个团队（前端、后端、测试）共同规划完成M个项目
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         int[] team = new int[3];

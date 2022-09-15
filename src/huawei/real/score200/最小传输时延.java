@@ -23,7 +23,9 @@ import java.util.Scanner;
  */
 public class 最小传输时延 {
     public static void main(String[] args) {
-        //邻接表
+
+
+        //最小传输时延  某通信网络中有N个网络结点
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
         int M = in.nextInt();
@@ -35,7 +37,6 @@ public class 最小传输时延 {
         }
         int start = in.nextInt();
         int end = in.nextInt();
-
         // Dijkstra算法，邻接表
         PriorityQueue<int[]> queue = new PriorityQueue<>(Comparator.comparingInt(a -> a[1]));
         int[] dist = new int[N + 1];
@@ -60,6 +61,8 @@ public class 最小传输时延 {
         } else {
             System.out.println(dist[end]);
         }
+
+
     }
 
 }

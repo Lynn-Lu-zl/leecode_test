@@ -3,6 +3,7 @@ package huawei.real.score100;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.TreeMap;
 
 /**
  * 在通信系统中，一个常见的问题是对用户进行不同策略的调度，会得到不同的系统消耗和性能。
@@ -33,44 +34,79 @@ import java.util.Scanner;
  * 原文链接：https://blog.csdn.net/csfun1/article/details/124551079
  */
 public class 用户调度问题 {
-     public static void main(String[] args) {
-         Scanner sc = new Scanner(System.in);
-         int count = Integer.parseInt(sc.nextLine());
-         List<List<Integer>> lists = new ArrayList<>();
-         for (int i = 0; i < count; i++) {
-             String[] input = sc.nextLine().split(" ");
-             List<Integer> list = new ArrayList<>();
-             for (int j = 0; j < 3; j++) {
-                 list.add(Integer.parseInt(input[j]));
-             }
-             lists.add(list);
-         }
-         //执行策略
-         int pre = -1;
-         int total = 0;
-         for (int i = 0; i < lists.size(); i++) {
-             List<Integer> list = lists.get(i);
-             int min = Integer.MAX_VALUE;
-             if (i == 0){
-                 for (int j = 0; j < 3; j++) {
-                     if (min >= list.get(j)){
-                         min = list.get(j);
-                         pre = j;
-                     }
-                 }
-             }else {
-                 int tem = 0;
-                 for (int j = 0; j < 3; j++) {
-                     if (j != pre && min >= list.get(j)){
-                         min = list.get(j);
-                         tem = j;
-                     }
-                 }
-                 pre = tem;
-             }
-             total += min;
-         }
-         System.out.println(total);
+     // public static void main(String[] args) {
+     //     Scanner sc = new Scanner(System.in);
+     //     int count = Integer.parseInt(sc.nextLine());
+     //     List<List<Integer>> lists = new ArrayList<>();
+     //     for (int i = 0; i < count; i++) {
+     //         String[] input = sc.nextLine().split(" ");
+     //         List<Integer> list = new ArrayList<>();
+     //         for (int j = 0; j < 3; j++) {
+     //             list.add(Integer.parseInt(input[j]));
+     //         }
+     //         lists.add(list);
+     //     }
+     //     //执行策略
+     //     int pre = -1;
+     //     int total = 0;
+     //     for (int i = 0; i < lists.size(); i++) {
+     //         List<Integer> list = lists.get(i);
+     //         int min = Integer.MAX_VALUE;
+     //         if (i == 0){
+     //             for (int j = 0; j < 3; j++) {
+     //                 if (min >= list.get(j)){
+     //                     min = list.get(j);
+     //                     pre = j;
+     //                 }
+     //             }
+     //         }else {
+     //             int tem = 0;
+     //             for (int j = 0; j < 3; j++) {
+     //                 if (j != pre && min >= list.get(j)){
+     //                     min = list.get(j);
+     //                     tem = j;
+     //                 }
+     //             }
+     //             pre = tem;
+     //         }
+     //         total += min;
+     //     }
+     //     System.out.println(total);
+     // }
 
-     }
+
+    /**
+     * 法2,85%
+     */
+    public static void main(String[] args) {
+
+        // 用户调度问题，1号用户使用B策略，2号用户使用C策略
+        Scanner in = new Scanner(System.in);
+        int n = Integer.parseInt(in.nextLine());
+        ArrayList<TreeMap<Integer, Integer>> res = new ArrayList<>();
+        for (int i = 0; i < n; i++) {
+            String[] split = in.nextLine().split(" ");
+            TreeMap<Integer, Integer> map = new TreeMap<>();
+            for (int j = 0; j < split.length; j++) {
+                map.put(Integer.parseInt(split[j]), j); }
+            res.add(map); }
+        Integer res1 = new ArrayList<>(res.get(0).keySet()).get(0);
+        int sum = res1;
+        Integer type = res.get(0).get(res1);
+        if (res.size() > 1) {
+            for (int i = 1; i < res.size(); i++) {
+                ArrayList<Integer> keyList = new ArrayList<>(res.get(i).keySet());
+                Integer resN = keyList.get(0);
+                Integer typeN = res.get(i).get(resN);
+                if (!typeN.equals(type)) {
+                    sum += resN;
+                    type = typeN;
+                } else {
+                    sum += keyList.get(1);
+                    type = res.get(i).get(keyList.get(1)); } } }
+        System.out.println(sum);
+
+
+    }
+
 }

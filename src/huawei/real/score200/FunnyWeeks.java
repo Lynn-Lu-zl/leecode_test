@@ -24,7 +24,6 @@ public class FunnyWeeks {
     private static Map<String, Integer> map1 = new HashMap<>(),map2 = new HashMap<>();
     private static int[] dx = new int[]{-1, 0, 1, 0}, dy = new int[]{0, 1, 0, -1};
     private static int n, m;
-
      public static void main(String[] args) {
          Scanner cin = new Scanner(System.in);
          n = cin.nextInt();
@@ -35,10 +34,7 @@ public class FunnyWeeks {
                  arr[i][j] = cin.nextInt();
                  if(arr[i][j] == 2) {
                      pos[k++] = i;
-                     pos[k++] = j;
-                 }
-             }
-         }
+                     pos[k++] = j; } } }
          dfs(pos[0],pos[1],map1);
          dfs(pos[2],pos[3],map2);
          int res = 0;
@@ -46,18 +42,13 @@ public class FunnyWeeks {
          else {
              for(Map.Entry<String,Integer> entry : map1.entrySet()) {
                  String key = entry.getKey();
-                 if(map2.containsKey(key)) res++;
-             }
-             System.out.println(res);
-         }
-     }
-
+                 if(map2.containsKey(key)) res++; }
+             System.out.println(res); } }
     private  static void dfs(int x, int y,Map<String,Integer> map) {
         if (arr[x][y] == 3) {
             String key = get(x,y);
             map.put(key, map.getOrDefault(key, 0) + 1);
-            return;
-        }
+            return; }
         int k = arr[x][y];
         arr[x][y] = -1;
         for (int i = 0; i < 4; i++) {
@@ -70,12 +61,10 @@ public class FunnyWeeks {
                 && arr[a][b] != -1
                 && !map.containsKey(get(a,b))
                 ) {
-                dfs(a, b,map);
-            }
-        }
-        arr[x][y] = k;
-    }
-    public static String get(int x,int y) {
-        return  String.valueOf(x) + "@" + String.valueOf(y);
-     }
+                dfs(a, b,map); } }
+        arr[x][y] = k; }
+    public static String get(int x,int y)
+    { return  String.valueOf(x) + "@" + String.valueOf(y); }
+
+
 }

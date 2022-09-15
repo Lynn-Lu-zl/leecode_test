@@ -28,6 +28,8 @@ import java.util.Scanner;
  */
 public class 数列描述 {
     public static void main(String[] args) {
+
+        //数列描述,有一个数列a[N] (N=60)
         Scanner sc = new Scanner(System.in);
         int input = sc.nextInt();
         String temp = "1";
@@ -35,23 +37,21 @@ public class 数列描述 {
             int idx = 0;
             char pre = ' ';
             StringBuilder sb = new StringBuilder();
-            for (int j = 0; j < temp.length(); j++) {
+            for (int j = 0; j < temp.length(); j++){
                 if (j == 0){
-                    pre = temp.charAt(j);
-                }
+                    pre = temp.charAt(j); }
                 char tem = temp.charAt(j);
                 if (tem == pre){
                     idx++;
                 }else {
                     sb.append(idx).append(pre);
                     idx = 1;
-                    pre = tem;
-                }
-            }
+                    pre = tem; } }
             sb.append(idx).append(pre);
-            temp = sb.toString();
-        }
+            temp = sb.toString(); }
         System.out.println(temp);
+
+
     }
 
 }

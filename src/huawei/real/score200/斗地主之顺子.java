@@ -46,6 +46,7 @@ import java.util.Scanner;
 public class 斗地主之顺子 {
     private static boolean flag = false;
      public static void main(String[] args) {
+         //斗地主之顺子,由至少5张由小到大连续递增的扑克牌组成
          Scanner sc = new Scanner(System.in);
          String[] input = sc.nextLine().split(" ");
          int[] arr = new int[input.length];
@@ -60,43 +61,31 @@ public class 斗地主之顺子 {
              }else if (tem.equals("K")){
                  arr[i] = 13;
              }else {
-                 arr[i] = Integer.parseInt(tem);
-             }
-         }
+                 arr[i] = Integer.parseInt(tem); } }
          Arrays.sort(arr);
          //查找可以连成5张的顺子
          int start = 0;
          int temp = 0;
          for (int i = 0; i < arr.length; i++) {
              if (arr[i] == 2){//2不能顺子
-                 continue;
-             }
+                 continue; }
              if (start == 0){//初始化
                  start = arr[i];
                  temp = arr[i];
-                 continue;
-             }
+                 continue; }
              if (arr[i] == temp){//对子等
-                 continue;
-             }
+                 continue; }
              if (arr[i] == temp+1){
                  temp = arr[i];
              }else {//不能连上了
                  if (temp - start >= 4){
-                     print(start,temp);
-                 }
+                     print(start,temp); }
                  start = 0;
-                 temp = 0;
-             }
-         }
+                 temp = 0; } }
          if (temp - start >= 4){
-             print(start,temp);
-         }
+             print(start,temp); }
          if (!flag){
-             System.out.println("NO");
-         }
-     }
-
+             System.out.println("NO"); } }
     private static void print(int start,int end){
         flag = true;
         for (int j = start; j <= end ; j++) {
@@ -109,10 +98,7 @@ public class 斗地主之顺子 {
             }else if (j == 13){
                 System.out.print("K ");
             }else {
-                System.out.print(j + " ");
-            }
-        }
-        System.out.println();
-    }
+                System.out.print(j + " "); } }
+        System.out.println(); }
 
 }

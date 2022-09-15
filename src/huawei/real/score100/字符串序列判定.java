@@ -28,6 +28,8 @@ import java.util.Scanner;
  */
 public class 字符串序列判定 {
     public static void main(String[] args) {
+
+        //字符串序列判定,输入两个字符串S和L
         Scanner sc = new Scanner(System.in);
         String target = sc.nextLine();
         String search = sc.nextLine();
@@ -35,15 +37,15 @@ public class 字符串序列判定 {
         for (int i = 0; i < target.length(); i++) {
             char ch = target.charAt(i);
             if (search.contains(String.valueOf(ch))){
-                int i1 = search.indexOf(String.valueOf(ch));
-                idx += i1;
-                search = search.substring(i1+1);
+              int i1 = search.indexOf(String.valueOf(ch));
+              idx += i1;
+              search = search.substring(i1+1);
             }else {
                 System.out.println(-1);
-                return;
-            }
-        }
+                return; } }
         System.out.println(idx + target.length() - 1);
+
+
     }
 
 }

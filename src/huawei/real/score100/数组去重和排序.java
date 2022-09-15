@@ -43,19 +43,18 @@ public class 数组去重和排序 {
         /**
          * LinkedHashMap继承自HashMap，它的多种操作都是建立在HashMap操作的基础上的。同HashMap不同的是，LinkedHashMap维护了一个Entry的双向链表，保证了插入的Entry中的顺序。这也是Linked的含义。
          */
+
+        //数组去重和排序，给定一个乱序的数组，删除所有的重复元素
         Scanner in = new Scanner(System.in);
         String[] str = in.nextLine().split(",");
         int[] ints = new int[str.length];
         for (int i = 0; i < ints.length; i++) {
-            ints[i] = Integer.parseInt(str[i]);
-        }
-//        HashMap<Integer, Integer> map = new HashMap<>();
+            ints[i] = Integer.parseInt(str[i]); }
         LinkedHashMap<Integer, Integer> map = new LinkedHashMap<>();
         for (int i = 0; i < ints.length; i++) {  // 统计数字出现的频次
             map.put(ints[i], map.getOrDefault(ints[i], 0) + 1);
         }
         // Map按value排序，先将map转为list,再排序list
-//        List<Map.Entry<Integer,Integer>> list = new ArrayList<>(map.entrySet());
         LinkedList<Map.Entry<Integer,Integer>> list = new LinkedList<>(map.entrySet());
         list.sort((o1, o2) -> o2.getValue() - o1.getValue());
         for (int i = 0; i < list.size(); i++) {
@@ -63,9 +62,9 @@ public class 数组去重和排序 {
             if (i != list.size() - 1) {
                 System.out.print(entry.getKey() + ",");
             } else {
-                System.out.println(entry.getKey());
-            }
-        }
+                System.out.println(entry.getKey()); } }
+
+
     }
 
 }

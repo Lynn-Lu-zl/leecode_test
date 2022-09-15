@@ -41,34 +41,29 @@ import java.util.Scanner;
 public class 考勤信息 {
     //// 解题思路：将输入的内容放在集合中，遍历集合，按条件依次判断
      public static void main(String[] args) {
+
+         //考勤信息，判断本次是否能获得出勤奖
          Scanner sc = new Scanner(System.in);
          int num = Integer.parseInt(sc.nextLine());
          List<String> list = new ArrayList<>();
          for (int i = 0; i < num; i++) {
              String line = sc.nextLine();
-             list.add(line);
-         }
+             list.add(line); }
          for (int i = 0; i < list.size(); i++) {
              String str = list.get(i);
              String[] split = str.split(" ");
-             // 1.缺勤不超过1次
-             int absentCount = 0;
+             int absentCount = 0; // 1.缺勤不超过1次
              for (int j = 0; j < split.length; j++) {
                  if ("absent".equals(split[j])) {
-                     absentCount++;
-                 }
-             }
+                     absentCount++; } }
              if (absentCount > 1) {
                  System.out.print(false + " ");
-                 // 退出此次循环
-                 continue;
-             }
+                 continue; }// 退出此次循环
              // 2.没有连续的迟到/早退
-             if (str.contains("late leaveearly") || str.contains("leaveearly late") || str.contains("leaveearly leaveearly") || str.contains("late late")) {
+             if (str.contains("late leaveearly") || str.contains("leaveearly late")
+                 || str.contains("leaveearly leaveearly") || str.contains("late late")) {
                  System.out.print(false + " ");
-                 // 退出此次循环
-                 continue;
-             }
+                 continue; }// 退出此次循环
              // 3.任意连续7次考勤 缺勤/迟到/早退 不超过3次
              // 用于存放 缺勤/迟到/早退 最大次数
              int count = 0;
@@ -77,28 +72,22 @@ public class 考勤信息 {
              if (split.length > 7) {
                  for (int j = 0; j + 7 <= split.length; j++) {
                      for (int k = j; k < 7 + j; k++) {
-                         if ("absent".equals(split[k]) || "late".equals(split[k]) || "leaveearly".equals(split[k])) {
-                             noPresent++;
-                         }
-                     }
+                         if ("absent".equals(split[k]) || "late".equals(split[k])
+                             || "leaveearly".equals(split[k])) {
+                             noPresent++; } }
                      count = Math.max(count, noPresent);
-                     noPresent = 0;
-                 }
+                     noPresent = 0; }
              } else {
                  for (int j = 0; j < split.length; j++) {
-                     if ("absent".equals(split[j]) || "late".equals(split[j]) || "leaveearly".equals(split[j])) {
-                         count++;
-                     }
-                 }
-             }
+                     if ("absent".equals(split[j]) || "late".equals(split[j])
+                         || "leaveearly".equals(split[j])) {
+                         count++; } } }
              if (count > 3) {
                  System.out.print(false + " ");
-                 // 退出此次循环
-                 continue;
-             }
+                 continue; } // 退出此次循环
              // 都符合，则输出true
-             System.out.print(true + " ");
-         }
+             System.out.print(true + " "); }
+
 
          }
 }

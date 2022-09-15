@@ -166,54 +166,47 @@ public class 硬件资源分配 {
 
     //HashMap实现
     public static void main(String[] args) {
+
+
+        //硬件资源分配，资源分配要求，要求分配N台满足要求的服务器
         Scanner in = new Scanner(System.in);
         int M = Integer.parseInt(in.nextLine());
         int[][] service = new int[M][5];
         for (int i = 0; i < M; i++) {
             String[] str = in.nextLine().split(",");
             for (int j = 0; j < 5; j++) {
-                service[i][j] = Integer.parseInt(str[j]);
-            }
-        }
+                service[i][j] = Integer.parseInt(str[j]); } }
         int N = in.nextInt();
         int strategy = in.nextInt();
         int cpuCount = in.nextInt();
         int memSize = in.nextInt();
         int cpuArch = in.nextInt();
         int supportNP = in.nextInt();
-
         // 通过HashMap实现自定义排序
         HashMap<Integer, int[]> map = new HashMap<>();
-
-
         for (int i = 0; i < M; i++) {  // 将满足条件的服务器加入到queue中
             if (service[i][1] >= cpuCount && service[i][2] >= memSize && (service[i][3] == cpuArch || cpuArch == 9)
                 && (service[i][4] == supportNP || supportNP == 2)) {
-                map.put(service[i][0], Arrays.copyOfRange(service[i], 1, service[i].length));
-            }
-        }
+                map.put(service[i][0], Arrays.copyOfRange(service[i], 1, service[i].length)); } }
         List<Map.Entry<Integer, int[]>> list = new ArrayList<>(map.entrySet());
         if (strategy == 1) {  // 如果策略1，先CPU核数，再内存，再编号
             // lambda表达式，也可以使用比较器
             list.sort((o1, o2) -> (o1.getValue()[0] == o2.getValue()[0] ? (o1.getValue()[1] == o2.getValue()[1] ?
-                o1.getKey() - o2.getKey() : o1.getValue()[1] - o2.getValue()[1]) :  o1.getValue()[0] - o2.getValue()[0]));
-        }
+                o1.getKey() - o2.getKey() : o1.getValue()[1] - o2.getValue()[1]) :  o1.getValue()[0] - o2.getValue()[0])); }
         if (strategy == 2) {  // 如果策略2，先内存，再CPU核数，再编号
             list.sort((o1, o2) -> (o1.getValue()[1] == o2.getValue()[1] ? (o1.getValue()[0] == o2.getValue()[0] ?
-                o1.getKey() - o2.getKey() : o1.getValue()[0] - o2.getValue()[0]) :  o1.getValue()[1] - o2.getValue()[1]));
-        }
+                o1.getKey() - o2.getKey() : o1.getValue()[0] - o2.getValue()[0]) :  o1.getValue()[1] - o2.getValue()[1])); }
         int resCount = Math.min(map.size(), N);  // 实际分配数量为所有满足条件的服务器与最大分配数量N之间的最小值
         int[] res = new int[resCount];  // 满足条件的服务器编号
-
         for (int i = 0; i < resCount; i++) {
             Map.Entry<Integer, int[]> entry = list.get(i);
-            res[i] = entry.getKey();
-        }
+            res[i] = entry.getKey(); }
         Arrays.sort(res);
         System.out.print(resCount);
         for (int i = 0; i < resCount; i++) {
-            System.out.print(" " + res[i]);
-        }
+            System.out.print(" " + res[i]); }
+
+
     }
 
 

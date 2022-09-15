@@ -68,56 +68,118 @@ public class 按索引范围翻转文章片段 {
      * 反转后的不能包含多余空格
      * 如果反转区间只有一个单词，或无有效单词则统一输出EMPTY
      */
+    /**双指针
+     * 遍历进行字符串翻转，直至重合
+     *
+     * 把调换的头索引值放到temp--》尾和头调换--》再把temp存储的头元素放到尾
+     */
      public static void main(String[] args) {
-         Scanner scanner = new Scanner(System.in);
-         //输入文章
-         String line = scanner.nextLine();
-         //头索引
-         int start = scanner.nextInt();
-         //尾索引
-         int end = scanner.nextInt();
-         // 去掉前后的空格
-         line = line.trim();
-         //根据空格分割字符串将单词分开
-         String[] split = line.split(" ");
 
+         // //按索引范围翻转文章片段，I am a developer.
+         // Scanner scanner = new Scanner(System.in);
+         // //输入文章
+         // String line = scanner.nextLine();
+         // //头索引
+         // int start = scanner.nextInt();
+         // //尾索引
+         // int end = scanner.nextInt();
+         // // 去掉前后的空格
+         // line = line.trim();
+         // //根据空格分割字符串将单词分开
+         // String[] split = line.split(" ");
+         // // 如果起始数小于0，取0
+         // start = Math.max(start, 0);
+         // // 如果结束数大于数组长度，取数组最后一个
+         // end = Math.min(end, split.length - 1);
+         // // 指定反转区间只有一个单词，或无有效单词则统一输出EMPTY
+         // if (start >= end || start >= split.length - 1 ){
+         //     System.out.println("EMPTY");
+         //     return; }
+         // while (start < end){
+         //     //要调换的索引值放到temp
+         //     String temp = split[start];
+         //     //尾和头调换
+         //     split[start] = split[end];
+         //     // 再把temp存储的头元素放到尾
+         //     split[end] = temp;
+         //     //索引指针下移一位
+         //     start++;
+         //     //索引指针上移一位
+         //     end--; }
+         // StringBuilder sb = new StringBuilder();
+         // //拼接字符串，根据空格拼接
+         // for (String s : split) {
+         //     sb.append(s + " "); }
+         // // 去掉前后的空格，如abc空格--》abc没有空格
+         // System.out.println(sb.toString().trim());
+
+         //按索引范围翻转文章片段，I am a developer.
+         Scanner scanner = new Scanner(System.in);
+         String line = scanner.nextLine();
+         int start = scanner.nextInt();
+         int end = scanner.nextInt();
+         line = line.trim();
+         String[] split = line.split(" ");
          // 如果起始数小于0，取0
          start = Math.max(start, 0);
          // 如果结束数大于数组长度，取数组最后一个
          end = Math.min(end, split.length - 1);
-         // 指定反转区间只有一个单词，或无有效单词则统一输出EMPTY
-         if (start >= end || start >= split.length - 1 ) {
+         if (start >= end || start >= split.length-1){
              System.out.println("EMPTY");
-             return;
-         }
-         /**双指针
-          * 遍历进行字符串翻转，直至重合
-          *
-          * 把调换的头索引值放到temp--》尾和头调换--》再把temp存储的头元素放到尾
-          */
+             return; }
          while (start < end){
-             //要调换的索引值放到temp
              String temp = split[start];
-             //尾和头调换
              split[start] = split[end];
-             // 再把temp存储的头元素放到尾
              split[end] = temp;
-             //索引指针下移一位
              start++;
-             //索引指针上移一位
-             end--;
-         }
-
+             end--; }
          StringBuilder sb = new StringBuilder();
          //拼接字符串，根据空格拼接
          for (String s : split) {
-             sb.append(s + " ");
-         }
-         // 去掉前后的空格，如abc空格--》abc没有空格
+             sb.append(s + " "); }
          System.out.println(sb.toString().trim());
 
      }
 
+
+    /**
+     * 法二
+     * @param args
+     */
+    // public static void main(String[] args) {
+    //     try (Scanner scanner = new Scanner(System.in)) {
+    //         String line = scanner.nextLine();
+    //         int l = scanner.nextInt();
+    //         int r = scanner.nextInt();
+    //         solution(line, l, r);
+    //     }
+    // }
+    //
+    // private static void solution(String line, int l, int r) {
+    //     String[] words = line.trim().split(" ");
+    //     if (r > words.length - 1) r = words.length - 1;
+    //     if (words.length == 0 ||
+    //         l < 0 ||
+    //         r - l <= 0) {
+    //         System.out.println("EMPTY");
+    //         return;
+    //     }
+    //
+    //     while (l < r) {
+    //         String tmp = words[l];
+    //         words[l] = words[r];
+    //         words[r] = tmp;
+    //         l++;
+    //         r--;
+    //     }
+    //
+    //     for (int i = 0; i < words.length; i++) {
+    //         System.out.print(words[i]);
+    //         if (i != words.length - 1) {
+    //             System.out.print(" ");
+    //         }
+    //     }
+    // }
 
 
 }

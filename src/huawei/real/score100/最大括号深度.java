@@ -96,45 +96,38 @@ import java.util.Stack;
  */
 public class 最大括号深度 {
      public static void main(String[] args) {
+         //最大括号深度
          Scanner in = new Scanner(System.in);
          String s = in.nextLine();
-         if (s.equals("")) {  // 字符串为空
+         if (s.equals("")) {// 字符串为空
              System.out.println(0);
-             return ;
-         }
+             return ; }
          Stack<Character> stack = new Stack<>();
          int i = 0;
          int max = 0;
          for (i = 0; i < s.length(); i++) {
              char c = s.charAt(i);
-             if (c == '(' || c == '{' || c == '[') {
+             if (c == '(' || c == '{' || c == '['){
                  stack.push(c);
                  max = Math.max(max, stack.size());
-             } else {  // 如果是右括号
-                 if (stack.size() == 0) {  // 第一个是右括号，直接break
-                     break;
-                 }
-                 if (c == ')') {  // 判断括号是否匹配，匹配，则continue，不匹配直接break(这里放到最后整体break)
-                     if (stack.pop() == '(') {
-                         continue;
-                     }
+             } else {  // 第一个是右括号，直接break
+                 if (stack.size() == 0) {  //
+                     break; }
+            // 判断括号是否匹配
+                 if (c == ')'){
+                     if (stack.pop() == '('){
+                         continue; }
                  } else if (c == ']') {
-                     if (stack.pop() == '[') {
-                         continue;
-                     }
+                     if (stack.pop() == '['){
+                         continue; }
                  } else {
-                     if (stack.pop() == '{') {
-                         continue;
-                     }
-                 }
-                 break;
-             }
-         }
-         if (i == s.length() && stack.size() == 0) {
+                     if (stack.pop() == '{'){
+                         continue; } }
+                 break; } }
+         if (i == s.length() && stack.size() == 0){
              System.out.println(max);
          } else {
-             System.out.println(0);
-         }
+             System.out.println(0);}
 
 
      }

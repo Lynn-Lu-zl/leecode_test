@@ -51,14 +51,15 @@ import java.util.*;
  */
 public class 招聘 {
     public static void main(String[] args) {
+
+        //某公司组织一场公开招聘活动
         Scanner sc = new Scanner(System.in);
         int m = sc.nextInt();
         int n = sc.nextInt();
         int[][] arr = new int[n][2];
         for (int i = 0; i < n; i++) {
             arr[i][0] = sc.nextInt();
-            arr[i][1] = sc.nextInt();
-        }
+            arr[i][1] = sc.nextInt(); }
         Arrays.sort(arr, Comparator.comparing(c1 -> c1[0]));
         Deque<int[]> deque = new ArrayDeque<>();
         deque.offer(new int[]{arr[0][1], 1});
@@ -69,14 +70,13 @@ public class 招聘 {
                     p[1]++;
                     p[0] = arr[i][1];
                     flag = true;
-                    break;
-                }
-            }
+                    break; } }
             if (!flag) {
-                deque.offer(new int[]{arr[i][1], 1});
-            }
-        }
+                deque.offer(new int[]{arr[i][1], 1}); } }
         System.out.println(deque.size());
+
+
+
     }
 
 

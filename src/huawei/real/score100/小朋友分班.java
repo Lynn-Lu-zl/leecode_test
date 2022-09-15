@@ -39,54 +39,54 @@ import java.util.*;
 public class 小朋友分班 {
 
 
-        public static void main(String[] args) {
-            Scanner sc = new Scanner(System.in);
-            String line = sc.nextLine();
-            String[] input = line.split(" ");
-            List<Integer> list1 = new ArrayList<>();
-            List<Integer> list2 = new ArrayList<>();
-
-            //0号是1班 剩下是2班
-            int preCla = 1;
-            for (int i = 0; i < input.length; i++) {
-                String[] num = input[i].split("/");
-                if (i == 0) {
-                    list1.add(Integer.parseInt(num[0]));
-                    preCla = 1;
-                    continue;
-                }
-                if (preCla == 1) {
-                    if (num[1].equals("Y")) {
-                        list1.add(Integer.parseInt(num[0]));
-                    } else {
-                        list2.add(Integer.parseInt(num[0]));
-                        preCla = 2;
-                    }
-                } else {//N
-                    if (num[1].equals("Y")) {
-                        list2.add(Integer.parseInt(num[0]));
-                    } else {
-                        list1.add(Integer.parseInt(num[0]));
-                        preCla = 1;
-                    }
-                }
-            }
-            Collections.sort(list1);
-            Collections.sort(list2);
-            for (int i = 0; i < list1.size(); i++) {
-                System.out.print(list1.get(i) + " ");
-            }
-            System.out.println();
-            for (int i = 0; i < list2.size(); i++) {
-                System.out.print(list2.get(i) + " ");
-            }
-        }
+        // public static void main(String[] args) {
+        //     Scanner sc = new Scanner(System.in);
+        //     String line = sc.nextLine();
+        //     String[] input = line.split(" ");
+        //     List<Integer> list1 = new ArrayList<>();
+        //     List<Integer> list2 = new ArrayList<>();
+        //
+        //     //0号是1班 剩下是2班
+        //     int preCla = 1;
+        //     for (int i = 0; i < input.length; i++) {
+        //         String[] num = input[i].split("/");
+        //         if (i == 0) {
+        //             list1.add(Integer.parseInt(num[0]));
+        //             preCla = 1;
+        //             continue;
+        //         }
+        //         if (preCla == 1) {
+        //             if (num[1].equals("Y")) {
+        //                 list1.add(Integer.parseInt(num[0]));
+        //             } else {
+        //                 list2.add(Integer.parseInt(num[0]));
+        //                 preCla = 2;
+        //             }
+        //         } else {//N
+        //             if (num[1].equals("Y")) {
+        //                 list2.add(Integer.parseInt(num[0]));
+        //             } else {
+        //                 list1.add(Integer.parseInt(num[0]));
+        //                 preCla = 1;
+        //             }
+        //         }
+        //     }
+        //     Collections.sort(list1);
+        //     Collections.sort(list2);
+        //     for (int i = 0; i < list1.size(); i++) {
+        //         System.out.print(list1.get(i) + " ");
+        //     }
+        //     System.out.println();
+        //     for (int i = 0; i < list2.size(); i++) {
+        //         System.out.print(list2.get(i) + " ");
+        //     }
+        // }
 
     /**
      * 法二、打印了ERROR
      * 既然他是两个班级，我就搞两个集合，定义为1班、2班，然后从第一个孩子开始，第一个孩子直接往1班送，然后后面那个孩子如果是同班就是在1班，否则就是2班，后面的学生就会像诺米勒骨牌效应一样，一个个都能算出来了，算完之后对1、2班集合里的学号排序，然后如果第二个集合的第一个学生学号比第一个集合的小就换个顺序，如果第一个空的第二个有，那也要换顺序，最后数据到位了，打印即可
      */
-//     public static final String ERROR = "ERROR";
+    public static final String ERROR = "ERROR";
 //     public static void main(String[] args) {
 //         Scanner scanner = new Scanner(System.in);
 //         String data = scanner.nextLine();
@@ -205,6 +205,100 @@ public class 小朋友分班 {
 //             ", same=" + same +
 //             '}';
 //     }
+
+
+    /**
+     * 法三
+     * 不是100%，error有些不行
+     */
+    // public static void main(String[] args) {
+    //     Scanner scanner = new Scanner(System.in);
+    //     String teamStr = scanner.nextLine();
+    //
+    //     String[] childs = teamStr.split(" ");
+    //
+    //     if (childs.length > 999) {
+    //         System.out.println("ERROR");
+    //     }
+    //
+    //     // 分开两个班级
+    //     ArrayList<String> classA = new ArrayList<>();
+    //     ArrayList<String> classB = new ArrayList<>();
+    //     String classNum = "";
+    //     for (int i = 0; i < childs.length; i++) {
+    //         if (i == 0) {
+    //             String first = childs[0];
+    //             classA.add(first.split("/")[0]);
+    //             classNum = "A";
+    //             continue;
+    //         }
+    //         String follow = childs[i];
+    //         boolean isSameClass = follow.endsWith("Y");
+    //
+    //         String stu = follow.split("/")[0];
+    //
+    //         if ("A".equals(classNum)) {
+    //             if (isSameClass) {
+    //                 classA.add(stu);
+    //             } else {
+    //                 classB.add(stu);
+    //             }
+    //             classNum = isSameClass ? "A" : "B";
+    //         } else {
+    //             if (isSameClass) {
+    //                 classB.add(stu);
+    //             } else {
+    //                 classA.add(stu);
+    //             }
+    //             classNum = isSameClass ? "B" : "A";
+    //         }
+    //     }
+    //
+    //     classA.sort(Comparator.comparingInt(Integer::parseInt));
+    //     classB.sort(Comparator.comparingInt(Integer::parseInt));
+    //
+    //     System.out.println(classA.toString().replace("[", "").replace("]", "").replace(",", " "));
+    //     System.out.println(classB.toString().replace("[", "").replace("]", "").replace(",", " "));
+    // }
+    
+    
+     public static void main(String[] args) {
+
+         //小朋友分班,幼儿园两个班的小朋友排队时混在了一起
+         Scanner in = new Scanner(System.in);
+         String[] stus = in.nextLine().split(" ");
+         try {
+             TreeSet<Integer> c1 = new TreeSet<>();
+             TreeSet<Integer> c2 = new TreeSet<>();
+             boolean is1 = true;
+             for (int i = 0; i < stus.length; i++) {
+                 String[] split = stus[i].split("/");
+                 String id = split[0];
+                 String same = split[1];
+                 if (i == 0) {
+                     c1.add(Integer.parseInt(id));
+                     continue; }
+                 if ("N".equals(same)) is1 = !is1;
+                 (is1 ? c1 : c2).add(Integer.parseInt(id)); }
+             StringBuilder b1 = new StringBuilder();
+             for (Integer id : c1) b1.append(id).append(" ");
+             if (c2.size() > 0) {
+                 StringBuilder b2 = new StringBuilder();
+                 for (Integer id : c2) b2.append(id).append(" ");
+                 if (c1.first() < c2.first()) {
+                     System.out.println(b1.toString().trim());
+                     System.out.println(b2.toString().trim());
+                 } else {
+                     System.out.println(b2.toString().trim());
+                     System.out.println(b1.toString().trim()); }
+             } else {
+                 System.out.println(b1.toString().trim()); } }
+                 catch (Exception e) {
+             System.out.println("ERROR");}
+
+
+     }
+
 
 
 }

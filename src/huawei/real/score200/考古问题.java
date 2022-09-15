@@ -33,7 +33,7 @@ public class 考古问题 {
      * @param args
      */
      public static void main(String[] args) {
-
+         //考古问题
          Scanner scanner = new Scanner(System.in);
          int n  = Integer.parseInt(scanner.nextLine());
          String str = scanner.nextLine();
@@ -48,20 +48,10 @@ public class 考古问题 {
          List<String> list = new ArrayList(strings.length);
          Iterator<String> iterator = hashSet.iterator();
          while (iterator.hasNext()){
-             list.add(iterator.next());
-         }
+             list.add(iterator.next()); }
          list.sort((Comparator.comparing(o -> ((String) o))));
          for (String s : list){
-             System.out.println(s);
-         }
-     }
-
-    /**
-     * 组合
-     * @param items
-     * @param builder
-     * @param ret
-     */
+             System.out.println(s); } }
     private  static void dynamicCombine(ArrayList<String> items, StringBuilder builder, HashSet<String> ret){
         if (items.size() != 0){
             for (int i = 0,len = items.size(); i < len ;i++){
@@ -76,10 +66,6 @@ public class 考古问题 {
             }
         }else {
             if (builder.length() > 0){
-                ret.add(builder.toString());
-            }
-            return;
-        }
-
-     }
+                ret.add(builder.toString()); }
+            return; } }
 }

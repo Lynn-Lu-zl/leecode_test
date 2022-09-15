@@ -34,7 +34,10 @@ public class 快递运输 {
             arr[i] = Integer.parseInt(input[i]);
         }
         Arrays.sort(arr);
+        //递归
         System.out.println(calc(arr,0,0,0,max));
+
+
     }
 
     private static int calc(int[] arr,int idx,int count,int total,int max){
@@ -43,7 +46,8 @@ public class 快递运输 {
         }
         int cl1 = calc(arr, idx+1, count+1,total + arr[idx],max);
         int cl2 = calc(arr, idx+1, count, total,max);
-        return Math.max(cl1,cl2);
+        int i = Math.max(cl1, cl2);
+        return i;
     }
 
 }

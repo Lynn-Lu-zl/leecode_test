@@ -35,6 +35,8 @@ import java.util.Scanner;
  */
 public class 字母所在字符串中的位置索引 {
     public static void main(String[] args) {
+
+        //字母所在字符串中的位置索引，AbCdeFG
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         int turn = Integer.parseInt(sc.nextLine());
@@ -46,8 +48,10 @@ public class 字母所在字符串中的位置索引 {
             System.out.println(input.lastIndexOf(String.valueOf(ch)));
         }else {
             ch = chars[turn-1];
-            System.out.println(input.indexOf(ch));
-        }
+            System.out.println(input.indexOf(ch)); }
+
+
+
     }
 
 }

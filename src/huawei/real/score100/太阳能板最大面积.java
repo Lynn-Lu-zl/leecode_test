@@ -49,6 +49,8 @@ public class 太阳能板最大面积 {
 
           public static void main(String[] args) {
               //数组两个元素的间距 乘以 两个元素中的最小值，取最大的，就是太阳能板的最大面积了
+
+              //太阳能板最大面积，给航天器一侧加装长方形或正方形的太阳能板
               Scanner sc = new Scanner(System.in);
               String line = sc.nextLine();
               String[] split = line.split(",");
@@ -57,11 +59,12 @@ public class 太阳能板最大面积 {
               int res = 0;
               for (int i = 0; i < len - 1; i++) {
                   for (int j = i + 1; j < len; j++) {
-                      int eare = Math.min(Integer.parseInt(split[i]), Integer.parseInt(split[j])) * (j - i);
-                      res = Math.max(res, eare);
-                  }
-              }
+                      int eare = Math.min(Integer.parseInt(split[i]),
+                          Integer.parseInt(split[j])) * (j - i);
+                      res = Math.max(res, eare); } }
               System.out.println(res);
+
+
 
               }
 

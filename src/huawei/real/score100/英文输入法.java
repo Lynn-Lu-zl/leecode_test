@@ -1,9 +1,6 @@
 package huawei.real.score100;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * 【英文输入法】
@@ -51,35 +48,22 @@ import java.util.Scanner;
  * 从已输入信息中无法联想到任何符合要求的单词，因此输出用户输入的单词前缀。
  */
 public class 英文输入法 {
-     public static void main(String[] args) {
-         Scanner sc = new Scanner(System.in);
-         String input = sc.nextLine();
-         String target = sc.nextLine();
-         List<String> list = new ArrayList<>();
-         StringBuilder word = new StringBuilder();
-         for (int i = 0; i < input.length(); i++) {
-             char ch = input.charAt(i);
-             if ((ch >= 'a' && ch <= 'z') || ( ch>= 'A' && ch<= 'Z') ){
-                 word.append(ch);
-             }else {
-                 list.add(word.toString());
-                 word = new StringBuilder();
-             }
-         }
-         List<String> res = new ArrayList<>();
-         for (int i = 0; i < list.size(); i++) {
-             if (list.get(i).startsWith(target)) {
-                 res.add(list.get(i));
-             }
-         }
-         Collections.sort(res);
-         if (res.size() > 0){
-             for (int i = 0; i < res.size(); i++) {
-                 System.out.print(res.get(i) + " ");
-             }
-             System.out.println();
-         }else {
-             System.out.println(target);
-         }
-     }
+
+      public static void main(String[] args) {
+
+          //英文输入法单词联想功能，I love you
+          Scanner in = new Scanner(System.in);
+          String[] str = in.nextLine().split("\\W+");
+          String pre = in.nextLine();
+          TreeSet<String> words = new TreeSet<>(Arrays.asList(str));
+          StringBuilder buffer = new StringBuilder();
+          for (String word : words) {
+              if (word.startsWith(pre)) {
+                  buffer.append(word).append(" "); } }
+          if (buffer.length() == 0) buffer.append(pre);
+          System.out.println(buffer.toString().trim());
+
+
+      }
+
 }

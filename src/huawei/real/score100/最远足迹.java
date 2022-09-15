@@ -33,6 +33,8 @@ import java.util.Scanner;
  */
 public class 最远足迹 {
      public static void main(String[] args) {
+
+         //最远足迹，某探险队负责对地下洞穴进行探险
          Scanner in = new Scanner(System.in);
          String res = in.nextLine();
          char[] str = res.toCharArray();
@@ -40,26 +42,20 @@ public class 最远足迹 {
          String ans = "(0,0)";  // 默认值，非法时的结果
          ArrayList<Integer> left = new ArrayList<>();
          ArrayList<Integer> right = new ArrayList<>();
-         for (int i = 0; i < str.length; i++) {  // 统计左右括号的位置，不考虑嵌套，所以两个list一一对应
-             if (str[i] == '(') {
-                 left.add(i);
-             }
+         for (int i = 0; i < str.length; i++) {
+             if (str[i] == '(') {// 统计左右括号的位置，不考虑嵌套，所以两个list一一对应
+                 left.add(i); }
              if (str[i] == ')') {
-                 right.add(i);
-             }
-         }
-         for (int i = 0; i < left.size(); i++) {
-             String[] s = res.substring(left.get(i) + 1, right.get(i)).split(",");  // 记录两个坐标
+                 right.add(i); } }
+         for (int i = 0; i < left.size(); i++) {// 记录两个坐标
+             String[] s = res.substring(left.get(i)+1,right.get(i)).split(",");
              // 判断是否非法
              if (s[0].charAt(0) != '0' && s[1].charAt(0) != '0') {
                  int num1 = Integer.parseInt(s[0]);
                  int num2 = Integer.parseInt(s[1]);
-                 if (num1 < 1000 && num2 < 1000 && num1 * num1 + num2 * num2 > max) {
+                 if (num1 < 1000 && num2 < 1000 && num1 * num1 + num2 * num2 > max){
                      max = num1 * num1 + num2 * num2;
-                     ans = "(" + s[0] + "," + s[1] + ")";
-                 }
-             }
-         }
+                     ans = "(" + s[0] + "," + s[1] + ")"; } } }
          System.out.println(ans);
 
      }

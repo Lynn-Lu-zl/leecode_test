@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-/**
+/**整数排列
  * 给定参数n，从1到n会有n个整数：1,2,3,…,n，这n个数字共有 n! 种排列。
  * 按大小顺序升序列出所有排列情况，并一一标记，当 n = 3 时, 所有排列如下：
  * “123”
@@ -66,4 +66,31 @@ public class 第k个排列 {
          }
          System.out.println(sb);
      }
+
+    /**
+     * 法二
+     */
+
+    // public static void main(String[] args) {
+    //     //整数排列，这n个数字共有n!种排列
+    //     Scanner in = new Scanner(System.in);
+    //     int n = Integer.parseInt(in.nextLine());
+    //     int k = Integer.parseInt(in.nextLine());
+    //     StringBuilder sb = new StringBuilder();
+    //     List<Integer> candidates = new ArrayList<>();
+    //     int[] factorials = new int[n + 1];
+    //     factorials[0] = 1;
+    //     int fact = 1;
+    //     for (int i = 1; i <= n; ++i) {
+    //         candidates.add(i);
+    //         fact *= i;
+    //         factorials[i] = fact; }
+    //     k -= 1;
+    //     for (int i = n - 1; i >= 0; --i) {
+    //         // 计算候选数字的index
+    //         int index = k / factorials[i];
+    //         sb.append(candidates.remove(index));
+    //         k -= index * factorials[i]; }
+    //     System.out.println(sb);
+    // }
 }

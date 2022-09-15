@@ -1,5 +1,7 @@
 package huawei.real.score200;
 
+import java.util.*;
+
 /**
  * 题目内容：
  * 小杨申请了一个保密柜，但是他忘记了密码。只记得密码都是数字，而且所有数字都是不重复的。请你根据他记住的数字范围和密码的最小数字数量，帮他算下有哪些可能的组合，
@@ -17,8 +19,10 @@ package huawei.real.score200;
  * 3、2,3,4放到2,4的前面
 
  示例
- 输入 2,3,4
+ 输入
+ 2,3,4
  2
+
  输出
  2,3
  2,3,4
@@ -34,4 +38,43 @@ package huawei.real.score200;
  2
  */
 public class 猜密码 {
+
+    public static void main(String[] args) {
+        //猜密码，小杨申请了一个保密柜，但是他忘记了密码
+        Scanner scanner = new Scanner(System.in);
+        while (scanner.hasNextLine()) {
+            String s = scanner.nextLine();
+            int minNum = Integer.parseInt(scanner.nextLine());
+            String[] split = s.split(",");
+            List<Integer> integers = new ArrayList<>();
+            Set<Integer> set = new HashSet<>();
+            for (int i = 0; i < split.length; i++) {
+                int value = Integer.parseInt(split[i]);
+                if (set.add(value)) {
+                    integers.add(value); } }
+            integers.sort(new Comparator<Integer>() {
+                @Override
+                public int compare(Integer o1, Integer o2) {
+                    return o1.compareTo(o2);
+                }
+            });
+
+            minNum = Math.max(minNum, 1);
+            StringBuilder sb = new StringBuilder();
+            for (int i = minNum; i <= integers.size(); i++) {
+                getPassword(i, integers, 0, sb); } } }
+    private static void getPassword(int minNum, List<Integer> integers, int startIndex, StringBuilder sb) {
+        if (sb.length() >= minNum) {
+
+            System.out.println(sb);
+            return;
+        }
+        if (startIndex > integers.size() - 1) {
+            return;
+        }
+        for (int i = startIndex; i < integers.size(); i++) {
+            int originLength = sb.length();
+            sb.append(integers.get(i));
+            getPassword(minNum, integers, i + 1, sb);
+            sb.setLength(originLength); } }
 }

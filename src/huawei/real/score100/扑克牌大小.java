@@ -57,38 +57,35 @@ public class 扑克牌大小 {
      * @param args
      */
      public static void main(String[] args) {
-         Scanner sc = new Scanner(System.in);
-         while (sc.hasNext())
-         {
-             // 1. 排除掉王炸的情况
-             String oriStr = sc.nextLine();                  // 读入原始字符串，找joker JOKER
-             if ( oriStr.indexOf("joker JOKER") != -1 )
-             {
-                 System.out.println("joker JOKER");
-                 continue;
-             }
 
-             // 2. 排除掉两手牌长度不等的情况：要么一手4炸一手普通牌，要么两手普通牌但是牌型不符要ERROR
+         //扑克牌大小,4 4 4 4-joker JOKER
+         Scanner sc = new Scanner(System.in);
+         while (sc.hasNext()) {
+             // 1. 排除掉王炸的情况
+             String oriStr = sc.nextLine();// 读入原始字符串，找joker JOKER
+             if ( oriStr.indexOf("joker JOKER") != -1 ){
+                 System.out.println("joker JOKER");
+                 continue; }
+             // 2. 排除掉两手牌长度不等的情况：
+             // 要么一手4炸一手普通牌，要么两手普通牌但是牌型不符要ERROR
              String[] card1 = oriStr.split("-")[0].split(" ");
              String[] card2 = oriStr.split("-")[1].split(" ");
-             if ( card1.length != card2.length )
-             {
-                 String[] pointer = card1.length==4 ? card1: null ;  // 检查有没有一手牌的长度为4
+             if ( card1.length != card2.length ) {// 检查有没有一手牌的长度为4
+                 String[] pointer = card1.length==4 ? card1: null ;
                  pointer = card2.length==4 ? card2 : pointer ;
-                 if ( pointer==null )    // 长度不等，且没有4炸，必然ERROR
-                     System.out.println("ERROR");
+                 if ( pointer==null ){  // 长度不等，且没有4炸，必然ERROR
+                     System.out.println("ERROR");}
                  else                    // 有4炸则输出4炸
                      System.out.println(String.join(" ",pointer));
-                 continue;
-             }
-
+                 continue; }
              // 3. 只剩下两手普通牌和两手4炸的情况，只需要比较第一张牌
              String order = "345678910JQKA2jokerJOKER";
-             if ( order.indexOf(card1[0]) < order.indexOf(card2[0]) )
+             if ( order.indexOf(card1[0]) < order.indexOf(card2[0]))
                  System.out.println(String.join(" ",card2));
              else
-                 System.out.println(String.join(" ",card1));
-         }
+                 System.out.println(String.join(" ",card1));}
+
+
 
          }
 }

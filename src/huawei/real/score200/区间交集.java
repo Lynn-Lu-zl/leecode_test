@@ -70,12 +70,12 @@ public class 区间交集 {
      * @param args
      */
     public static void main(String[] args) {
+        //区间交集，按升序排列输出合并后的区间列表
         Scanner in = new Scanner(System.in);
         String[] str = in.nextLine().split(" ");
         int[] arr = new int[str.length];
         for (int i = 0; i < arr.length; i++) {
-            arr[i] = Integer.parseInt(str[i]);
-        }
+            arr[i] = Integer.parseInt(str[i]); }
         // 先计算交集
         List<int[]> res = new ArrayList<>();
         for (int i = 0; i < arr.length; i += 2) {
@@ -83,10 +83,7 @@ public class 区间交集 {
                 int left = Math.max(arr[i], arr[j]);
                 int right = Math.min(arr[i + 1], arr[j + 1]);
                 if (left <= right) {
-                    res.add(new int[]{left, right});
-                }
-            }
-        }
+                    res.add(new int[]{left, right}); } } }
         // 计算完交集，按从小到大排序，左边界升序，相同，有边界升序
         int[][] ans = res.toArray(new int[res.size()][]);
         Arrays.sort(ans, (a, b) -> (a[0] == b[0] ? a[1] - b[1] : a[0] - b[0]));
@@ -97,18 +94,17 @@ public class 区间交集 {
             if (index == -1 || an[0] > result[index][1]) {
                 result[++index] = an;
             } else {
-                result[index][1] = Math.max(result[index][1], an[1]);
-            }
-        }
+                result[index][1] = Math.max(result[index][1], an[1]); } }
         int[][] last = Arrays.copyOf(result, index + 1);
         for (int i = 0; i < last.length; i++) {
             System.out.print(last[i][0]);
             System.out.print(" ");
             System.out.print(last[i][1]);
             if (i != last.length - 1) {
-                System.out.print(" ");
-            }
-        }
+                System.out.print(" "); } }
+
+
+
     }
 
 }

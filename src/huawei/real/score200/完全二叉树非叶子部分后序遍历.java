@@ -23,7 +23,6 @@ import java.util.Scanner;
  * 示例 1：
  * 输入
  * 1 2 3 4 5 6 7
- * 1
  * 输出
  * 2 3 1
  * 1
@@ -45,41 +44,34 @@ public class 完全二叉树非叶子部分后序遍历 {
      * 数组实现二叉树数据结构
      */
     public static void main(String[] args) {
+
+        // 完全二叉树序列，完全二叉树非叶子部分后序遍历
         Scanner in = new Scanner(System.in);
         String[] str = in.nextLine().split(" ");
         List<Integer> res = new ArrayList<>();
         for (String s : str) {
-            res.add(Integer.parseInt(s));
-        }
+            res.add(Integer.parseInt(s)); }
         List<Integer> index = new ArrayList<>();
         dfs(res, 0, index);
         res.removeAll(index);  // 需要注意删除对应索引数据的问题
         List<String> ans = new ArrayList<>();
         postTravel(res, 0, ans);  // 递归后序遍历
-        System.out.print(String.join(" ", ans));
-
-    }
-    private static void dfs(List<Integer> res, int idx, List<Integer> index) {  // 返回叶子节点对应索引
-        if (idx >= res.size()) {
-            return;
-        }
+        System.out.print(String.join(" ", ans)); }
+    private static void dfs(List<Integer> res, int idx, List<Integer> index) {
+        if (idx >= res.size()) {// 返回叶子节点对应索引
+            return; }
         if (isLeaf(res, idx)) {
             index.add(res.get(idx));
         } else {
             dfs(res, 2 * idx + 1, index);  // 递归左叶子节点
-            dfs(res, 2 * idx + 2, index);  // 递归右叶子节点
-        }
-    }
-    private static boolean isLeaf(List<Integer> res, int idx) {  // 判断是否是叶子节点
-        return ((2 * idx + 1 >= res.size() ) && (2 * idx + 2 >= res.size()));
-    }
-    private static void postTravel(List<Integer> res, int idx, List<String> p) { // 递归后序遍历
-        if (idx >= res.size()) {
-            return;
-        }
+            dfs(res, 2 * idx + 2, index); } }// 递归右叶子节点
+    private static boolean isLeaf(List<Integer> res, int idx) {// 判断是否是叶子节点
+        return ((2 * idx + 1 >= res.size() ) && (2 * idx + 2 >= res.size())); }
+    private static void postTravel(List<Integer> res, int idx, List<String> p) {
+        if (idx >= res.size()) {// 递归后序遍历
+            return; }
         postTravel(res, 2 * idx + 1, p);
         postTravel(res, 2 * idx + 2, p);
-        p.add(String.valueOf(res.get(idx)));
-    }
+        p.add(String.valueOf(res.get(idx))); }
 
 }

@@ -35,6 +35,7 @@ import java.util.Scanner;
  */
 public class 字符串变换最小字符串 {
     public static void main(String[] args) {
+        //字符串变换最小字符串,交换字符串中任意两个不同位置的字符
         Scanner sc = new Scanner(System.in);
         String input = sc.nextLine();
         char[] chars = input.toCharArray();
@@ -47,11 +48,13 @@ public class 字符串变换最小字符串 {
                 char aChar = chars[i];
                 int i1 = input.lastIndexOf(String.valueOf(aChar));
                 //i1 和i对调顺序即可
-                str = input.substring(0,i) + aChar + input.substring(i+1,i1) + input.charAt(i) + input.substring(i1+1);
-                break;
-            }
-        }
+                str = input.substring(0,i)
+                    + aChar + input.substring(i+1,i1)
+                    + input.charAt(i) + input.substring(i1+1);
+                break; } }
         System.out.println(str);
+
+
     }
 
 }

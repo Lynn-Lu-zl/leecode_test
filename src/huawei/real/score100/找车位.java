@@ -69,9 +69,16 @@ public class 找车位 {
      //     }
      //     System.out.println(max);
      // }
+
+
+    /**
+     * 法二
+     * @param args
+     */
     //取出所有已停车的位置的索引，计算其与停车场头的距离、停车场尾的距离、两车之间的距离/2，输出最大的值
      public static void main(String[] args) {
 
+         //找车位，为了防剐蹭，需为停车人找到一个车位
          Scanner sc = new Scanner(System.in);
          String line = sc.nextLine();
          String[] split = line.split(",");
@@ -79,22 +86,23 @@ public class 找车位 {
          List<Integer> list = new ArrayList<>();
          for (int i = 0; i < split.length; i++) {
              int num = Integer.parseInt(split[i]);
-             if (1 == num) {
-                 list.add(i);
-             }
-         }
+             if (1 == num){
+                 list.add(i); } }
          // 第一辆车与停车场头的距离
          int startLen = list.get(0);
          // 最后一辆车与停车场尾的距离
-         int endLen = split.length - 1 - list.get(list.size() - 1);
+         int endLen = split.length - 1 - list.get(list.size()-1);
          int res = 0;
-         for (int i = 0; i < list.size() - 1; i++) {
+         for (int i = 0; i < list.size() - 1; i++){
              // 停车后与左右车的最小距离
-             int len = (list.get(i + 1) - list.get(i)) / 2;
-             res = Math.max(res, len);
-         }
+             int len = (list.get(i + 1) - list.get(i))/2;
+             res = Math.max(res, len); }
          // 最大距离
          System.out.println(Math.max(res,Math.max(startLen, endLen)));
 
+
          }
+
+
+
 }

@@ -38,6 +38,7 @@ import java.util.Scanner;
  */
 public class 字符连续出现最大次数 {
      public static void main(String[] args) {
+         //字符连续出现最大次数，字符串长度不超过100
          Scanner sc = new Scanner(System.in);
          String line = sc.nextLine();
          String[] split = line.split("");
@@ -45,18 +46,19 @@ public class 字符连续出现最大次数 {
          int sum = 1;
          // 最大次数
          int res = 0;
-         for (int i = 0; i < split.length; i++) {
+         for (int i = 0; i < split.length; i++){
              // 连续相同字符串
-             while (i + 1 < split.length && split[i].equals(split[i + 1])) {
+             while (i + 1 < split.length&&
+                 split[i].equals(split[i + 1])){
                  sum++;
-                 i++;
-             }
+                 i++; }
              // 比较出最大的
              res = Math.max(res, sum);
              // 初始化出现次数
-             sum = 1;
-         }
+             sum = 1; }
          System.out.println(res);
+
+
 
          }
 }

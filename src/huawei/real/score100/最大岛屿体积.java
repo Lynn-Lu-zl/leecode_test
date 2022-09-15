@@ -43,8 +43,10 @@ public class 最大岛屿体积 {
      * 那道题是统计岛屿的个数，这个题是统计最大岛屿的体积。
      * 在dfs里面累加各个小岛屿的体积，然后在外面判断是否最大。
      */
+
     private static int area;
     public static void main(String[] args) {
+        //最大岛屿体积，计算网格中最大岛屿的体积
         Scanner in = new Scanner(System.in);
         int row = in.nextInt();
         int col = in.nextInt();
@@ -60,24 +62,17 @@ public class 最大岛屿体积 {
                 if (map[i][j] > 0) {
                     area = 0;
                     dfs (map, i, j);
-                    max = Math.max(area, max);
-                }
-            }
-        }
-        System.out.println(max);
-
-    }
-    private static void dfs(int[][] map, int i, int j) {
+                    max = Math.max(area, max); } } }
+        System.out.println(max); }
+    private static void dfs(int[][] map, int i, int j){
         int row = map.length, col = map[0].length;
-        if (i < 0 || i >= row || j < 0 || j >= col || map[i][j] == 0) {
-            return;
-        }
+        if (i<0||i>= row||j<0||j>=col||map[i][j]==0){
+            return; }
         area += map[i][j];
         map[i][j] = 0;
         dfs(map, i-1, j);
         dfs(map, i+1, j);
         dfs(map, i, j-1);
-        dfs(map, i, j+1);
-    }
+        dfs(map, i, j+1); }
 
 }

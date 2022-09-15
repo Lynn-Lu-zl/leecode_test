@@ -3,7 +3,7 @@ package huawei.real.score100;
 import java.util.Scanner;
 
 /**
- * 【玩牌高手】
+ * 【玩牌高手】/翻牌求最大分
  *
  * 给定一个长度为n的整型数组，表示一个选手在n轮内可选择的牌面分数。选手基于规则选牌，
  *
@@ -38,13 +38,14 @@ import java.util.Scanner;
  */
 public class 玩牌高手 {
      public static void main(String[] args) {
+
+
+         ///玩牌高手，翻牌求最大分，所有轮结束后其可以获得的最高总分数
          Scanner in = new Scanner(System.in);
          String[] str = in.nextLine().split(",");
-         in.close();
          int[] nums = new int[str.length];
          for (int i = 0; i < str.length; i++) {
-             nums[i] = Integer.parseInt(str[i]);
-         }
+             nums[i] = Integer.parseInt(str[i]); }
          int[] score = new int[str.length];
          int sum = 0;
          for (int i = 0; i < nums.length; i++) {
@@ -52,18 +53,15 @@ public class 玩牌高手 {
                  if (nums[i] <= 0) {
                      score[i] = 0;
                  } else {
-                     score[i] = sum + nums[i];
-                 }
+                     score[i] = sum + nums[i]; }
              } else {
                  if (nums[i] > 0) {
                      score[i] = sum + nums[i];
                  } else {
-                     score[i] = Math.max(sum + nums[i], score[i - 3]);
-                 }
-             }
-             sum = score[i];
-         }
+                     score[i] = Math.max(sum + nums[i],score[i - 3]);}}
+             sum = score[i]; }
          System.out.println(score[str.length - 1]);
+
 
          }
 }
