@@ -16,15 +16,30 @@ import java.util.HashMap;
 
 public class Solution1 {
 
+    /**
+     *       2,7,11,15   长度4
+     * 索引：0 1  2  3
+     *
+     * 遍历索引下标遍历相加，--》第一层循环索引值没超过3，第二层循环索引值没超过4
+     * 0+1、0+2、0+3
+     * 1+2、1+3、
+     * 2+3
+     * 第一层循环，遍历长度3，数组长度-1
+     * 第二层遍历，j=i+1，当i=0时，j索引范围是1、2、3,--》j < nums.length=4
+     * @param nums
+     * @param target
+     * @return
+     */
     public int[] twoSum(int[] nums, int target) {
         //法一暴力解法，枚举
-        // for (int i = 0; i < nums.length-1; i++) {
-        //     for (int j = i+1; j < nums.length; j++) {
-        //         if(nums[i]+nums[j]==target){
-        //             return new int[] {i,j};
-        //         }
-        //     }
-        // }
+        for (int i = 0; i < nums.length-1; i++) {
+            //因为j是从i+1开始的
+            for (int j = i+1; j < nums.length; j++) {
+                if(nums[i]+nums[j]==target){
+                    return new int[] {i,j};
+                }
+            }
+        }
 
         //哈希映射
         // 由于哈希查找的时间复杂度为 O(1)O(1)，所以可以利用哈希容器 map 降低时间复杂度
@@ -39,19 +54,19 @@ public class Solution1 {
 
         //最好写成这样：Map<Integer,Integer> map = new HashMap<>();让你的程序会更灵活。当你决定更换实现的时候，所要做的就只是：改变构造器中类的名称，后面想改TreeMap类型的时候只需要改HashMap()就行了，不用把前面的HashMap<Integer,Integer>都改了
         //用接口引用对象会使程序更加灵活
-        HashMap<Integer,Integer> map = new HashMap();
-        for (int i = 0; i < nums.length; i++) {
-            //如果集合包含这个键，返回这个键
-            //     判断集合中是否含有这个值containsValue(Object value)
-            //     判断集合中是否含有这个键    containsKey(Object key)
-            if (map.containsKey(target-nums[i])){
-                //map的获取方法， get(Object key) 只获取键，因为有了键就会映射到值
-
-                return new int[] {map.get(target-nums[i]),i};
-            }
-            //否则存入这个键值对到集合中，继续遍历
-            map.put(nums[i], i);
-        }
+        // HashMap<Integer,Integer> map = new HashMap();
+        // for (int i = 0; i < nums.length; i++) {
+        //     //如果集合包含这个键，返回这个键
+        //     //     判断集合中是否含有这个值containsValue(Object value)
+        //     //     判断集合中是否含有这个键    containsKey(Object key)
+        //     if (map.containsKey(target-nums[i])){
+        //         //map的获取方法， get(Object key) 只获取键，因为有了键就会映射到值
+        //
+        //         return new int[] {map.get(target-nums[i]),i};
+        //     }
+        //     //否则存入这个键值对到集合中，继续遍历
+        //     map.put(nums[i], i);
+        // }
         return null;
 
     }
