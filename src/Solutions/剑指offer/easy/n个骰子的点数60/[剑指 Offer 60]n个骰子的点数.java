@@ -1,4 +1,4 @@
-package Solutions.剑指offer.easy;
+package Solutions.剑指offer.easy.n个骰子的点数60;
 //把n个骰子扔在地上，所有骰子朝上一面的点数之和为s。输入n，打印出s的所有可能的值出现的概率。
 //
 // 
@@ -32,6 +32,7 @@ package Solutions.剑指offer.easy;
 class Solution {
     public double[] dicesProbability(int n) {
 
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

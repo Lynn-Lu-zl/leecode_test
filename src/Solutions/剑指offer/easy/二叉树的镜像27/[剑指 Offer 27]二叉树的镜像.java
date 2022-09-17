@@ -1,4 +1,5 @@
-//请完成一个函数，输入一个二叉树，该函数输出它的镜像。 
+package Solutions.剑指offer.easy.二叉树的镜像27;
+//请完成一个函数，输入一个二叉树，该函数输出它的镜像。
 //
 // 例如输入： 
 //
@@ -44,9 +45,16 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
 class Solution {
     public TreeNode mirrorTree(TreeNode root) {
 
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

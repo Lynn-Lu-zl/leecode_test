@@ -29,12 +29,13 @@
 // 
 // Related Topics 栈 树 二叉搜索树 递归 二叉树 单调栈 
 // 👍 609 👎 0
-
+package Solutions.剑指offer.easy.二叉搜索树的后序遍历序列33;
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean verifyPostorder(int[] postorder) {
 
+        return false;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

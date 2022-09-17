@@ -16,7 +16,6 @@ package Solutions.剑指offer.easy;//输入一个链表，输出该链表中倒�
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-import Solutions.剑指offer.easy.从尾到头打印链表06.ListNode;
 
 /**
  * Definition for singly-linked list.
@@ -26,6 +25,14 @@ import Solutions.剑指offer.easy.从尾到头打印链表06.ListNode;
  *     ListNode(int x) { val = x; }
  * }
  */
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
+}
 class Solution {
     public ListNode getKthFromEnd(ListNode head, int k) {
 

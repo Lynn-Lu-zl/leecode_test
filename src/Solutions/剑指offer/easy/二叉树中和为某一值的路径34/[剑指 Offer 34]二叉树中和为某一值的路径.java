@@ -45,6 +45,9 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+package Solutions.剑指offer.easy.二叉树中和为某一值的路径34;
+import java.util.List;
+
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -60,9 +63,23 @@
  *     }
  * }
  */
+
+class TreeNode {
+      int val;
+      TreeNode left;
+      TreeNode right;
+      TreeNode() {}
+      TreeNode(int val) { this.val = val; }
+      TreeNode(int val, TreeNode left, TreeNode right) {
+          this.val = val;
+          this.left = left;
+          this.right = right;
+      }
+  }
 class Solution {
     public List<List<Integer>> pathSum(TreeNode root, int target) {
 
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

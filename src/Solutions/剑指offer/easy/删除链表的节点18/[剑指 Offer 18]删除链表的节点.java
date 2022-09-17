@@ -1,4 +1,4 @@
-package Solutions.剑指offer.easy;//给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。
+package Solutions.剑指offer.easy.删除链表的节点18;//给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。
 //
 // 返回删除后的链表的头节点。 
 //
@@ -32,7 +32,6 @@ package Solutions.剑指offer.easy;//给定单向链表的头指针和一个要�
 
 //leetcode submit region begin(Prohibit modification and deletion)
 
-import Solutions.剑指offer.easy.从尾到头打印链表06.ListNode;
 
 /**
  * Definition for singly-linked list.
@@ -42,9 +41,19 @@ import Solutions.剑指offer.easy.从尾到头打印链表06.ListNode;
  *     ListNode(int x) { val = x; }
  * }
  */
+
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
+}
 class Solution {
     public ListNode deleteNode(ListNode head, int val) {
 
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

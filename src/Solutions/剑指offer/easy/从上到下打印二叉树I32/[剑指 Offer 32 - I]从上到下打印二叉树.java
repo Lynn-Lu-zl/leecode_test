@@ -29,6 +29,7 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+package Solutions.剑指offer.easy.从上到下打印二叉树I32;
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -38,9 +39,18 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
+
 class Solution {
     public int[] levelOrder(TreeNode root) {
 
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

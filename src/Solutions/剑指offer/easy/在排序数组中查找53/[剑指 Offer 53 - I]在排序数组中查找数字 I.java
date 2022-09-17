@@ -1,4 +1,4 @@
-//统计一个数字在排序数组中出现的次数。 
+package Solutions.剑指offer.easy.在排序数组中查找53;//统计一个数字在排序数组中出现的次数。
 //
 // 
 //
@@ -37,6 +37,7 @@
 class Solution {
     public int search(int[] nums, int target) {
 
+        return -1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

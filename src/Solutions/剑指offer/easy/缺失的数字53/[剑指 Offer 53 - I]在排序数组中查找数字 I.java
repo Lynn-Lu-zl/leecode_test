@@ -1,4 +1,4 @@
-package Solutions.剑指offer.easy;//统计一个数字在排序数组中出现的次数。
+package Solutions.剑指offer.easy.缺失的数字53;//统计一个数字在排序数组中出现的次数。
 //
 // 
 //

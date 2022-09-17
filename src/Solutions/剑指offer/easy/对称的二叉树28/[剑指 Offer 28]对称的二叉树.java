@@ -1,4 +1,4 @@
-//请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。 
+package Solutions.剑指offer.easy.对称的二叉树28;//请实现一个函数，用来判断一棵二叉树是不是对称的。如果一棵二叉树和它的镜像一样，那么它是对称的。
 //
 // 例如，二叉树 [1,2,2,3,4,4,3] 是对称的。 
 //
@@ -49,9 +49,16 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
 class Solution {
     public boolean isSymmetric(TreeNode root) {
 
+        return false;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

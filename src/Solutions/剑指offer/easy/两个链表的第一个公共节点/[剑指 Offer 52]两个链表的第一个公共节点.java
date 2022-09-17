@@ -62,20 +62,20 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
-/**
- * Definition for singly-linked list.
- * public class ListNode {
- *     int val;
- *     ListNode next;
- *     ListNode(int x) {
- *         val = x;
- *         next = null;
- *     }
- * }
- */
+
+package Solutions.剑指offer.easy.两个链表的第一个公共节点;
+class ListNode {
+      int val;
+      ListNode next;
+      ListNode(int x) {
+          val = x;
+          next = null;
+      }
+  }
+
 class Solution {
     ListNode getIntersectionNode(ListNode headA, ListNode headB) {
-        
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

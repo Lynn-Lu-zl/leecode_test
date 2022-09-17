@@ -1,4 +1,4 @@
-//给定一个数组 nums 和滑动窗口的大小 k，请找出所有滑动窗口里的最大值。 
+package Solutions.剑指offer.easy.滑动窗口的最大值59;//给定一个数组 nums 和滑动窗口的大小 k，请找出所有滑动窗口里的最大值。
 //
 // 示例: 
 //
@@ -31,6 +31,7 @@
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
 
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

@@ -1,4 +1,4 @@
-//输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。 
+package Solutions.剑指offer.easy.合并两个排序的链表25;//输入两个递增排序的链表，合并这两个链表并使新链表中的节点仍然是递增排序的。
 //
 // 示例1： 
 //
@@ -23,9 +23,20 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+
+//链表
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) {
+        val = x;
+        next = null;
+    }
+}
 class Solution {
     public ListNode mergeTwoLists(ListNode l1, ListNode l2) {
 
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

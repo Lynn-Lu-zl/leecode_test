@@ -1,4 +1,4 @@
-//输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。 
+package Solutions.剑指offer.easy.把数组排成最小的数45;//输入一个非负整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。
 //
 // 
 //
@@ -34,6 +34,7 @@
 class Solution {
     public String minNumber(int[] nums) {
 
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

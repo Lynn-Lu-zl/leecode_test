@@ -1,4 +1,4 @@
-//从若干副扑克牌中随机抽 5 张牌，判断是不是一个顺子，即这5张牌是不是连续的。2～10为数字本身，A为1，J为11，Q为12，K为13，而大、小王为 0 ，
+package Solutions.剑指offer.easy.扑克牌中的顺子61;//从若干副扑克牌中随机抽 5 张牌，判断是不是一个顺子，即这5张牌是不是连续的。2～10为数字本身，A为1，J为11，Q为12，K为13，而大、小王为 0 ，
 //可以看成任意数字。A 不能视为 14。 
 //
 // 
@@ -31,7 +31,7 @@
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public boolean isStraight(int[] nums) {
-
+    return false;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

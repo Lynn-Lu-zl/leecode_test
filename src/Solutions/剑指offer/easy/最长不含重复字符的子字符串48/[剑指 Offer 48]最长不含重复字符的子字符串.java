@@ -1,4 +1,4 @@
-//请从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长子字符串的长度。 
+package Solutions.剑指offer.easy.最长不含重复字符的子字符串48;//请从字符串中找出一个最长的不包含重复字符的子字符串，计算该最长子字符串的长度。
 //
 // 
 //
@@ -42,6 +42,7 @@
 class Solution {
     public int lengthOfLongestSubstring(String s) {
 
+        return -1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

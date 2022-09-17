@@ -29,11 +29,12 @@
 // Related Topics 递归 数学 动态规划 
 // 👍 371 👎 0
 
-
+package Solutions.剑指offer.easy.整数中1出现的次数43;
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
     public int countDigitOne(int n) {
 
+        return -1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

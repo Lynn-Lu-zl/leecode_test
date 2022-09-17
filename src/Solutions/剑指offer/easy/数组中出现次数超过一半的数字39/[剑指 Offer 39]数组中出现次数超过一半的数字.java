@@ -1,4 +1,4 @@
-//数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。 
+package Solutions.剑指offer.easy.数组中出现次数超过一半的数字39;//数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
 //
 // 
 //
@@ -30,6 +30,7 @@
 class Solution {
     public int majorityElement(int[] nums) {
 
+        return -1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

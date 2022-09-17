@@ -1,4 +1,4 @@
-//请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，还有一个 random 指针指
+package Solutions.剑指offer.easy.复杂链表的复制35;//请实现 copyRandomList 函数，复制一个复杂链表。在复杂链表中，每个节点除了有一个 next 指针指向下一个节点，还有一个 random 指针指
 //向链表中的任意节点或者 null。 
 //
 // 
@@ -54,8 +54,10 @@
 // 👍 592 👎 0
 
 
+
+
 //leetcode submit region begin(Prohibit modification and deletion)
-/*
+
 // Definition for a Node.
 class Node {
     int val;
@@ -68,10 +70,11 @@ class Node {
         this.random = null;
     }
 }
-*/
+
 class Solution {
     public Node copyRandomList(Node head) {
-        
+
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

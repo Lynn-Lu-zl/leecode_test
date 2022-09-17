@@ -38,6 +38,7 @@
 
 
 //leetcode submit region begin(Prohibit modification and deletion)
+package Solutions.剑指offer.easy.二叉搜索树的第k大节点54;
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -47,9 +48,17 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
+
+class TreeNode {
+    int val;
+    TreeNode left;
+    TreeNode right;
+    TreeNode(int x) { val = x; }
+}
 class Solution {
     public int kthLargest(TreeNode root, int k) {
 
+        return -1;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

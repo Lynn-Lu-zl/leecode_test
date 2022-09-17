@@ -33,9 +33,10 @@
 // 👍 579 👎 0
 
 
+package Solutions.剑指offer.easy.二叉搜索树与双向链表36;
 //leetcode submit region begin(Prohibit modification and deletion)
-/*
-// Definition for a Node.
+
+
 class Node {
     public int val;
     public Node left;
@@ -52,11 +53,11 @@ class Node {
         left = _left;
         right = _right;
     }
-};
-*/
+}
+
 class Solution {
     public Node treeToDoublyList(Node root) {
-        
+        return null;
     }
 }
 //leetcode submit region end(Prohibit modification and deletion)
