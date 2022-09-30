@@ -37,9 +37,45 @@ package Solutions.剑指offer.easy.斐波那契数列10;//写一个函数，输�
 
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    /**时间复杂度0(1)
+     * 递归的同时把上一次递归的结果存起来--》减少重复的计算否则会超过时间限制
+     * @param n
+     * @return
+     */
     public int fib(int n) {
 
-        return -1;
+        if (n <= 1 ){
+            return n;
+        }
+
+        //因为F(N) = F(N - 1) + F(N - 2)
+        //F(N - 2)  F(0)
+        int a = 0;
+        //F(N - 1)  F(1)
+        int b = 1;
+        //c指代F(N)
+        int c = 0;
+
+        for (int i = 2; i <= n; i++) {
+            //准备下一次递归前，先把该层的数存起来--》整体右移一位-->让 a 保存 b，b 保存 c，之后重新计算 c，如此循环
+            //c也右移，移完后重新计算a+b
+            c = (a + b) % 1000000007;
+
+            //指针右移+1，a的位置移到原来的b上
+            a = b;
+            //b的位置移到原来c上
+            b = c;
+        }
+
+        return c;
     }
+
+
+
+     public static void main(String[] args) {
+         Solution solution = new Solution();
+         int fib = solution.fib(2);
+         System.out.println(fib);
+     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

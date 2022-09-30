@@ -20,14 +20,23 @@ package Solutions.剑指offer.easy.替换空格05;//请实现一个函数，把�
 class Solution {
     public String replaceSpace(String s) {
 
-        return s;
+        StringBuilder stringBuilder = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) == ' '){
+                stringBuilder.append("%20");
+            }else{
+                stringBuilder.append(s.charAt(i));
+            }
+        }
+        return stringBuilder.toString();
     }
 
 
      public static void main(String[] args) {
          Solution solution = new Solution();
          String s = "We are happy.";
-         System.out.println(solution.replaceSpace(s));
+         String s1 = solution.replaceSpace(s);
+         System.out.println(s1);
      }
 }
 //leetcode submit region end(Prohibit modification and deletion)

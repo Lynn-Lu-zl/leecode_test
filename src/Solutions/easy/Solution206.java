@@ -39,21 +39,39 @@ import DataStructure.集合.Collection.List.LinkedList.ListNode;
 
 
 public class Solution206 {
+    // public ListNode reverseList(ListNode head) {
+    //     if (head == null)
+    //     {
+    //         return head;
+    //     }
+    //
+    //     ListNode pre = null;
+    //     ListNode cur = head;
+    //     while (cur != null)
+    //     {
+    //         ListNode tmp = cur.next;
+    //         cur.next = pre;
+    //         pre = cur;
+    //         cur = tmp;
+    //     }
+    //     return pre;
+    // }
+
     public ListNode reverseList(ListNode head) {
         if (head == null)
         {
             return head;
         }
-
-        ListNode pre = null;
         ListNode cur = head;
-        while (cur != null)
-        {
-            ListNode tmp = cur.next;
+        ListNode pre = null;
+        while (cur  != null){
+            ListNode temp = cur.next;
             cur.next = pre;
             pre = cur;
-            cur = tmp;
+            cur = temp;
+
         }
+
         return pre;
     }
 

@@ -1,5 +1,7 @@
 package DataStructure.链表;
 
+import java.util.Arrays;
+
 /**
  * 题目：输入一个链表，输出该链表中倒数第k个节点。
  *
@@ -40,10 +42,25 @@ public class 链表中倒数第k个节点 {
 
      public static void main(String[] args) {
          链表中倒数第k个节点 链表中倒数第k个节点 = new 链表中倒数第k个节点();
-         ListNode listNode = new ListNode(2);
-         listNode.val=10;
-         ListNode node = 链表中倒数第k个节点.getKthFromEnd(listNode, 5);
-         System.out.println(node);
+
+         //定义一个链表1<--3<--2
+         ListNode listNode1 = new ListNode(1);
+         ListNode listNode2 = new ListNode(3);
+         ListNode listNode3 = new ListNode(2);
+         //链表节点连线
+         listNode1.next = listNode2;
+         listNode2.next = listNode3;
+
+         //两个地址相同--》值为1的节点1后面是值为3的链表节点2
+         // System.out.println(listNode1.next);
+         // System.out.println(listNode2);
+         // System.out.println(listNode1.next.val);
+         // System.out.println(listNode2.val);
+
+         int k =2;
+         ListNode node = 链表中倒数第k个节点.getKthFromEnd(listNode1, k);
+
+         System.out.println("链表中倒数第"+ k +"个节点:"+ node.val);
      }
 
 }

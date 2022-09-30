@@ -48,7 +48,7 @@ public class Solution20 {
         //2、字符串括号类型不匹配
         //pop出栈删除，peek出栈不删除
         Stack<Character> stack = new Stack<>();
-        //字符串不能遍历，将字符串转换成数组遍历
+        //将字符串转换成字符数组遍历
         for (char c : s.toCharArray()) {
             //遍历到的左括号入栈
             if (c == '(' || c == '[' || c == '{'){
@@ -86,7 +86,7 @@ public class Solution20 {
         public static void main (String[]args){
             Solution20 solution20 = new Solution20();
             //有效括号，返回true
-            String s = "[({";
+            String s = "()[]{}";
             System.out.println(solution20.isValid(s));
         }
     }

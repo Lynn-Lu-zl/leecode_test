@@ -1,6 +1,7 @@
 package DataStructure.String;
 
 import java.util.Arrays;
+import java.util.Objects;
 
 /**
  * char charAt(int index)  //返回指定索引处的 char 值。
@@ -41,7 +42,24 @@ public class StringTest {
 
          //String string = new String();
          //字符串常量池创建字符串对象
-         String string = "abc";
+         String s11=null;
+         String string = "123";
+         System.out.println(string.substring(1,2));
+         //会报空指针异常，Exception in thread "main" java.lang.NullPointerException，因为一个空对象调用equals方法
+         // System.out.println(s11.equals(string));
+         //用常量/已经确定有值的对象去调用equals
+         System.out.println(string.equals(s11));
+         //使用工具类的equals方法，不会报空指针异常
+         System.out.println(Objects.equals(s11,string ));
+
+         //Integer.parseInt因为是static方法，直接.方法名即可，将字符串123转成int 类型的123
+         int parseInt = Integer.parseInt("123");
+         System.out.println(parseInt);
+         // Integer integer = new Integer("456");
+         //
+         Integer value = Integer.valueOf("456");
+         System.out.println(value);
+
          // string.isEmpty();
          // string.length();
          // string.equals();
@@ -106,6 +124,12 @@ public class StringTest {
          //返回一个字符串，其值为该字符串，删除了任何前导和尾随的空格
          String trim = string.trim();
          System.out.println(trim);
+
+         String abc = "abcd";
+         String aaa ="abcd";
+         String abcd = "ab"+"cd";
+         System.out.println(abc == aaa);
+         System.out.println(aaa == abcd);
 
 
 

@@ -38,11 +38,50 @@ package Solutions.剑指offer.easy.最长不含重复字符的子字符串48;//�
 // 👍 497 👎 0
 
 
+import Solutions.middle.Solution48;
+
+import java.util.HashSet;
+
 //leetcode submit region begin(Prohibit modification and deletion)
 class Solution {
+    /**
+     * 滑动窗口，用set维护一个不重复的窗口
+     * 使用集合set来代替队列，
+     * 用两个指针，
+     * 一个left一个right，
+     * 如果有重复的就把left指向的给移除（left相当于队首，right相当于队尾）
+     * @param s
+     * @return
+     */
     public int lengthOfLongestSubstring(String s) {
 
-        return -1;
+        HashSet<Character> set = new HashSet<>();
+        int max=0;
+        //左指针
+        int left=0;
+        //右指针
+        int right=0;
+        while (right < s.length()){
+            if (set.contains(s.charAt(right))){
+                //
+                set.remove(s.charAt(left));
+                left++;
+            } else {
+                set.add(s.charAt(right));
+                right++;
+                //更新最长字符串
+                max = Math.max(max, set.size());
+                // max = Math.max(max,right-left);
+            }
+        }
+        return max;
     }
+
+
+     public static void main(String[] args) {
+
+         Solution solution = new Solution();
+         System.out.println(solution.lengthOfLongestSubstring("abcabcbb"));
+     }
 }
 //leetcode submit region end(Prohibit modification and deletion)

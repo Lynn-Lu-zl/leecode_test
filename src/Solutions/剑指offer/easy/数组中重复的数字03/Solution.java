@@ -22,17 +22,17 @@ public class Solution {
      * @param nums
      * @return
      */
-    public int findRepeatNumber(int[] nums) {
-        Arrays.sort(nums);
-        for (int i = 0; i < nums.length; i++) {
-            if (nums[i] == nums[i + 1]) {
-                return nums[i];
-            }
-
-        }
-        //遍历完都没有重复值，则返回 -1
-        return -1;
-    }
+    // public int findRepeatNumber(int[] nums) {
+    //     Arrays.sort(nums);
+    //     for (int i = 0; i < nums.length; i++) {
+    //         if (nums[i] == nums[i + 1]) {
+    //             return nums[i];
+    //         }
+    //
+    //     }
+    //     //遍历完都没有重复值，则返回 -1
+    //     return -1;
+    // }
 
     /**hashset
      * 时间复杂度 O(N) ： 遍历数组使用 O(N)O(N) ，HashSet 添加与查找元素皆为 O(1)O(1) 。
@@ -76,26 +76,26 @@ public class Solution {
      * @param
      * @return
      */
-    // public int findRepeatNumber(int[] nums) {
-    //     if (nums.length==0){
-    //         return -1;
-    //     }
-    //
-    //     for (int i = 0; i < nums.length; i++) {
-    //         while (nums[i] != i){
-    //             if (nums[i] == nums[nums[i]]){
-    //                 return nums[i];
-    //             }
-    //             //交换
-    //             int temp = nums[i];
-    //             //已经把nums[i]给=赋值temp了
-    //             nums[i] = nums[temp];
-    //             nums[temp] = temp;
-    //         }
-    //     }
-    //     //遍历完都没有重复值，则返回 -1−1
-    //     return -1;
-    // }
+    public int findRepeatNumber(int[] nums) {
+        if (nums.length==0){
+            return -1;
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            while (nums[i] != i){
+                if (nums[i] == nums[nums[i]]){
+                    return nums[i];
+                }
+                //交换
+                int temp = nums[i];
+                //已经把nums[i]给=赋值temp了
+                nums[i] = nums[temp];
+                nums[temp] = temp;
+            }
+        }
+        //遍历完都没有重复值，则返回 -1−1
+        return -1;
+    }
 
 
      public static void main(String[] args) {
